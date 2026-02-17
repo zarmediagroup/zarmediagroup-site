@@ -1,0 +1,6 @@
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="40" height="40" fill="#0A1628"/>
+  <polygon points="20,2 38,11 38,29 20,38 2,29 2,11" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+  <text x="20" y="24" text-anchor="middle" fill="#C9A84C" font-size="10" font-weight="700" font-family="Inter, sans-serif" letter-spacing="0.5">ZMG</text>
+</svg>
+
