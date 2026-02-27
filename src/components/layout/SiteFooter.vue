@@ -6,18 +6,15 @@
 
         <!-- Brand Column -->
         <div class="lg:col-span-2">
-          <RouterLink to="/" class="flex items-center gap-3 group mb-6">
-            <div class="w-10 h-10 relative flex-shrink-0">
-              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                <polygon points="20,2 38,11 38,29 20,38 2,29 2,11" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-                <polygon points="20,8 32,14 32,26 20,32 8,26 8,14" fill="none" stroke="#C9A84C" stroke-width="0.75" opacity="0.5"/>
-                <text x="20" y="24" text-anchor="middle" fill="#C9A84C" font-size="10" font-weight="700" font-family="Inter, sans-serif" letter-spacing="0.5">ZMG</text>
-              </svg>
-            </div>
-            <div class="flex flex-col">
-              <span class="font-serif text-white font-bold text-lg leading-none tracking-wide">ZARMEDIA</span>
-              <span class="font-sans text-gold-500 text-xs font-semibold tracking-[0.25em] uppercase leading-none mt-0.5">GROUP</span>
-            </div>
+          <RouterLink to="/" class="inline-block mb-6">
+            <img
+              src="/logo.png"
+              alt="Zar Media Group logo"
+              class="h-10 w-auto object-contain brightness-0 invert"
+              width="160"
+              height="40"
+              loading="lazy"
+            />
           </RouterLink>
 
           <p class="font-sans text-white/50 text-sm leading-relaxed mb-8 max-w-xs">
@@ -32,9 +29,9 @@
                 v-model="email"
                 type="email"
                 placeholder="your@email.com"
-                class="flex-1 px-4 py-3 bg-navy-900 border border-white/10 text-white text-sm placeholder-white/30 focus:outline-none focus:border-gold-500 transition-colors"
+                class="flex-1 px-4 py-3 bg-navy-900 border border-white/10 text-white text-sm placeholder-white/30 focus:outline-none focus:border-white transition-colors"
               />
-              <button type="submit" class="px-5 py-3 bg-gold-500 text-navy-900 font-semibold text-xs hover:bg-gold-400 transition-colors">
+              <button type="submit" class="px-5 py-3 bg-white text-navy-900 font-semibold text-xs hover:bg-navy-200 transition-colors">
                 →
               </button>
             </form>
@@ -49,7 +46,7 @@
               target="_blank"
               rel="noopener noreferrer"
               :aria-label="social.name"
-              class="w-9 h-9 flex items-center justify-center border border-white/10 text-white/40 hover:text-gold-500 hover:border-gold-500/50 transition-all duration-300"
+              class="w-9 h-9 flex items-center justify-center border border-white/10 text-white/40 hover:text-white hover:border-white/40 transition-all duration-300"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" v-html="social.icon"></svg>
             </a>
@@ -58,10 +55,10 @@
 
         <!-- Quick Links -->
         <div>
-          <h4 class="font-sans text-white font-semibold text-xs tracking-[0.15em] uppercase mb-6">Company</h4>
+          <p class="font-sans text-white font-semibold text-xs tracking-[0.15em] uppercase mb-6" role="heading" aria-level="3">Company</p>
           <ul class="space-y-3">
             <li v-for="link in companyLinks" :key="link.to">
-              <RouterLink :to="link.to" class="font-sans text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
+              <RouterLink :to="link.to" class="font-sans text-white/50 text-sm hover:text-white transition-colors duration-200">
                 {{ link.label }}
               </RouterLink>
             </li>
@@ -70,10 +67,10 @@
 
         <!-- Services Links -->
         <div>
-          <h4 class="font-sans text-white font-semibold text-xs tracking-[0.15em] uppercase mb-6">Services</h4>
+          <p class="font-sans text-white font-semibold text-xs tracking-[0.15em] uppercase mb-6" role="heading" aria-level="3">Services</p>
           <ul class="space-y-3">
             <li v-for="link in serviceLinks" :key="link.to">
-              <RouterLink :to="link.to" class="font-sans text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
+              <RouterLink :to="link.to" class="font-sans text-white/50 text-sm hover:text-white transition-colors duration-200">
                 {{ link.label }}
               </RouterLink>
             </li>
@@ -82,26 +79,26 @@
 
         <!-- Contact Column -->
         <div>
-          <h4 class="font-sans text-white font-semibold text-xs tracking-[0.15em] uppercase mb-6">Contact</h4>
+          <p class="font-sans text-white font-semibold text-xs tracking-[0.15em] uppercase mb-6" role="heading" aria-level="3">Contact</p>
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
-              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
-              <a href="mailto:hello@zarmediagroup.com" class="font-sans text-white/50 text-sm hover:text-gold-400 transition-colors">
+              <a href="mailto:hello@zarmediagroup.com" class="font-sans text-white/50 text-sm hover:text-white transition-colors">
                 hello@zarmediagroup.com
               </a>
             </li>
             <li class="flex items-start gap-3">
-              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
               </svg>
-              <a href="tel:+1234567890" class="font-sans text-white/50 text-sm hover:text-gold-400 transition-colors">
+              <a href="tel:+1234567890" class="font-sans text-white/50 text-sm hover:text-white transition-colors">
                 +1 (234) 567-890
               </a>
             </li>
             <li class="flex items-start gap-3">
-              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
               </svg>
@@ -112,7 +109,7 @@
           </ul>
 
           <div class="mt-8">
-            <RouterLink to="/contact" class="btn-secondary text-xs py-3 px-5">
+            <RouterLink to="/contact" class="btn-ghost text-xs py-3 px-5">
               Start a Project
             </RouterLink>
           </div>
@@ -120,19 +117,19 @@
       </div>
     </div>
 
-    <!-- Gold Divider -->
-    <div class="h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent"></div>
+    <!-- Divider -->
+    <div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
     <!-- Bottom Bar -->
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="font-sans text-white/30 text-xs">
+        <p class="font-sans text-white/60 text-xs">
           © {{ currentYear }} ZARMEDIAGROUP. All rights reserved.
         </p>
         <div class="flex items-center gap-6">
-          <a href="#" class="font-sans text-white/30 text-xs hover:text-white/60 transition-colors">Privacy Policy</a>
-          <a href="#" class="font-sans text-white/30 text-xs hover:text-white/60 transition-colors">Terms of Service</a>
-          <a href="#" class="font-sans text-white/30 text-xs hover:text-white/60 transition-colors">Cookie Policy</a>
+          <a href="#" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Cookie Policy</a>
         </div>
       </div>
     </div>

@@ -1,375 +1,432 @@
 <template>
   <div class="website-service-page">
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+    <!-- ══ HERO ══ -->
+    <section class="relative min-h-[65vh] flex items-end pb-20 bg-navy-900 overflow-hidden pt-40" aria-label="Service page hero">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30"></div>
+        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30"></div>
       </div>
-      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <span class="section-label reveal-up">Service</span>
-        <h1 class="font-serif text-display-xl text-white mb-6 reveal-up" style="transition-delay: 100ms;">
-          Website as a <em class="text-gold-400">Service</em>
+      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <BreadcrumbNav :crumbs="[
+          { label: 'Services', path: '/services' },
+          { label: 'Website as a Service', path: '/services/website-as-a-service' }
+        ]" />
+
+        <span class="section-label reveal-up">Service — For Accountants, Financial Advisors &amp; Bookkeepers</span>
+        <h1 class="font-serif text-display-lg text-white mt-4 mb-6 max-w-3xl reveal-up" style="transition-delay: 100ms;">
+          Website as a Service<br/>
+          <span class="text-gradient">for Accountants</span>
         </h1>
-        <div class="gold-divider-center reveal-up" style="transition-delay: 150ms;"></div>
-        <p class="font-sans text-white/60 text-xl max-w-2xl mx-auto leading-relaxed reveal-up" style="transition-delay: 200ms;">
-          Not a one-time build. A continuously optimized, fully managed digital asset — with outcomes guaranteed.
+        <p class="font-sans text-white/60 text-lg max-w-2xl leading-relaxed reveal-up" style="transition-delay: 200ms;">
+          A fully managed, continuously optimised accounting firm website on a monthly subscription. No one-time builds that age and decay — a living digital asset that generates leads and reduces admin every single month.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10 reveal-up" style="transition-delay: 300ms;">
-          <button class="btn-primary" @click="showPricingModal = true">View Pricing Plans</button>
-          <RouterLink to="/contact" class="btn-ghost">Book a Demo</RouterLink>
+        <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
+
+        <!-- Hero CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-10 reveal-up" style="transition-delay: 300ms;">
+          <RouterLink to="/contact" class="btn-primary" aria-label="Request a demo for your accounting firm website">
+            Request a Demo
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </RouterLink>
+          <button class="btn-ghost" @click="activeTab = 'pricing'" aria-label="View Website as a Service pricing for accountants">
+            View Pricing
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- WHY WAAS -->
-    <section class="section-padding bg-cream">
+    <!-- ══ KEY BENEFITS ══ -->
+    <section class="section-padding bg-cream" aria-labelledby="benefits-heading">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-          <div class="reveal-left">
-            <span class="section-label">Why WaaS?</span>
-            <h2 class="font-serif text-display-md text-navy-900 mb-6">The Problem with One-Time Builds</h2>
-            <div class="gold-divider"></div>
-            <p class="font-sans text-charcoal-600 leading-relaxed mb-8">
-              Traditional website projects deliver a site that's perfect on launch day — and slowly decays from that point forward. Technology changes, competitors improve, and your site falls behind. WaaS solves this permanently.
-            </p>
-            <div class="space-y-4">
-              <div v-for="item in whyWaas" :key="item.title" class="flex items-start gap-4">
-                <div class="w-8 h-8 flex-shrink-0 bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mt-0.5">
-                  <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                </div>
-                <div>
-                  <h4 class="font-sans font-semibold text-navy-900 text-sm mb-1">{{ item.title }}</h4>
-                  <p class="font-sans text-charcoal-500 text-sm leading-relaxed">{{ item.desc }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Feature tabs -->
-          <div class="reveal-right">
-            <div class="flex gap-0 mb-6 border-b border-navy-900/10">
-              <button
-                v-for="tab in featureTabs"
-                :key="tab.id"
-                class="px-5 py-3 font-sans text-sm font-semibold transition-all border-b-2 -mb-px"
-                :class="[
-                  activeTab === tab.id
-                    ? 'border-gold-500 text-navy-900'
-                    : 'border-transparent text-charcoal-400 hover:text-charcoal-700'
-                ]"
-                @click="activeTab = tab.id"
-              >
-                {{ tab.label }}
-              </button>
-            </div>
-
-            <Transition name="fade" mode="out-in">
-              <div :key="activeTab">
-                <div class="space-y-3">
-                  <div
-                    v-for="feature in activeTabFeatures"
-                    :key="feature.name"
-                    class="flex items-start gap-4 p-4 bg-white border border-navy-900/8 hover:border-gold-500/30 transition-all"
-                  >
-                    <div class="w-8 h-8 flex-shrink-0 bg-gold-500/10 flex items-center justify-center">
-                      <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="feature.icon"></svg>
-                    </div>
-                    <div>
-                      <div class="font-sans font-semibold text-navy-900 text-sm">{{ feature.name }}</div>
-                      <div class="font-sans text-charcoal-500 text-xs mt-0.5">{{ feature.desc }}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Transition>
-          </div>
+        <div class="max-w-2xl mb-14 reveal-up">
+          <span class="section-label">Why WaaS for Financial Firms?</span>
+          <h2 id="benefits-heading" class="font-serif text-display-md text-navy-900 mb-6">
+            Everything Your Accounting Firm<br/><em>Website Needs, Managed for You</em>
+          </h2>
+          <div class="gold-divider"></div>
+          <p class="font-sans text-charcoal-600 text-lg leading-relaxed mt-6">
+            Traditional website projects fail accounting firms because they're one-time builds that become outdated within months. Our <strong>Website as a Service for the financial sector</strong> model ensures your online presence is always current, always optimised, and always converting new clients.
+          </p>
         </div>
 
-        <!-- ROI CALCULATOR -->
-        <div class="reveal-up">
-          <div class="bg-navy-900 p-8 lg:p-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span class="section-label">ROI Calculator</span>
-                <h2 class="font-serif text-display-sm text-white mb-4">Calculate Your Return</h2>
-                <p class="font-sans text-white/60 mb-8">Estimate the revenue impact of a professionally optimized digital presence for your practice.</p>
-
-                <div class="space-y-6">
-                  <div>
-                    <label class="font-sans text-white/70 text-xs font-semibold uppercase tracking-wider mb-3 block">
-                      Monthly Website Visitors: <span class="text-gold-400">{{ visitors.toLocaleString() }}</span>
-                    </label>
-                    <input type="range" min="100" max="10000" step="100" v-model.number="visitors" class="w-full" />
-                  </div>
-                  <div>
-                    <label class="font-sans text-white/70 text-xs font-semibold uppercase tracking-wider mb-3 block">
-                      Average Client Value: <span class="text-gold-400">${{ clientValue.toLocaleString() }}</span>
-                    </label>
-                    <input type="range" min="500" max="50000" step="500" v-model.number="clientValue" class="w-full" />
-                  </div>
-                  <div>
-                    <label class="font-sans text-white/70 text-xs font-semibold uppercase tracking-wider mb-3 block">
-                      Current Conversion Rate: <span class="text-gold-400">{{ conversionRate }}%</span>
-                    </label>
-                    <input type="range" min="0.1" max="5" step="0.1" v-model.number="conversionRate" class="w-full" />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Results -->
-              <div class="space-y-4">
-                <div class="p-6 border border-white/10">
-                  <p class="font-sans text-white/50 text-xs uppercase tracking-wider mb-1">Current Monthly Revenue from Website</p>
-                  <p class="font-serif text-white text-3xl font-bold">${{ currentRevenue.toLocaleString() }}</p>
-                </div>
-                <div class="p-6 border border-gold-500/50 bg-gold-500/5">
-                  <p class="font-sans text-gold-400 text-xs uppercase tracking-wider mb-1">Projected with ZMG Optimization (+89% avg)</p>
-                  <p class="font-serif text-gold-500 text-3xl font-bold">${{ projectedRevenue.toLocaleString() }}</p>
-                </div>
-                <div class="p-6 bg-gold-500">
-                  <p class="font-sans text-navy-900/70 text-xs uppercase tracking-wider mb-1">Additional Annual Revenue</p>
-                  <p class="font-serif text-navy-900 text-4xl font-bold">${{ annualGain.toLocaleString() }}</p>
-                </div>
-                <RouterLink to="/contact" class="btn-secondary w-full justify-center">
-                  Get Your Personalized Projection
-                </RouterLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="section-padding bg-cream">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16 reveal-up">
-          <span class="section-label">Investment</span>
-          <h2 class="font-serif text-display-md text-navy-900 mb-4">Choose Your Partnership Level</h2>
-          <div class="gold-divider-center"></div>
-          <p class="font-sans text-charcoal-500 mt-4">All plans include full setup, migration, and ongoing optimization. No hidden fees.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div
-            v-for="(plan, i) in pricingPlans"
-            :key="plan.name"
-            class="reveal-up relative"
-            :style="{ transitionDelay: (i * 100) + 'ms' }"
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
+          <article
+            v-for="(benefit, i) in benefits"
+            :key="benefit.title"
+            class="reveal-up group p-7 bg-white border border-navy-900/8 hover:border-gold-500/50 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300"
+            :style="{ transitionDelay: (i * 80) + 'ms' }"
           >
-            <!-- Popular badge -->
-            <div v-if="plan.popular" class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold-500 text-navy-900 text-xs font-bold uppercase tracking-wider px-4 py-1.5 z-10">
-              Most Popular
+            <div class="w-12 h-12 flex items-center justify-center border border-gold-500/20 bg-gold-500/5 group-hover:bg-gold-500 group-hover:border-gold-500 transition-all duration-300 mb-6" aria-hidden="true">
+              <svg class="w-6 h-6 text-gold-500 group-hover:text-navy-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="benefit.icon"></svg>
             </div>
+            <h3 class="font-sans font-semibold text-navy-900 text-sm mb-3 group-hover:text-gold-600 transition-colors">{{ benefit.title }}</h3>
+            <p class="font-sans text-charcoal-500 text-sm leading-relaxed">{{ benefit.description }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div
-              class="h-full p-8 border-2 transition-all duration-300"
-              :class="[
-                plan.popular
-                  ? 'border-gold-500 bg-navy-900'
-                  : 'border-navy-900/10 bg-white hover:border-gold-500/40'
-              ]"
-            >
-              <h3 class="font-sans font-bold uppercase tracking-wider text-sm mb-2"
-                  :class="plan.popular ? 'text-gold-400' : 'text-charcoal-500'">
-                {{ plan.name }}
-              </h3>
-              <div class="flex items-end gap-1 mb-2">
-                <span class="font-serif font-bold text-4xl"
-                      :class="plan.popular ? 'text-white' : 'text-navy-900'">
-                  ${{ plan.price }}
-                </span>
-                <span class="font-sans text-sm mb-2"
-                      :class="plan.popular ? 'text-white/50' : 'text-charcoal-400'">/mo</span>
-              </div>
-              <p class="font-sans text-sm mb-8"
-                 :class="plan.popular ? 'text-white/60' : 'text-charcoal-500'">
-                {{ plan.description }}
-              </p>
+    <!-- ══ TAB SECTION: FEATURES / PRICING / ROI ══ -->
+    <section class="section-padding bg-navy-900" aria-label="Features, pricing, and ROI calculator">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <!-- Tab Nav -->
+        <div class="flex gap-0 border-b border-white/10 mb-12 overflow-x-auto" role="tablist" aria-label="Service information tabs">
+          <button
+            v-for="tab in tabs"
+            :key="tab.id"
+            class="font-sans text-sm font-semibold px-6 py-4 transition-all duration-200 whitespace-nowrap flex-shrink-0"
+            :class="activeTab === tab.id
+              ? 'text-gold-400 border-b-2 border-gold-500 -mb-px'
+              : 'text-white/40 hover:text-white/70'"
+            role="tab"
+            :aria-selected="activeTab === tab.id"
+            :id="`tab-${tab.id}`"
+            :aria-controls="`tabpanel-${tab.id}`"
+            @click="activeTab = tab.id"
+          >
+            {{ tab.label }}
+          </button>
+        </div>
 
-              <ul class="space-y-3 mb-8">
-                <li v-for="feature in plan.features" :key="feature" class="flex items-start gap-3">
-                  <svg class="w-4 h-4 flex-shrink-0 mt-0.5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        <!-- Features Tab -->
+        <div
+          v-if="activeTab === 'features'"
+          id="tabpanel-features"
+          role="tabpanel"
+          aria-labelledby="tab-features"
+        >
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div v-for="group in featureGroups" :key="group.category" class="reveal-up">
+              <h3 class="font-sans font-semibold text-gold-400 text-xs uppercase tracking-wider mb-4">{{ group.category }}</h3>
+              <ul class="space-y-3">
+                <li v-for="feature in group.items" :key="feature" class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                   </svg>
-                  <span class="font-sans text-sm"
-                        :class="plan.popular ? 'text-white/70' : 'text-charcoal-600'">
-                    {{ feature }}
-                  </span>
+                  <span class="font-sans text-white/70 text-sm">{{ feature }}</span>
                 </li>
               </ul>
-
-              <RouterLink
-                to="/contact"
-                class="block text-center font-sans font-semibold text-sm tracking-wider uppercase py-4 px-6 transition-all"
-                :class="[
-                  plan.popular
-                    ? 'bg-gold-500 text-navy-900 hover:bg-gold-400'
-                    : 'border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white'
-                ]"
-              >
-                Get Started
-              </RouterLink>
             </div>
           </div>
         </div>
 
-        <p class="text-center font-sans text-charcoal-400 text-sm reveal-up">
-          Need a custom solution? <RouterLink to="/contact" class="text-gold-600 hover:text-gold-500">Let's talk.</RouterLink>
-        </p>
+        <!-- Pricing Tab -->
+        <div
+          v-if="activeTab === 'pricing'"
+          id="tabpanel-pricing"
+          role="tabpanel"
+          aria-labelledby="tab-pricing"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article
+              v-for="tier in pricing"
+              :key="tier.name"
+              class="reveal-up relative border transition-all duration-300"
+              :class="tier.featured
+                ? 'border-gold-500 bg-gold-500/5'
+                : 'border-white/10 hover:border-white/20'"
+            >
+              <div v-if="tier.featured" class="absolute -top-3 left-0 right-0 text-center">
+                <span class="font-sans text-xs font-semibold text-navy-900 bg-gold-500 px-4 py-1">Most Popular for SA Accounting Firms</span>
+              </div>
+              <div class="p-8">
+                <h3 class="font-serif text-white text-xl mb-2">{{ tier.name }}</h3>
+                <div class="flex items-end gap-2 mb-4">
+                  <span class="font-serif text-3xl text-gold-400 font-bold">{{ tier.price }}</span>
+                  <span class="font-sans text-white/40 text-sm mb-1">/month</span>
+                </div>
+                <p class="font-sans text-white/50 text-sm mb-8">{{ tier.description }}</p>
+                <ul class="space-y-3 mb-8">
+                  <li v-for="feature in tier.features" :key="feature" class="flex items-start gap-3">
+                    <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="font-sans text-white/70 text-sm">{{ feature }}</span>
+                  </li>
+                </ul>
+                <RouterLink to="/contact" :class="tier.featured ? 'btn-primary w-full text-center' : 'btn-ghost w-full text-center'" :aria-label="`Start the ${tier.name} plan for your accounting firm`">
+                  Get Started
+                </RouterLink>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ROI Tab -->
+        <div
+          v-if="activeTab === 'roi'"
+          id="tabpanel-roi"
+          role="tabpanel"
+          aria-labelledby="tab-roi"
+        >
+          <div class="max-w-2xl mx-auto">
+            <h3 class="font-serif text-white text-xl mb-8 text-center">
+              ROI Calculator — Accounting Firm Website
+            </h3>
+            <div class="space-y-6 mb-8">
+              <div>
+                <label class="font-sans text-white/60 text-sm mb-2 block" for="current-clients">
+                  Current monthly client enquiries
+                </label>
+                <input
+                  id="current-clients"
+                  v-model.number="roi.enquiries"
+                  type="range" min="1" max="50" step="1"
+                  class="w-full accent-gold-500"
+                  :aria-valuenow="roi.enquiries"
+                  :aria-valuetext="`${roi.enquiries} enquiries per month`"
+                />
+                <div class="flex justify-between mt-1">
+                  <span class="font-sans text-white/30 text-xs">1</span>
+                  <span class="font-sans text-gold-400 text-sm font-semibold">{{ roi.enquiries }} / month</span>
+                  <span class="font-sans text-white/30 text-xs">50</span>
+                </div>
+              </div>
+              <div>
+                <label class="font-sans text-white/60 text-sm mb-2 block" for="avg-value">
+                  Average client lifetime value (ZAR)
+                </label>
+                <input
+                  id="avg-value"
+                  v-model.number="roi.clientValue"
+                  type="range" min="5000" max="200000" step="5000"
+                  class="w-full accent-gold-500"
+                  :aria-valuenow="roi.clientValue"
+                  :aria-valuetext="`R${roi.clientValue.toLocaleString()} lifetime value`"
+                />
+                <div class="flex justify-between mt-1">
+                  <span class="font-sans text-white/30 text-xs">R5k</span>
+                  <span class="font-sans text-gold-400 text-sm font-semibold">R{{ roi.clientValue.toLocaleString() }}</span>
+                  <span class="font-sans text-white/30 text-xs">R200k</span>
+                </div>
+              </div>
+              <div>
+                <label class="font-sans text-white/60 text-sm mb-2 block" for="conversion-rate">
+                  Current enquiry-to-client conversion rate
+                </label>
+                <input
+                  id="conversion-rate"
+                  v-model.number="roi.conversionRate"
+                  type="range" min="5" max="80" step="5"
+                  class="w-full accent-gold-500"
+                  :aria-valuenow="roi.conversionRate"
+                  :aria-valuetext="`${roi.conversionRate}% conversion rate`"
+                />
+                <div class="flex justify-between mt-1">
+                  <span class="font-sans text-white/30 text-xs">5%</span>
+                  <span class="font-sans text-gold-400 text-sm font-semibold">{{ roi.conversionRate }}%</span>
+                  <span class="font-sans text-white/30 text-xs">80%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="border border-white/10 p-6 space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="font-sans text-white/60 text-sm">Current monthly revenue from web</span>
+                <span class="font-sans text-white text-sm">R{{ currentRevenue.toLocaleString() }}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="font-sans text-white/60 text-sm">Projected revenue with WaaS (+127%)</span>
+                <span class="font-sans text-gold-400 text-sm font-semibold">R{{ projectedRevenue.toLocaleString() }}</span>
+              </div>
+              <div class="border-t border-white/10 pt-4 flex justify-between items-center">
+                <span class="font-sans text-white font-semibold text-sm">Monthly ROI uplift</span>
+                <span class="font-serif text-gold-500 text-2xl font-bold">R{{ roiUplift.toLocaleString() }}</span>
+              </div>
+            </div>
+            <p class="font-sans text-white/30 text-xs text-center mt-4">
+              Based on average 127% lead increase across Zar Media Group accounting firm clients in South Africa.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- PRICING DETAIL MODAL TRIGGER -->
-    <BaseModal v-model="showPricingModal" title="Partnership Plans" label="Investment" size="xl" dark>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div v-for="plan in pricingPlans" :key="plan.name" class="p-6 border"
-             :class="plan.popular ? 'border-gold-500 bg-white/5' : 'border-white/10'">
-          <h3 class="font-sans font-bold text-gold-400 text-xs uppercase tracking-wider mb-2">{{ plan.name }}</h3>
-          <div class="font-serif text-white text-3xl font-bold mb-1">${{ plan.price }}<span class="text-white/40 text-sm font-sans font-normal">/mo</span></div>
-          <p class="font-sans text-white/50 text-sm mb-6">{{ plan.description }}</p>
-          <ul class="space-y-2">
-            <li v-for="feature in plan.features" :key="feature" class="flex items-start gap-2 text-sm text-white/70">
-              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              {{ feature }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <template #footer>
-        <div class="px-6 lg:px-8 pb-6 lg:pb-8">
-          <RouterLink to="/contact" class="btn-primary w-full justify-center" @click="showPricingModal = false">
-            Discuss My Needs
-          </RouterLink>
-        </div>
-      </template>
-    </BaseModal>
+    <!-- ══ RELATED SERVICES ══ -->
+    <RelatedServices :exclude="['waas']" />
+
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
-import BaseModal from '@/components/ui/BaseModal.vue'
+import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
+import RelatedServices from '@/components/ui/RelatedServices.vue'
 
 const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
-const showPricingModal = ref(false)
-const activeTab = ref('design')
+const activeTab = ref('features')
 
-// ROI Calculator
-const visitors = ref(1000)
-const clientValue = ref(3000)
-const conversionRate = ref(1)
-
+// ROI calculator
+const roi = ref({ enquiries: 10, clientValue: 30000, conversionRate: 20 })
 const currentRevenue = computed(() =>
-  Math.round(visitors.value * (conversionRate.value / 100) * clientValue.value)
+  Math.round((roi.value.enquiries * roi.value.conversionRate / 100) * roi.value.clientValue)
 )
-const projectedRevenue = computed(() =>
-  Math.round(currentRevenue.value * 1.89)
-)
-const annualGain = computed(() =>
-  Math.round((projectedRevenue.value - currentRevenue.value) * 12)
-)
+const projectedRevenue = computed(() => Math.round(currentRevenue.value * 2.27))
+const roiUplift = computed(() => projectedRevenue.value - currentRevenue.value)
 
-const whyWaas = [
-  { title: 'Always Current Technology', desc: 'Your site runs on the latest stack, security patches applied automatically.' },
-  { title: 'Continuous Optimization', desc: 'Monthly A/B testing and CRO improvements to increase conversions over time.' },
-  { title: 'Proactive Performance Monitoring', desc: '24/7 uptime monitoring with instant alerts and rapid response team.' },
-  { title: 'Content & Copy Updates', desc: 'Need to update your team page, add services, or post regulatory changes? Done within 24 hours.' },
-  { title: 'Annual Design Refresh', desc: 'Prevent design fatigue. Annual visual refresh keeps your brand looking premium.' },
+useSeoMeta({
+  title: 'Website as a Service for Accountants | Zar Media Group',
+  description:
+    'A fully managed, continuously optimised website for accountants and financial advisors. No one-time builds — ongoing excellence with guaranteed ROI. Website as a Service for the financial sector.',
+  keywords:
+    'Website as a Service financial sector, managed website for accountants, accounting firm website design, website for financial advisors, WaaS South Africa, managed accounting website',
+  canonical: '/services/website-as-a-service',
+  schemas: [
+    SCHEMAS.breadcrumb([
+      { name: 'Home', url: '/' },
+      { name: 'Services', url: '/services' },
+      { name: 'Website as a Service', url: '/services/website-as-a-service' },
+    ]),
+    SCHEMAS.service({
+      name: 'Website as a Service for Accountants',
+      description:
+        'A fully managed, continuously optimised accounting firm website. Includes design, development, hosting, compliance review, SEO, and conversion optimisation — all on a monthly subscription.',
+    }),
+    SCHEMAS.faqPage([
+      {
+        question: 'What is Website as a Service (WaaS) for accounting firms?',
+        answer:
+          'Website as a Service is a monthly subscription model where Zar Media Group designs, builds, hosts, maintains, and continuously optimises your accounting firm website. Unlike traditional one-time builds, WaaS ensures your site never becomes outdated and keeps generating leads month after month.',
+      },
+      {
+        question: 'How much does a managed website for accountants cost?',
+        answer:
+          'Our Website as a Service plans for accounting firms in South Africa start from R2,999/month for the Essentials plan, with Professional at R5,999/month and Enterprise from R9,999/month. All plans include hosting, maintenance, monthly updates, and compliance monitoring.',
+      },
+    ]),
+  ],
+})
+
+const tabs = [
+  { id: 'features', label: 'What\'s Included' },
+  { id: 'pricing', label: 'Pricing' },
+  { id: 'roi', label: 'ROI Calculator' },
 ]
 
-const featureTabs = [
-  { id: 'design', label: 'Design' },
-  { id: 'tech', label: 'Technology' },
-  { id: 'marketing', label: 'Growth' },
-  { id: 'support', label: 'Support' },
-]
-
-const tabFeatures = {
-  design: [
-    { name: 'Bespoke Premium Design', desc: 'Custom UI tailored to your brand and financial sector positioning', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>' },
-    { name: 'Annual Design Refresh', desc: 'Keep your digital presence current without a full rebuild', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>' },
-    { name: 'Mobile-First Responsive', desc: '100% responsive across all device sizes and orientations', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>' },
-  ],
-  tech: [
-    { name: 'Vue.js / React Frontend', desc: 'Lightning-fast SPA with 90+ Lighthouse score guaranteed', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>' },
-    { name: 'CDN & Edge Delivery', desc: 'Global CDN ensures fast load times for all your clients worldwide', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>' },
-    { name: 'Security Hardening', desc: 'WAF, DDoS protection, SSL, and regular security audits', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>' },
-  ],
-  marketing: [
-    { name: 'SEO Foundation & Monitoring', desc: 'Technical SEO maintained and content strategy provided monthly', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>' },
-    { name: 'Conversion Rate Optimization', desc: 'Monthly A/B tests to continuously improve your conversion rates', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>' },
-    { name: 'Analytics Dashboard', desc: 'Real-time revenue attribution and performance reporting', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>' },
-  ],
-  support: [
-    { name: '24/7 Uptime Monitoring', desc: 'Automated monitoring with instant notifications and rapid response', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>' },
-    { name: 'Dedicated Account Manager', desc: 'A single point of contact who knows your business inside out', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>' },
-    { name: 'Content Update SLA', desc: 'All content update requests completed within 24 business hours', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>' },
-  ],
-}
-
-const activeTabFeatures = computed(() => tabFeatures[activeTab.value] || [])
-
-const pricingPlans = [
+const benefits = [
   {
-    name: 'Established',
-    price: '997',
-    description: 'For solo practitioners and small firms establishing a premium digital presence.',
-    popular: false,
+    title: 'Always Optimised Accounting Website',
+    description: 'We continuously test and improve your accounting firm website — A/B testing CTAs, improving page speed, and updating content to reflect your services.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>',
+  },
+  {
+    title: 'Financial Sector SEO',
+    description: 'Rank for "accountant in [city]" and high-intent financial keywords that bring clients actively looking for your services across South Africa.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>',
+  },
+  {
+    title: 'Compliance-Ready Architecture',
+    description: 'Every accounting firm website we manage is reviewed against GDPR, POPIA, and FSCA requirements — protecting your firm and your clients.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
+  },
+  {
+    title: 'Client Portal Integration',
+    description: 'Secure, branded client portals for accountants — document exchange, e-signatures, and billing all accessible from your own website.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>',
+  },
+  {
+    title: 'CRM & Software Integration',
+    description: 'Connect your accounting website to Xero, QuickBooks, HubSpot, or your practice management system — no more manual data entry.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>',
+  },
+  {
+    title: 'Zero Maintenance Headaches',
+    description: 'We handle all hosting, updates, security patches, and backups. You focus on billable work — we keep your digital presence running perfectly.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>',
+  },
+]
+
+const featureGroups = [
+  {
+    category: 'Design & Brand',
+    items: [
+      'Premium accounting firm website design with brand system',
+      'Mobile-first responsive design optimised for all devices',
+      'Quarterly design refresh to stay current',
+      'Custom landing pages for specific service lines (audit, tax, advisory)',
+    ],
+  },
+  {
+    category: 'Compliance & Security',
+    items: [
+      'GDPR and POPIA-compliant data collection forms',
+      'WCAG 2.1 AA accessibility compliance',
+      'Monthly compliance monitoring and audit reports',
+      'SSL, DDoS protection, and daily backups',
+    ],
+  },
+  {
+    category: 'SEO & Performance',
+    items: [
+      'On-page SEO optimisation for financial keywords',
+      'Google Business Profile management',
+      'Lighthouse score 90+ guaranteed',
+      'Core Web Vitals monitoring and optimisation',
+    ],
+  },
+  {
+    category: 'Integrations',
+    items: [
+      'CRM integration: HubSpot, Salesforce, or Pipedrive',
+      'Accounting software: Xero, QuickBooks, Sage',
+      'Booking: Calendly, Microsoft Bookings',
+      'E-signature: DocuSign or HelloSign integration',
+    ],
+  },
+]
+
+const pricing = [
+  {
+    name: 'Essentials',
+    price: 'R2,999',
+    description: 'Perfect for solo accountants and small bookkeeping practices getting started online.',
+    featured: false,
     features: [
-      '5-page premium website',
-      'Mobile-responsive design',
+      '5-page accounting firm website',
+      'Mobile-first design',
       'Basic SEO setup',
-      'Contact form + Calendly',
-      'Monthly content updates (2hrs)',
-      'Uptime monitoring',
-      'SSL & security',
-      'Analytics dashboard',
+      'SSL & hosting included',
+      'Monthly content updates',
+      'Contact form & appointment booking',
     ],
   },
   {
-    name: 'Growth',
-    price: '2,497',
-    description: 'For growing firms ready to turn their website into a client acquisition engine.',
-    popular: true,
+    name: 'Professional',
+    price: 'R5,999',
+    description: 'The most popular plan for established accounting and tax firms in South Africa.',
+    featured: true,
     features: [
-      '10-page premium website',
-      'Custom design system',
-      'Full SEO strategy & implementation',
-      'CRM integration',
-      'Monthly CRO testing',
-      'Content updates (5hrs/mo)',
-      'Client portal setup',
-      'Priority support (4hr response)',
+      'Up to 15-page accounting website',
+      'Client portal integration',
+      'CRM sync (HubSpot or Xero)',
+      'Monthly SEO optimisation',
+      'Compliance monitoring',
+      'Conversion rate optimisation',
       'Monthly performance report',
-      'Annual design refresh',
     ],
   },
   {
-    name: 'Market Leader',
-    price: '4,997',
-    description: 'For industry leaders requiring a fully managed digital presence with maximum impact.',
-    popular: false,
+    name: 'Enterprise',
+    price: 'Custom',
+    description: 'For multi-partner firms, wealth managers, and complex financial services requiring bespoke solutions.',
+    featured: false,
     features: [
       'Unlimited pages',
-      'Fully custom design',
-      'SEO + Content marketing',
-      'Full tech stack integration',
-      'Weekly CRO optimization',
-      'Unlimited content updates',
-      'Custom client portal',
-      'Dedicated account manager',
-      '2hr emergency response SLA',
-      'Quarterly strategy sessions',
+      'Custom client portal build',
+      'Full API integration stack',
+      'Dedicated compliance officer',
+      'Weekly performance reviews',
+      'Priority support SLA',
+      'White-label options',
     ],
   },
 ]
 </script>
-

@@ -1,389 +1,374 @@
 <template>
   <div class="contact-page">
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+    <!-- ══ HERO ══ -->
+    <section class="relative min-h-[55vh] flex items-end pb-20 bg-navy-900 overflow-hidden pt-40" aria-label="Contact page hero">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30"></div>
+        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30"></div>
       </div>
-      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <span class="section-label reveal-up">Get Started</span>
-        <h1 class="font-serif text-display-xl text-white mb-6 reveal-up" style="transition-delay: 100ms;">
-          Let's Build Something<br/><em class="text-gold-400">Extraordinary</em>
+      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <BreadcrumbNav :crumbs="[{ label: 'Contact', path: '/contact' }]" />
+
+        <span class="section-label reveal-up">Contact — Get a Free Accounting Website Audit</span>
+        <h1 class="font-serif text-display-lg text-white mt-4 mb-6 max-w-3xl reveal-up" style="transition-delay: 100ms;">
+          Reduce Admin &amp; Grow Your<br/>
+          <span class="text-gradient">Accounting Practice</span>
         </h1>
-        <div class="gold-divider-center reveal-up" style="transition-delay: 150ms;"></div>
-        <p class="font-sans text-white/60 text-xl max-w-2xl mx-auto leading-relaxed reveal-up" style="transition-delay: 200ms;">
-          Ready to transform your digital presence? Tell us about your practice and we'll show you exactly how we can help.
+        <p class="font-sans text-white/60 text-lg max-w-2xl leading-relaxed reveal-up" style="transition-delay: 200ms;">
+          Tell us about your accounting firm or financial services practice. We'll conduct a free website audit and show you exactly how to reduce admin, attract more clients, and build a compliant digital presence.
         </p>
+        <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section class="section-padding bg-cream">
+    <!-- ══ CONTACT LAYOUT ══ -->
+    <section class="section-padding bg-cream" aria-label="Contact form and information">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
-          <!-- Left: Contact Info -->
-          <div class="lg:col-span-1 reveal-left">
-            <h2 class="font-serif text-display-sm text-navy-900 mb-6">Multiple Ways to Reach Us</h2>
-            <div class="gold-divider"></div>
-
-            <!-- Contact Methods -->
-            <div class="space-y-6 mb-10">
-              <div v-for="contact in contactMethods" :key="contact.label" class="flex items-start gap-4">
-                <div class="w-10 h-10 flex-shrink-0 bg-gold-500/10 border border-gold-500/30 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="contact.icon"></svg>
-                </div>
-                <div>
-                  <p class="font-sans text-charcoal-400 text-xs uppercase tracking-wider mb-1">{{ contact.label }}</p>
-                  <a :href="contact.href" class="font-sans text-navy-900 font-semibold text-sm hover:text-gold-600 transition-colors">
-                    {{ contact.value }}
-                  </a>
-                </div>
+          <!-- ── Left: Form ── -->
+          <div class="lg:col-span-3 reveal-up">
+            <div class="bg-white border border-navy-900/8 p-8 lg:p-10">
+              <div class="mb-8">
+                <h2 class="font-serif text-display-sm text-navy-900 mb-2">Request a Free Audit</h2>
+                <p class="font-sans text-charcoal-500 text-sm">
+                  For accounting firms, bookkeepers, financial advisors, and tax professionals. No hard sell — just a genuine analysis of your digital presence and where the biggest opportunities are.
+                </p>
               </div>
-            </div>
 
-            <!-- Office Hours -->
-            <div class="p-6 bg-navy-900 mb-8">
-              <h4 class="font-sans text-gold-400 text-xs font-semibold uppercase tracking-wider mb-4">Office Hours</h4>
-              <div class="space-y-2">
-                <div class="flex justify-between">
-                  <span class="font-sans text-white/60 text-sm">Monday – Friday</span>
-                  <span class="font-sans text-white text-sm font-semibold">9am – 6pm EST</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="font-sans text-white/60 text-sm">Saturday</span>
-                  <span class="font-sans text-white text-sm font-semibold">By Appointment</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="font-sans text-white/60 text-sm">Sunday</span>
-                  <span class="font-sans text-white/40 text-sm">Closed</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Book a Call CTA -->
-            <div class="p-6 border border-gold-500/40 bg-gold-500/5">
-              <h4 class="font-sans text-navy-900 font-bold text-sm mb-2">Prefer to Talk First?</h4>
-              <p class="font-sans text-charcoal-500 text-xs leading-relaxed mb-4">
-                Schedule a free 30-minute strategy call. No pitch, just value.
-              </p>
-              <a
-                href="https://calendly.com/zarmediagroup/30min"
-                target="_blank"
-                rel="noopener"
-                class="btn-primary text-xs py-3 w-full justify-center"
-              >
-                Book a Call via Calendly
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Right: Multi-Step Form -->
-          <div class="lg:col-span-2 reveal-right">
-            <div class="bg-white border border-navy-900/8 shadow-card">
-              <!-- Step Progress -->
-              <div class="px-8 pt-8 pb-6 border-b border-navy-900/8">
-                <div class="flex items-center gap-0 mb-4">
+              <!-- Multi-step progress -->
+              <div class="flex items-center gap-0 mb-10" role="list" aria-label="Form completion steps">
+                <div
+                  v-for="(step, i) in formSteps"
+                  :key="step"
+                  class="flex items-center flex-1"
+                  role="listitem"
+                >
                   <div
-                    v-for="(step, i) in formSteps"
-                    :key="step.label"
-                    class="flex-1 flex items-center"
+                    class="w-8 h-8 flex items-center justify-center font-sans font-bold text-xs border transition-all duration-300 flex-shrink-0"
+                    :class="currentStep > i
+                      ? 'bg-gold-500 border-gold-500 text-navy-900'
+                      : currentStep === i
+                        ? 'bg-navy-900 border-navy-900 text-white'
+                        : 'bg-transparent border-navy-900/20 text-navy-900/40'"
+                    :aria-current="currentStep === i ? 'step' : undefined"
+                    :aria-label="`Step ${i + 1}: ${step}`"
                   >
-                    <div class="flex flex-col items-center">
-                      <div
-                        class="w-8 h-8 flex items-center justify-center border-2 transition-all duration-300 text-xs font-bold font-sans"
-                        :class="[
-                          currentStep > i
-                            ? 'bg-gold-500 border-gold-500 text-navy-900'
-                            : currentStep === i
-                            ? 'border-gold-500 text-gold-500'
-                            : 'border-navy-900/20 text-charcoal-300'
-                        ]"
-                      >
-                        <svg v-if="currentStep > i" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                        <span v-else>{{ i + 1 }}</span>
-                      </div>
-                      <span class="font-sans text-xs mt-1 hidden sm:block"
-                            :class="currentStep === i ? 'text-navy-900 font-semibold' : 'text-charcoal-300'">
-                        {{ step.label }}
-                      </span>
-                    </div>
-                    <div
-                      v-if="i < formSteps.length - 1"
-                      class="flex-1 h-px mx-2"
-                      :class="currentStep > i ? 'bg-gold-500' : 'bg-navy-900/10'"
-                    ></div>
+                    <svg v-if="currentStep > i" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span v-else>{{ i + 1 }}</span>
                   </div>
+                  <div class="flex-1 h-px mx-2" :class="i < formSteps.length - 1 ? (currentStep > i ? 'bg-gold-500' : 'bg-navy-900/10') : 'hidden'"></div>
+                  <span class="sr-only">{{ step }}</span>
                 </div>
               </div>
 
-              <!-- Form Content -->
-              <div class="p-8">
-                <Transition name="fade" mode="out-in">
-                  <!-- Step 0: Firm Info -->
-                  <div v-if="currentStep === 0" key="step0">
-                    <h3 class="font-serif text-navy-900 text-xl mb-6">Tell us about your practice</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">First Name *</label>
-                        <input v-model="form.firstName" type="text" placeholder="John" class="input-field" />
-                      </div>
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Last Name *</label>
-                        <input v-model="form.lastName" type="text" placeholder="Smith" class="input-field" />
-                      </div>
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Work Email *</label>
-                        <input v-model="form.email" type="email" placeholder="john@smithcpa.com" class="input-field" />
-                      </div>
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Phone</label>
-                        <input v-model="form.phone" type="tel" placeholder="+1 (555) 000-0000" class="input-field" />
-                      </div>
-                      <div class="sm:col-span-2">
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Firm Name *</label>
-                        <input v-model="form.firmName" type="text" placeholder="Smith & Associates CPA" class="input-field" />
-                      </div>
-                      <div class="sm:col-span-2">
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Firm Type *</label>
-                        <select v-model="form.firmType" class="input-field">
-                          <option value="" disabled>Select your firm type</option>
-                          <option>CPA / Accounting Firm</option>
-                          <option>Tax Services</option>
-                          <option>Financial Advisory / RIA</option>
-                          <option>Bookkeeping Services</option>
-                          <option>Financial Planning</option>
-                          <option>Investment Management</option>
-                          <option>Other Financial Services</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+              <form @submit.prevent="handleSubmit" novalidate :aria-label="`Contact form step ${currentStep + 1} of ${formSteps.length}`">
 
-                  <!-- Step 1: Service Selection -->
-                  <div v-else-if="currentStep === 1" key="step1">
-                    <h3 class="font-serif text-navy-900 text-xl mb-6">What are you looking for?</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                      <label
-                        v-for="service in serviceOptions"
-                        :key="service.value"
-                        class="flex items-start gap-4 p-4 border-2 cursor-pointer transition-all"
-                        :class="[
-                          form.services.includes(service.value)
-                            ? 'border-gold-500 bg-gold-500/5'
-                            : 'border-navy-900/10 hover:border-navy-900/30'
-                        ]"
-                      >
-                        <input
-                          type="checkbox"
-                          :value="service.value"
-                          v-model="form.services"
-                          class="mt-1 accent-gold-500 flex-shrink-0"
-                        />
-                        <div>
-                          <div class="font-sans font-semibold text-navy-900 text-sm">{{ service.label }}</div>
-                          <div class="font-sans text-charcoal-500 text-xs mt-0.5">{{ service.desc }}</div>
-                        </div>
-                      </label>
-                    </div>
+                <!-- Step 1: About You -->
+                <fieldset v-if="currentStep === 0" class="space-y-5">
+                  <legend class="font-sans font-semibold text-navy-900 text-sm mb-6 block">Step 1: Tell us about yourself</legend>
 
-                    <div class="mb-4">
-                      <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Timeline</label>
-                      <select v-model="form.timeline" class="input-field">
-                        <option value="" disabled>When do you need this?</option>
-                        <option>Urgently (within 2 weeks)</option>
-                        <option>Soon (within 1 month)</option>
-                        <option>Next quarter</option>
-                        <option>Just exploring for now</option>
-                      </select>
-                    </div>
-
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Budget Range</label>
-                      <select v-model="form.budget" class="input-field">
-                        <option value="" disabled>Monthly investment range</option>
-                        <option>Under $1,000/month</option>
-                        <option>$1,000 – $2,500/month</option>
-                        <option>$2,500 – $5,000/month</option>
-                        <option>$5,000+/month</option>
-                        <option>Unsure – need guidance</option>
-                      </select>
+                      <label for="firstName" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                        First Name <span class="text-gold-500" aria-label="required">*</span>
+                      </label>
+                      <input
+                        id="firstName" v-model="form.firstName" type="text"
+                        required autocomplete="given-name"
+                        class="w-full px-4 py-3 font-sans text-navy-900 bg-transparent border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm"
+                        placeholder="Michael"
+                      />
+                    </div>
+                    <div>
+                      <label for="lastName" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                        Last Name <span class="text-gold-500" aria-label="required">*</span>
+                      </label>
+                      <input
+                        id="lastName" v-model="form.lastName" type="text"
+                        required autocomplete="family-name"
+                        class="w-full px-4 py-3 font-sans text-navy-900 bg-transparent border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm"
+                        placeholder="Chen"
+                      />
                     </div>
                   </div>
 
-                  <!-- Step 2: Details -->
-                  <div v-else-if="currentStep === 2" key="step2">
-                    <h3 class="font-serif text-navy-900 text-xl mb-6">Tell us more about your goals</h3>
-                    <div class="space-y-4">
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Current Website URL (if any)</label>
-                        <input v-model="form.websiteUrl" type="url" placeholder="https://yourfirm.com" class="input-field" />
-                      </div>
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Primary Goal *</label>
-                        <select v-model="form.primaryGoal" class="input-field">
-                          <option value="" disabled>What's most important to you?</option>
-                          <option>Attract more high-value clients</option>
-                          <option>Improve professional credibility/trust</option>
-                          <option>Automate client intake process</option>
-                          <option>Stay compliant with regulations</option>
-                          <option>Beat local competitors digitally</option>
-                          <option>All of the above</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">Tell us about your biggest digital challenge</label>
-                        <textarea
-                          v-model="form.message"
-                          rows="4"
-                          placeholder="Describe your current situation and what you're trying to achieve..."
-                          class="input-field resize-none"
-                        ></textarea>
-                      </div>
-                      <div>
-                        <label class="font-sans text-xs font-semibold text-charcoal-500 uppercase tracking-wider mb-2 block">How did you hear about us?</label>
-                        <select v-model="form.source" class="input-field">
-                          <option value="" disabled>Select...</option>
-                          <option>Google Search</option>
-                          <option>LinkedIn</option>
-                          <option>Referral from colleague</option>
-                          <option>Industry association</option>
-                          <option>Social media</option>
-                          <option>Other</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Step 3: Review & Submit -->
-                  <div v-else-if="currentStep === 3" key="step3">
-                    <h3 class="font-serif text-navy-900 text-xl mb-6">Review & Submit</h3>
-                    <div class="space-y-4 mb-8">
-                      <div class="grid grid-cols-2 gap-4 p-5 bg-cream border border-navy-900/8">
-                        <div>
-                          <p class="font-sans text-charcoal-400 text-xs uppercase tracking-wider mb-1">Name</p>
-                          <p class="font-sans text-navy-900 font-semibold text-sm">{{ form.firstName }} {{ form.lastName }}</p>
-                        </div>
-                        <div>
-                          <p class="font-sans text-charcoal-400 text-xs uppercase tracking-wider mb-1">Email</p>
-                          <p class="font-sans text-navy-900 font-semibold text-sm">{{ form.email }}</p>
-                        </div>
-                        <div>
-                          <p class="font-sans text-charcoal-400 text-xs uppercase tracking-wider mb-1">Firm</p>
-                          <p class="font-sans text-navy-900 font-semibold text-sm">{{ form.firmName }}</p>
-                        </div>
-                        <div>
-                          <p class="font-sans text-charcoal-400 text-xs uppercase tracking-wider mb-1">Type</p>
-                          <p class="font-sans text-navy-900 font-semibold text-sm">{{ form.firmType }}</p>
-                        </div>
-                      </div>
-                      <div v-if="form.services.length" class="p-5 bg-cream border border-navy-900/8">
-                        <p class="font-sans text-charcoal-400 text-xs uppercase tracking-wider mb-2">Services Interested In</p>
-                        <div class="flex flex-wrap gap-2">
-                          <span v-for="s in form.services" :key="s" class="tag text-xs">{{ s }}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <label class="flex items-start gap-3 mb-6 cursor-pointer">
-                      <input type="checkbox" v-model="form.consent" class="mt-1 accent-gold-500" />
-                      <span class="font-sans text-charcoal-500 text-xs leading-relaxed">
-                        I agree to receive communications from ZARMEDIAGROUP. We respect your privacy and will never share your information. View our
-                        <a href="#" class="text-gold-600 hover:underline">Privacy Policy</a>.
-                      </span>
+                  <div>
+                    <label for="email" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                      Work Email <span class="text-gold-500" aria-label="required">*</span>
                     </label>
+                    <input
+                      id="email" v-model="form.email" type="email"
+                      required autocomplete="email"
+                      class="w-full px-4 py-3 font-sans text-navy-900 bg-transparent border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm"
+                      placeholder="michael@chenassociates.co.za"
+                    />
                   </div>
 
-                  <!-- Success State -->
-                  <div v-else-if="currentStep === 4" key="success" class="text-center py-8">
-                    <div class="w-20 h-20 mx-auto mb-6 border-2 border-gold-500 flex items-center justify-center animate-pulse-gold">
-                      <svg class="w-10 h-10 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                      </svg>
-                    </div>
-                    <h3 class="font-serif text-navy-900 text-2xl mb-4">We've Received Your Request!</h3>
-                    <p class="font-sans text-charcoal-500 leading-relaxed mb-8">
-                      Thank you, {{ form.firstName }}. Our team will review your submission and reach out within 1 business day. In the meantime, here are a few resources you might find valuable.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                      <RouterLink to="/resources" class="btn-primary">Explore Resources</RouterLink>
-                      <RouterLink to="/" class="btn-secondary">Back to Home</RouterLink>
-                    </div>
+                  <div>
+                    <label for="phone" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      id="phone" v-model="form.phone" type="tel"
+                      autocomplete="tel"
+                      class="w-full px-4 py-3 font-sans text-navy-900 bg-transparent border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm"
+                      placeholder="+27 11 000 0000"
+                    />
                   </div>
-                </Transition>
 
-                <!-- Form Navigation -->
-                <div v-if="currentStep < 4" class="flex items-center justify-between mt-8 pt-6 border-t border-navy-900/8">
-                  <button
-                    v-if="currentStep > 0"
-                    class="btn-ghost text-navy-900 border-navy-900/20 hover:border-navy-900 text-xs py-3"
-                    @click="currentStep--"
-                  >
-                    ← Back
-                  </button>
-                  <div v-else></div>
-
-                  <button
-                    v-if="currentStep < 3"
-                    class="btn-primary"
-                    @click="nextStep"
-                    :disabled="!canProceed"
-                    :class="{ 'opacity-50 cursor-not-allowed': !canProceed }"
-                  >
-                    Continue
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button type="button" class="btn-primary w-full" @click="nextStep" :disabled="!form.firstName || !form.email">
+                    Next Step
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
                   </button>
+                </fieldset>
 
-                  <button
-                    v-else
-                    class="btn-primary"
-                    @click="submitForm"
-                    :disabled="!form.consent"
-                    :class="{ 'opacity-50 cursor-not-allowed': !form.consent }"
-                  >
-                    Submit Application
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                <!-- Step 2: About Your Practice -->
+                <fieldset v-if="currentStep === 1" class="space-y-5">
+                  <legend class="font-sans font-semibold text-navy-900 text-sm mb-6 block">Step 2: About your practice</legend>
+
+                  <div>
+                    <label for="firmName" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                      Firm Name <span class="text-gold-500" aria-label="required">*</span>
+                    </label>
+                    <input
+                      id="firmName" v-model="form.firmName" type="text"
+                      required
+                      class="w-full px-4 py-3 font-sans text-navy-900 bg-transparent border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm"
+                      placeholder="Chen & Associates"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="firmType" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                      Type of Practice <span class="text-gold-500" aria-label="required">*</span>
+                    </label>
+                    <select
+                      id="firmType" v-model="form.firmType"
+                      required
+                      class="w-full px-4 py-3 font-sans text-navy-900 bg-white border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm"
+                    >
+                      <option value="" disabled>Select your practice type</option>
+                      <option value="accounting">Accounting Firm (CA/CPA)</option>
+                      <option value="bookkeeping">Bookkeeping Practice</option>
+                      <option value="tax">Tax Advisory</option>
+                      <option value="financial-advisory">Financial Advisory / IFA</option>
+                      <option value="wealth">Wealth Management</option>
+                      <option value="compliance">Compliance / Risk</option>
+                      <option value="other">Other Financial Services</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label for="website" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                      Current Website URL (if any)
+                    </label>
+                    <input
+                      id="website" v-model="form.website" type="url"
+                      autocomplete="url"
+                      class="w-full px-4 py-3 font-sans text-navy-900 bg-transparent border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm"
+                      placeholder="https://chenassociates.co.za"
+                    />
+                  </div>
+
+                  <div class="flex gap-3">
+                    <button type="button" class="btn-ghost flex-1" @click="prevStep">
+                      ← Back
+                    </button>
+                    <button type="button" class="btn-primary flex-1" @click="nextStep" :disabled="!form.firmName || !form.firmType">
+                      Next Step →
+                    </button>
+                  </div>
+                </fieldset>
+
+                <!-- Step 3: Service Interest & Message -->
+                <fieldset v-if="currentStep === 2" class="space-y-5">
+                  <legend class="font-sans font-semibold text-navy-900 text-sm mb-6 block">Step 3: What can we help with?</legend>
+
+                  <div>
+                    <p class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider mb-3">
+                      Services you're interested in
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <label
+                        v-for="service in serviceOptions"
+                        :key="service.id"
+                        class="flex items-start gap-3 p-3 border cursor-pointer transition-all duration-200"
+                        :class="form.services.includes(service.id)
+                          ? 'border-gold-500 bg-gold-500/5'
+                          : 'border-navy-900/20 hover:border-navy-900/40'"
+                      >
+                        <input
+                          type="checkbox"
+                          :value="service.id"
+                          v-model="form.services"
+                          class="mt-0.5 accent-gold-500"
+                          :aria-label="service.label"
+                        />
+                        <div>
+                          <div class="font-sans font-semibold text-navy-900 text-xs">{{ service.label }}</div>
+                          <div class="font-sans text-charcoal-400 text-xs mt-0.5">{{ service.sub }}</div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="message" class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider block mb-2">
+                      Tell us about your biggest challenge
+                    </label>
+                    <textarea
+                      id="message" v-model="form.message"
+                      rows="4"
+                      class="w-full px-4 py-3 font-sans text-navy-900 bg-transparent border border-navy-900/20 focus:border-gold-500 focus:outline-none transition-colors text-sm resize-none"
+                      placeholder="We spend too much time chasing client documents and manually entering data..."
+                    ></textarea>
+                  </div>
+
+                  <!-- GDPR / POPIA consent -->
+                  <div class="flex items-start gap-3">
+                    <input
+                      id="consent" v-model="form.consent" type="checkbox"
+                      required
+                      class="mt-1 accent-gold-500 flex-shrink-0"
+                      :aria-required="true"
+                    />
+                    <label for="consent" class="font-sans text-charcoal-500 text-xs leading-relaxed cursor-pointer">
+                      I agree to Zar Media Group processing my information as described in the
+                      <a href="/privacy-policy" class="text-gold-600 hover:underline" target="_blank">Privacy Policy</a>.
+                      This form is POPIA and GDPR compliant.
+                    </label>
+                  </div>
+
+                  <div class="flex gap-3">
+                    <button type="button" class="btn-ghost flex-1" @click="prevStep">
+                      ← Back
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn-primary flex-1"
+                      :disabled="!form.consent || isSubmitting"
+                      aria-label="Submit contact form for your free accounting website audit"
+                    >
+                      <span v-if="isSubmitting">Sending…</span>
+                      <span v-else>Get Free Audit →</span>
+                    </button>
+                  </div>
+                </fieldset>
+
+                <!-- Success state -->
+                <div v-if="currentStep === 3" class="text-center py-8" role="status" aria-live="polite">
+                  <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center bg-gold-500 border border-gold-500" aria-hidden="true">
+                    <svg class="w-8 h-8 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                     </svg>
-                  </button>
+                  </div>
+                  <h3 class="font-serif text-navy-900 text-2xl mb-3">Enquiry Received!</h3>
+                  <p class="font-sans text-charcoal-500 text-sm leading-relaxed">
+                    Thank you, <strong>{{ form.firstName }}</strong>! We'll review your accounting firm's website and come back to you within one business day with a free audit report.
+                  </p>
                 </div>
-              </div>
+
+              </form>
             </div>
           </div>
+
+          <!-- ── Right: Contact Info ── -->
+          <aside class="lg:col-span-2 space-y-6 reveal-up" style="transition-delay: 150ms;" aria-label="Contact information">
+
+            <!-- Why Talk to Us -->
+            <div class="bg-navy-900 p-8 border border-white/10">
+              <h2 class="font-serif text-white text-xl mb-6">Why Accounting Firms Choose Us</h2>
+              <ul class="space-y-4">
+                <li v-for="reason in whyUs" :key="reason" class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="font-sans text-white/70 text-sm">{{ reason }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="bg-white border border-navy-900/8 p-8">
+              <h2 class="font-serif text-navy-900 text-xl mb-6">Contact Details</h2>
+              <address class="not-italic space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center border border-gold-500/30 bg-gold-500/5" aria-hidden="true">
+                    <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-sans text-navy-900/50 text-xs uppercase tracking-wider mb-1">Email</div>
+                    <a href="mailto:info@zarmediagroup.com" class="font-sans text-navy-900 text-sm hover:text-gold-600 transition-colors">
+                      info@zarmediagroup.com
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center border border-gold-500/30 bg-gold-500/5" aria-hidden="true">
+                    <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-sans text-navy-900/50 text-xs uppercase tracking-wider mb-1">Phone (SA)</div>
+                    <a href="tel:+27000000000" class="font-sans text-navy-900 text-sm hover:text-gold-600 transition-colors">
+                      +27 (0) 00 000 0000
+                    </a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center border border-gold-500/30 bg-gold-500/5" aria-hidden="true">
+                    <svg class="w-4 h-4 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-sans text-navy-900/50 text-xs uppercase tracking-wider mb-1">Location</div>
+                    <div class="font-sans text-navy-900 text-sm">
+                      Sandton, Gauteng, South Africa<br/>
+                      <span class="text-charcoal-400 text-xs">Serving accounting firms across South Africa and globally</span>
+                    </div>
+                  </div>
+                </div>
+              </address>
+            </div>
+
+            <!-- Response time promise -->
+            <div class="bg-gold-500 p-6 text-center">
+              <div class="font-serif text-navy-900 text-3xl font-bold mb-1">&lt; 24h</div>
+              <div class="font-sans text-navy-900/70 text-sm font-semibold">Response time guaranteed</div>
+              <div class="font-sans text-navy-900/60 text-xs mt-1">For all accounting firms and financial professionals</div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- TRUST SECTION -->
-    <section class="section-padding-sm bg-navy-900">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          <div v-for="trust in trustIndicators" :key="trust.label" class="reveal-up">
-            <div class="font-serif text-gold-500 text-3xl font-bold mb-2">{{ trust.value }}</div>
-            <div class="font-sans text-white/50 text-sm">{{ trust.label }}</div>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
+import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 
 const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 const currentStep = ref(0)
-
+const isSubmitting = ref(false)
 const form = ref({
   firstName: '',
   lastName: '',
@@ -391,85 +376,53 @@ const form = ref({
   phone: '',
   firmName: '',
   firmType: '',
+  website: '',
   services: [],
-  timeline: '',
-  budget: '',
-  websiteUrl: '',
-  primaryGoal: '',
   message: '',
-  source: '',
   consent: false,
 })
 
-const formSteps = [
-  { label: 'Your Practice' },
-  { label: 'Services' },
-  { label: 'Details' },
-  { label: 'Review' },
-]
+const formSteps = ['About You', 'Your Practice', 'Your Needs', 'Complete']
 
-const canProceed = computed(() => {
-  if (currentStep.value === 0) {
-    return form.value.firstName && form.value.lastName && form.value.email && form.value.firmName && form.value.firmType
-  }
-  if (currentStep.value === 1) {
-    return form.value.services.length > 0 && form.value.timeline && form.value.budget
-  }
-  if (currentStep.value === 2) {
-    return form.value.primaryGoal
-  }
-  return true
+function nextStep() { if (currentStep.value < formSteps.length - 1) currentStep.value++ }
+function prevStep() { if (currentStep.value > 0) currentStep.value-- }
+
+async function handleSubmit() {
+  if (!form.value.consent) return
+  isSubmitting.value = true
+  await new Promise(resolve => setTimeout(resolve, 1500))
+  isSubmitting.value = false
+  currentStep.value = 3
+}
+
+useSeoMeta({
+  title: 'Contact Zar Media Group | Get a Free Website Audit',
+  description:
+    'Ready to reduce admin and grow your accounting firm? Contact Zar Media Group for a free website audit or strategy call. Serving accountants and financial professionals across South Africa.',
+  keywords:
+    'contact Zar Media Group, free website audit accountants, accounting firm website consultation, financial services digital agency South Africa, free digital audit financial advisors',
+  canonical: '/contact',
+  schemas: [
+    SCHEMAS.breadcrumb([
+      { name: 'Home', url: '/' },
+      { name: 'Contact', url: '/contact' },
+    ]),
+    SCHEMAS.localBusiness(),
+  ],
 })
 
-function nextStep() {
-  if (canProceed.value && currentStep.value < 3) {
-    currentStep.value++
-  }
-}
-
-function submitForm() {
-  if (form.value.consent) {
-    // Integration point: send to CRM/email
-    console.log('Form submitted:', form.value)
-    currentStep.value = 4
-  }
-}
-
-const contactMethods = [
-  {
-    label: 'Email',
-    value: 'hello@zarmediagroup.com',
-    href: 'mailto:hello@zarmediagroup.com',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>',
-  },
-  {
-    label: 'Phone',
-    value: '+1 (234) 567-890',
-    href: 'tel:+1234567890',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>',
-  },
-  {
-    label: 'Address',
-    value: '123 Financial District, New York, NY 10004',
-    href: 'https://maps.google.com',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>',
-  },
-]
-
 const serviceOptions = [
-  { value: 'Website as a Service', label: 'Website as a Service', desc: 'Fully managed digital presence' },
-  { value: 'New Website Build', label: 'New Website Build', desc: 'Custom designed from scratch' },
-  { value: 'Workflow Integration', label: 'Workflow Integration', desc: 'Connect your tools & systems' },
-  { value: 'Compliance Review', label: 'Compliance Review', desc: 'Regulatory audit & remediation' },
-  { value: 'SEO & Growth', label: 'SEO & Growth', desc: 'Search rankings & lead generation' },
-  { value: 'Website Redesign', label: 'Website Redesign', desc: 'Modernize your existing site' },
+  { id: 'waas', label: 'Website as a Service', sub: 'Managed website' },
+  { id: 'workflow', label: 'Workflow Integration', sub: 'CRM & portals' },
+  { id: 'compliance', label: 'Compliance & Trust', sub: 'Regulatory audit' },
 ]
 
-const trustIndicators = [
-  { value: '127+', label: 'Financial Clients Served' },
-  { value: '<24hrs', label: 'Response Time Guarantee' },
-  { value: '98%', label: 'Client Retention Rate' },
-  { value: '5★', label: 'Average Client Rating' },
+const whyUs = [
+  'Free, no-obligation website audit within 24 hours',
+  'No long-term contracts — month-to-month flexibility',
+  'Sector specialists — not generalist web designers',
+  'SA-based team with deep financial sector knowledge',
+  '127+ accounting firms and financial practices served',
+  '98% client retention rate — our results speak',
 ]
 </script>
-

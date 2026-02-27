@@ -1,65 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Primary Meta Tags -->
-    <title>ZARMEDIAGROUP | Digital Business Outcomes for Financial Professionals</title>
-    <meta name="title" content="ZARMEDIAGROUP | Digital Business Outcomes for Financial Professionals" />
-    <meta name="description" content="We engineer digital business outcomes for accounting firms, tax services, and financial advisors. Premium web design, workflow integration, and compliance-first development." />
-    <meta name="keywords" content="financial web design, accounting firm website, tax service website, financial sector digital agency, compliance web development, bookkeeping website" />
-    <meta name="author" content="ZARMEDIAGROUP" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- ══ Base SEO — overridden per-page by useSeoMeta ══ -->
+    <title>Zar Media Group | Managed Websites &amp; Client Portals for Accountants</title>
+    <meta name="description" content="Zar Media Group helps accountants and financial firms cut admin, automate workflows, and build compliant digital presences. Managed websites + client portals for South African financial professionals." />
+    <meta name="keywords" content="website for accountants, managed website financial advisors, client portal for accountants, accounting firm website design, CRM integration accountants, compliant website financial services, workflow automation bookkeepers, Website as a Service financial sector, South Africa" />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content="Zar Media Group" />
+        <meta name="theme-color" content="#111111" />
+        <meta name="msapplication-TileColor" content="#111111" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Geographic targeting -->
+    <meta name="geo.region" content="ZA" />
+    <meta name="geo.placename" content="Sandton, Gauteng" />
+    <meta name="geo.position" content="-26.1076;28.0567" />
+    <meta name="ICBM" content="-26.1076, 28.0567" />
+
+    <!-- Canonical (overridden per-page) -->
+    <link rel="canonical" href="https://zarmediagroup.com/" />
+
+    <!-- ══ Open Graph — overridden per-page ══ -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zar Media Group" />
+    <meta property="og:title" content="Zar Media Group | Managed Websites &amp; Client Portals for Accountants" />
+    <meta property="og:description" content="Zar Media Group helps accountants and financial firms cut admin, automate workflows, and build compliant digital presences." />
+    <meta property="og:image" content="https://zarmediagroup.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Zar Media Group — Digital Solutions for Accountants" />
     <meta property="og:url" content="https://zarmediagroup.com/" />
-    <meta property="og:title" content="ZARMEDIAGROUP | Digital Business Outcomes for Financial Professionals" />
-    <meta property="og:description" content="We engineer digital business outcomes for accounting firms, tax services, and financial advisors." />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="en_ZA" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://zarmediagroup.com/" />
-    <meta property="twitter:title" content="ZARMEDIAGROUP | Digital Business Outcomes for Financial Professionals" />
-    <meta property="twitter:description" content="We engineer digital business outcomes for accounting firms, tax services, and financial advisors." />
-    <meta property="twitter:image" content="/og-image.jpg" />
+    <!-- ══ Twitter Cards — overridden per-page ══ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@zarmediagroup" />
+    <meta name="twitter:title" content="Zar Media Group | Managed Websites &amp; Client Portals for Accountants" />
+    <meta name="twitter:description" content="Zar Media Group helps accountants and financial firms cut admin, automate workflows, and build compliant digital presences." />
+    <meta name="twitter:image" content="https://zarmediagroup.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Zar Media Group — Digital Solutions for Accountants" />
 
-    <!-- Fonts -->
+    <!-- ══ Performance: Preconnect / DNS prefetch ══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
-    <!-- Structured Data -->
+    <!-- ══ Fonts — Poppins, non-render-blocking async load ══ -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    <!-- ══ Preload hero assets ══ -->
+    <link rel="preload" as="image" href="/og-image.jpg" type="image/jpeg" fetchpriority="high" />
+
+    <!-- ══ Structured Data: Organization (global) ══ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "ZARMEDIAGROUP",
-      "description": "Premium web design and development agency specializing in financial sector clients",
+      "name": "Zar Media Group",
+      "alternateName": "ZMG",
       "url": "https://zarmediagroup.com",
-      "logo": "https://zarmediagroup.com/logo.svg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://zarmediagroup.com/logo.png",
+        "width": 200,
+        "height": 60
+      },
+      "description": "Managed website and workflow integration solutions for accountants and financial service providers. Helping financial firms reduce admin, improve client experience, and grow revenue through compliant digital presences.",
+      "foundingDate": "2018",
+      "areaServed": ["ZA", "US", "GB", "AU"],
+      "sameAs": [
+        "https://www.linkedin.com/company/zarmediagroup",
+        "https://twitter.com/zarmediagroup",
+        "https://www.facebook.com/zarmediagroup"
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "sales",
-        "email": "hello@zarmediagroup.com"
-      },
-      "sameAs": [
-        "https://linkedin.com/company/zarmediagroup",
-        "https://twitter.com/zarmediagroup"
-      ]
+        "email": "info@zarmediagroup.com",
+        "telephone": "+27-000-000-0000",
+        "availableLanguage": "English",
+        "areaServed": "ZA"
+      }
     }
     </script>
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#0A1628" />
-    <meta name="msapplication-TileColor" content="#0A1628" />
+    <!-- ══ Structured Data: WebSite (enables Search Console Sitelinks) ══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Zar Media Group",
+      "url": "https://zarmediagroup.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://zarmediagroup.com/resources?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- ══ Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID ══ -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1MSZEXGGC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z1MSZEXGGC', {
+        // Redact IP for POPIA / GDPR compliance
+        anonymize_ip: true,
+        // Only fire after cookie consent (set to false until user accepts)
+        send_page_view: true
+      });
+    </script>
   </head>
   <body>
+
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-

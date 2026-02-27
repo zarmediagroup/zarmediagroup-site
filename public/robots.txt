@@ -1,5 +1,18 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zarmediagroup.com/sitemap.xml
+# Disallow private/admin paths
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /private/
 
+# Disallow URL patterns with query params that produce duplicates
+Disallow: /*?*utm_
+Disallow: /*?*ref=
+
+# Crawl-delay for polite bots
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://zarmediagroup.com/sitemap.xml

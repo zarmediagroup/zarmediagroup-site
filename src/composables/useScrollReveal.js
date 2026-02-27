@@ -69,3 +69,4 @@ export function useCountUp(target, duration = 2000) {
   return { count, start }
 }
 
+

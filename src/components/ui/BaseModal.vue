@@ -69,3 +69,4 @@ const sizeClasses = computed(() => ({
 }[props.size] || 'max-w-2xl'))
 </script>
 
+

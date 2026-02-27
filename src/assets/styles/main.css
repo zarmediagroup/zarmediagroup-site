@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,7 +26,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif text-navy-900;
-    font-feature-settings: "kern" 1, "liga" 1, "swsh" 1;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
 
   p {
@@ -41,8 +41,10 @@
     @apply transition-colors duration-200;
   }
 
+  /* White text selection on dark bg */
   ::selection {
-    @apply bg-gold-500 text-white;
+    background: #111111;
+    color: #ffffff;
   }
 
   ::-webkit-scrollbar {
@@ -54,11 +56,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gold-500 rounded-full;
+    background: #ffffff;
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gold-400;
+    background: #d4d4d4;
   }
 }
 
@@ -67,47 +70,47 @@
    ===================================================== */
 @layer components {
 
-  /* Buttons */
+  /* ── Buttons ─────────────────────────────────────── */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 
-           px-8 py-4 
-           bg-gold-500 text-navy-900 
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-4
+           bg-navy-900 text-white
            font-sans font-semibold text-sm tracking-wider uppercase
            rounded-none
-           border border-gold-500
+           border border-navy-900
            transition-all duration-300 ease-smooth
-           hover:bg-navy-900 hover:text-gold-500
-           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2
+           hover:bg-white hover:text-navy-900
+           focus:outline-none focus:ring-2 focus:ring-navy-900 focus:ring-offset-2
            active:scale-[0.98]
            cursor-pointer select-none;
     letter-spacing: 0.08em;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 
-           px-8 py-4 
-           bg-transparent text-gold-500 
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-4
+           bg-transparent text-navy-900
            font-sans font-semibold text-sm tracking-wider uppercase
            rounded-none
-           border border-gold-500
+           border border-navy-900
            transition-all duration-300 ease-smooth
-           hover:bg-gold-500 hover:text-navy-900
-           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2
+           hover:bg-navy-900 hover:text-white
+           focus:outline-none focus:ring-2 focus:ring-navy-900 focus:ring-offset-2
            active:scale-[0.98]
            cursor-pointer select-none;
     letter-spacing: 0.08em;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 
-           px-8 py-4 
-           bg-transparent text-white 
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-4
+           bg-transparent text-white
            font-sans font-semibold text-sm tracking-wider uppercase
            rounded-none
-           border border-white/30
+           border border-white
            transition-all duration-300 ease-smooth
-           hover:border-white hover:bg-white/10
-           focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2
+           hover:bg-white hover:text-navy-900
+           focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2
            active:scale-[0.98]
            cursor-pointer select-none;
     letter-spacing: 0.08em;
@@ -115,7 +118,7 @@
 
   .btn-text {
     @apply inline-flex items-center gap-2
-           text-gold-500 font-sans font-semibold text-sm tracking-wider uppercase
+           text-navy-900 font-sans font-semibold text-sm tracking-wider uppercase
            bg-transparent border-none
            transition-all duration-300
            hover:gap-3
@@ -123,74 +126,73 @@
     letter-spacing: 0.08em;
   }
 
-  /* Gold Divider */
+  /* ── Dividers ────────────────────────────────────── */
   .gold-divider {
-    @apply block w-16 h-px bg-gold-500 my-6;
+    @apply block w-16 h-px bg-navy-900 my-6;
   }
 
   .gold-divider-center {
-    @apply block w-16 h-px bg-gold-500 my-6 mx-auto;
+    @apply block w-16 h-px bg-navy-900 my-6 mx-auto;
   }
 
-  /* Section Labels */
+  /* ── Section Labels ──────────────────────────────── */
   .section-label {
-    @apply text-gold-500 font-sans font-semibold text-xs tracking-[0.2em] uppercase mb-4 block;
+    @apply text-navy-500 font-sans font-semibold text-xs tracking-[0.2em] uppercase mb-4 block;
   }
 
-  /* Container */
+  /* ── Container ───────────────────────────────────── */
   .container-narrow {
     @apply max-w-4xl mx-auto px-6 lg:px-8;
   }
 
-  /* Card */
+  /* ── Cards ───────────────────────────────────────── */
   .card {
     @apply bg-white shadow-card
            transition-all duration-300 ease-smooth
            hover:shadow-card-hover hover:-translate-y-1;
-    border: 1px solid rgba(10, 22, 40, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .card-dark {
     @apply backdrop-blur-sm
            transition-all duration-300 ease-smooth;
-    background: rgba(10, 22, 40, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(17, 17, 17, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .card-dark:hover {
-    background: rgba(10, 22, 40, 0.7);
-    border-color: rgba(201, 168, 76, 0.3);
+    background: rgba(17, 17, 17, 0.75);
+    border-color: rgba(255, 255, 255, 0.25);
   }
 
-  /* Input */
+  /* ── Inputs ──────────────────────────────────────── */
   .input-field {
     @apply w-full px-4 py-4
            bg-white text-navy-900
            font-sans text-base
            transition-all duration-200
-           focus:outline-none focus:ring-1 focus:ring-gold-500;
-    border: 1px solid rgba(10, 22, 40, 0.2);
-    border-color: rgba(10, 22, 40, 0.2);
+           focus:outline-none focus:ring-1 focus:ring-navy-900;
+    border: 1px solid rgba(0, 0, 0, 0.2);
   }
 
   .input-field:hover {
-    border-color: rgba(10, 22, 40, 0.4);
+    border-color: rgba(0, 0, 0, 0.4);
   }
 
   .input-field:focus {
-    border-color: #C9A84C;
+    border-color: #111111;
   }
 
   .input-field::placeholder {
-    color: #81899b;
+    color: #a1a1aa;
   }
 
   .input-field-dark {
     @apply w-full px-4 py-4 text-white font-sans text-base
            transition-all duration-200
-           focus:outline-none focus:ring-1 focus:ring-gold-500;
-    background: rgba(18, 39, 82, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+           focus:outline-none focus:ring-1 focus:ring-white;
+    background: rgba(26, 26, 26, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .input-field-dark::placeholder {
@@ -202,10 +204,10 @@
   }
 
   .input-field-dark:focus {
-    border-color: #C9A84C;
+    border-color: #ffffff;
   }
 
-  /* Section Spacing */
+  /* ── Section Spacing ─────────────────────────────── */
   .section-padding {
     @apply py-20 lg:py-32;
   }
@@ -214,27 +216,27 @@
     @apply py-12 lg:py-20;
   }
 
-  /* Gold Accent Line */
+  /* ── Gold (now white) Accent Line ────────────────── */
   .gold-line-left {
     @apply relative pl-6;
   }
 
   .gold-line-left::before {
     content: '';
-    @apply absolute left-0 top-0 bottom-0 w-px bg-gold-500;
+    @apply absolute left-0 top-0 bottom-0 w-px bg-navy-900;
   }
 
-  /* Page Hero */
+  /* ── Page Hero ───────────────────────────────────── */
   .page-hero {
     @apply relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-navy-900 overflow-hidden;
   }
 
-  /* Stat Counter */
+  /* ── Stat Counter ────────────────────────────────── */
   .stat-number {
-    @apply font-serif text-display-lg text-gold-500 leading-none;
+    @apply font-serif text-display-lg text-white leading-none;
   }
 
-  /* Nav Link */
+  /* ── Nav Links ───────────────────────────────────── */
   .nav-link {
     @apply relative font-sans text-sm font-medium tracking-wide
            text-white/80 hover:text-white
@@ -244,7 +246,7 @@
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 right-0 h-px bg-gold-500 
+    @apply absolute bottom-0 left-0 right-0 h-px bg-white
            scale-x-0 transition-transform duration-300 origin-left;
   }
 
@@ -253,23 +255,23 @@
     @apply scale-x-100;
   }
 
-  /* Tag / Badge */
+  /* ── Tags / Badges ───────────────────────────────── */
   .tag {
     @apply inline-flex items-center px-3 py-1
            font-sans text-xs font-semibold tracking-wider uppercase
-           border border-gold-500/40 text-gold-500
-           bg-gold-500/10;
+           border border-navy-300 text-navy-700
+           bg-navy-100;
   }
 
-  /* Gradient text */
+  /* ── Gradient text ───────────────────────────────── */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #C9A84C 0%, #efcf76 50%, #C9A84C 100%);
+    background-image: linear-gradient(135deg, #ffffff 0%, #a1a1aa 50%, #ffffff 100%);
     background-size: 200% auto;
     animation: shimmer 3s linear infinite;
   }
 
-  /* Glass card */
+  /* ── Glass Card ──────────────────────────────────── */
   .glass-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
@@ -277,7 +279,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Noise overlay */
+  /* ── Noise Overlay ───────────────────────────────── */
   .noise-overlay {
     position: relative;
   }
@@ -292,13 +294,13 @@
     z-index: 1;
   }
 
-  /* Geometric decorators */
+  /* ── Geometric Decorators ────────────────────────── */
   .geo-circle {
-    @apply absolute rounded-full border border-gold-500/20 pointer-events-none;
+    @apply absolute rounded-full border border-white/20 pointer-events-none;
   }
 
   .geo-line {
-    @apply absolute bg-gold-500/20 pointer-events-none;
+    @apply absolute bg-white/20 pointer-events-none;
   }
 }
 
@@ -320,16 +322,14 @@
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   }
 
-  /* Hover glow effects */
   .hover-glow-gold:hover {
-    box-shadow: 0 0 30px rgba(201, 168, 76, 0.3), 0 0 60px rgba(201, 168, 76, 0.1);
+    box-shadow: 0 0 30px rgba(255,255,255,0.25), 0 0 60px rgba(255,255,255,0.1);
   }
 
   .hover-glow-navy:hover {
-    box-shadow: 0 0 30px rgba(10, 22, 40, 0.3), 0 0 60px rgba(10, 22, 40, 0.1);
+    box-shadow: 0 0 30px rgba(0,0,0,0.3), 0 0 60px rgba(0,0,0,0.15);
   }
 
-  /* Scroll snap */
   .snap-mandatory-y {
     scroll-snap-type: y mandatory;
   }
@@ -340,7 +340,7 @@
 }
 
 /* =====================================================
-   CUSTOM ANIMATIONS
+   SCROLL REVEAL ANIMATIONS
    ===================================================== */
 .reveal-up {
   opacity: 0;
@@ -383,7 +383,9 @@
 .stagger-children > *:nth-child(5) { transition-delay: 400ms; }
 .stagger-children > *:nth-child(6) { transition-delay: 500ms; }
 
-/* Page transitions */
+/* =====================================================
+   PAGE / MODAL / DROPDOWN / ACCORDION TRANSITIONS
+   ===================================================== */
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -399,7 +401,6 @@
   transform: translateY(-10px);
 }
 
-/* Modal transitions */
 .modal-enter-active,
 .modal-leave-active {
   transition: opacity 0.3s ease;
@@ -423,7 +424,6 @@
   transform: scale(0.95) translateY(10px);
 }
 
-/* Dropdown transition */
 .dropdown-enter-active,
 .dropdown-leave-active {
   transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -435,7 +435,6 @@
   transform: translateY(-8px);
 }
 
-/* Accordion transition */
 .accordion-enter-active,
 .accordion-leave-active {
   transition: max-height 0.3s ease, opacity 0.3s ease;
@@ -448,27 +447,29 @@
   opacity: 0;
 }
 
-/* Swiper overrides */
+/* =====================================================
+   SWIPER OVERRIDES (B&W)
+   ===================================================== */
 .swiper-pagination-bullet {
-  background: rgba(201, 168, 76, 0.4) !important;
+  background: rgba(255, 255, 255, 0.3) !important;
   width: 8px !important;
   height: 8px !important;
   transition: all 0.3s ease !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: #C9A84C !important;
+  background: #ffffff !important;
   width: 24px !important;
   border-radius: 4px !important;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #C9A84C !important;
+  color: #ffffff !important;
   width: 44px !important;
   height: 44px !important;
-  background: rgba(10, 22, 40, 0.8) !important;
-  border: 1px solid rgba(201, 168, 76, 0.3) !important;
+  background: rgba(17, 17, 17, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
   border-radius: 0 !important;
   backdrop-filter: blur(8px) !important;
   transition: all 0.3s ease !important;
@@ -476,8 +477,8 @@
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  background: rgba(201, 168, 76, 0.2) !important;
-  border-color: rgba(201, 168, 76, 0.6) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .swiper-button-next::after,
@@ -486,12 +487,14 @@
   font-weight: 700 !important;
 }
 
-/* Custom range input */
+/* =====================================================
+   RANGE INPUT (B&W)
+   ===================================================== */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   height: 4px;
-  background: rgba(10, 22, 40, 0.2);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 0;
   outline: none;
 }
@@ -501,18 +504,17 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #C9A84C;
+  background: #111111;
   cursor: pointer;
   border-radius: 0;
-  border: 2px solid #0A1628;
+  border: 2px solid #ffffff;
 }
 
 input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
-  background: #C9A84C;
+  background: #111111;
   cursor: pointer;
   border-radius: 0;
-  border: 2px solid #0A1628;
+  border: 2px solid #ffffff;
 }
-

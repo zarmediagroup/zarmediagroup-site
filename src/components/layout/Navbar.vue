@@ -11,18 +11,15 @@
     <nav class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <!-- Logo -->
-        <RouterLink to="/" class="flex items-center gap-3 group" @click="appStore.closeNav()">
-          <div class="w-10 h-10 relative">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-              <polygon points="20,2 38,11 38,29 20,38 2,29 2,11" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-              <polygon points="20,8 32,14 32,26 20,32 8,26 8,14" fill="none" stroke="#C9A84C" stroke-width="0.75" opacity="0.5"/>
-              <text x="20" y="24" text-anchor="middle" fill="#C9A84C" font-size="10" font-weight="700" font-family="Inter, sans-serif" letter-spacing="0.5">ZMG</text>
-            </svg>
-          </div>
-          <div class="flex flex-col">
-            <span class="font-serif text-white font-bold text-lg leading-none tracking-wide group-hover:text-gold-400 transition-colors">ZARMEDIA</span>
-            <span class="font-sans text-gold-500 text-xs font-semibold tracking-[0.25em] uppercase leading-none mt-0.5">GROUP</span>
-          </div>
+        <RouterLink to="/" class="flex items-center gap-3" @click="appStore.closeNav()">
+          <img
+            src="/logo.png"
+            alt="Zar Media Group logo"
+            class="h-10 w-auto object-contain"
+            width="120"
+            height="40"
+            loading="eager"
+          />
         </RouterLink>
 
         <!-- Desktop Navigation -->
@@ -182,10 +179,10 @@
               Start a Project
             </RouterLink>
             <div class="mt-6 flex items-center gap-6 justify-center">
-              <a href="https://linkedin.com/company/zarmediagroup" target="_blank" rel="noopener" class="text-white/40 hover:text-gold-500 transition-colors">
+              <a href="https://linkedin.com/company/zarmediagroup" target="_blank" rel="noopener" class="text-white/40 hover:text-white transition-colors">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
-              <a href="https://twitter.com/zarmediagroup" target="_blank" rel="noopener" class="text-white/40 hover:text-gold-500 transition-colors">
+              <a href="https://twitter.com/zarmediagroup" target="_blank" rel="noopener" class="text-white/40 hover:text-white transition-colors">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
             </div>
@@ -246,11 +243,11 @@ function toggleMobileSection(section) {
 }
 
 .dropdown-icon {
-  @apply text-gold-500/50 text-xs mt-1 transition-colors flex-shrink-0;
+  @apply text-white/30 text-xs mt-1 transition-colors flex-shrink-0;
 }
 
 .dropdown-item:hover .dropdown-icon {
-  @apply text-gold-500;
+  @apply text-white;
 }
 
 .dropdown-title {
