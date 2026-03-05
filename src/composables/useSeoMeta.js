@@ -146,20 +146,31 @@ export const SCHEMAS = {
         width: 200,
         height: 60,
       },
+      legalName: 'ZARMEDIAGROUP (PTY) LTD',
       description:
         'Managed website and workflow integration solutions for accountants and financial service providers across South Africa.',
-      foundingDate: '2018',
+      foundingDate: '2024',
+      identifier: {
+        '@type': 'PropertyValue',
+        name: 'CIPC Registration Number',
+        value: '2026/166396/07',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Cape Town',
+        addressRegion: 'Western Cape',
+        addressCountry: 'ZA',
+      },
       areaServed: ['ZA', 'US', 'GB', 'AU'],
       sameAs: [
-        'https://www.linkedin.com/company/zarmediagroup',
-        'https://twitter.com/zarmediagroup',
-        'https://www.facebook.com/zarmediagroup',
+        'https://www.linkedin.com/company/zarmediagroup/',
+        'https://www.facebook.com/Zarmediagroup/',
       ],
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'sales',
         email: 'info@zarmediagroup.com',
-        telephone: '+27-000-000-0000',
+        telephone: '+27685070088',
         availableLanguage: 'English',
         areaServed: 'ZA',
       },
@@ -190,20 +201,19 @@ export const SCHEMAS = {
       name: ORG_NAME,
       image: `${BASE_URL}/og-image.jpg`,
       url: BASE_URL,
-      telephone: '+27-000-000-0000',
+      legalName: 'ZARMEDIAGROUP (PTY) LTD',
+      telephone: '+27685070088',
       email: 'info@zarmediagroup.com',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: '123 Sandton Drive',
-        addressLocality: 'Sandton',
-        addressRegion: 'Gauteng',
-        postalCode: '2196',
+        addressLocality: 'Cape Town',
+        addressRegion: 'Western Cape',
         addressCountry: 'ZA',
       },
       geo: {
         '@type': 'GeoCoordinates',
-        latitude: -26.1076,
-        longitude: 28.0567,
+        latitude: -33.9249,
+        longitude: 18.4241,
       },
       openingHoursSpecification: [
         {
@@ -229,8 +239,8 @@ export const SCHEMAS = {
         ],
       },
       sameAs: [
-        'https://www.linkedin.com/company/zarmediagroup',
-        'https://twitter.com/zarmediagroup',
+        'https://www.linkedin.com/company/zarmediagroup/',
+        'https://www.facebook.com/Zarmediagroup/',
       ],
     }
   },
@@ -304,5 +314,6 @@ export const SCHEMAS = {
     }
   },
 }
+
 
 

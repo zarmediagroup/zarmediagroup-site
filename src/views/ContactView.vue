@@ -321,8 +321,8 @@
                   </div>
                   <div>
                     <div class="font-sans text-navy-900/50 text-xs uppercase tracking-wider mb-1">Phone (SA)</div>
-                    <a href="tel:+27000000000" class="font-sans text-navy-900 text-sm hover:text-gold-600 transition-colors">
-                      +27 (0) 00 000 0000
+                    <a href="tel:+27685070088" class="font-sans text-navy-900 text-sm hover:text-gold-600 transition-colors">
+                      +27 68 507 0088
                     </a>
                   </div>
                 </div>
@@ -336,7 +336,7 @@
                   <div>
                     <div class="font-sans text-navy-900/50 text-xs uppercase tracking-wider mb-1">Location</div>
                     <div class="font-sans text-navy-900 text-sm">
-                      Sandton, Gauteng, South Africa<br/>
+                      Cape Town, Western Cape, South Africa<br/>
                       <span class="text-charcoal-400 text-xs">Serving accounting firms across South Africa and globally</span>
                     </div>
                   </div>
