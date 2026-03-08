@@ -65,7 +65,7 @@
               </div>
               <div>
                 <div class="font-sans font-bold text-navy-900 text-sm">{{ regulation.name }}</div>
-                <div class="font-sans text-gold-600 text-xs">{{ regulation.scope }}</div>
+                <div class="font-sans text-gold-700 text-xs">{{ regulation.scope }}</div>
               </div>
             </div>
             <p class="font-sans text-charcoal-500 text-sm leading-relaxed mb-4">{{ regulation.description }}</p>
