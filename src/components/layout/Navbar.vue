@@ -15,7 +15,7 @@
           <img
             src="/logo.png"
             alt="Zar Media Group logo"
-            class="h-10 w-auto object-contain"
+            class="h-20 w-auto object-contain"
             width="120"
             height="40"
             loading="eager"

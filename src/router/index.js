@@ -93,6 +93,16 @@ const routes = [
     },
   },
   {
+    path: '/resources/:slug',
+    name: 'ResourceDetail',
+    component: () => import('@/views/ResourceDetailView.vue'),
+    meta: {
+      title: 'Resource | Zar Media Group',
+      description: 'Free guides and case studies for accountants and financial professionals from Zar Media Group.',
+      canonical: '/resources',
+    },
+  },
+  {
     path: '/contact',
     name: 'Contact',
     component: () => import('@/views/ContactView.vue'),
@@ -103,6 +113,36 @@ const routes = [
       keywords:
         'contact Zar Media Group, free website audit accountants, accounting firm website consultation, financial services digital agency South Africa',
       canonical: '/contact',
+    },
+  },
+  {
+    path: '/privacy-policy',
+    name: 'PrivacyPolicy',
+    component: () => import('@/views/PrivacyPolicyView.vue'),
+    meta: {
+      title: 'Privacy Policy | Zar Media Group',
+      description: 'Read the Zar Media Group Privacy Policy. We are committed to protecting your personal information in compliance with POPIA and GDPR.',
+      canonical: '/privacy-policy',
+    },
+  },
+  {
+    path: '/terms-of-service',
+    name: 'TermsOfService',
+    component: () => import('@/views/TermsOfServiceView.vue'),
+    meta: {
+      title: 'Terms of Service | Zar Media Group',
+      description: 'Read the Zar Media Group Terms of Service governing use of our website and digital services for accountants and financial service providers.',
+      canonical: '/terms-of-service',
+    },
+  },
+  {
+    path: '/cookie-policy',
+    name: 'CookiePolicy',
+    component: () => import('@/views/CookiePolicyView.vue'),
+    meta: {
+      title: 'Cookie Policy | Zar Media Group',
+      description: 'Read the Zar Media Group Cookie Policy. Learn what cookies we use, why we use them, and how to manage your preferences.',
+      canonical: '/cookie-policy',
     },
   },
   {

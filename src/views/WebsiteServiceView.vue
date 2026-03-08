@@ -32,7 +32,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </RouterLink>
-          <button class="btn-ghost" @click="activeTab = 'pricing'" aria-label="View Website as a Service pricing for accountants">
+          <button class="btn-ghost" @click="goToPricing" aria-label="View Website as a Service pricing for accountants">
             View Pricing
           </button>
         </div>
@@ -71,7 +71,7 @@
     </section>
 
     <!-- ══ TAB SECTION: FEATURES / PRICING / ROI ══ -->
-    <section class="section-padding bg-navy-900" aria-label="Features, pricing, and ROI calculator">
+    <section class="section-padding bg-navy-900" aria-label="Features, pricing, and ROI calculator" ref="tabSectionRef">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <!-- Tab Nav -->
         <div class="flex gap-0 border-b border-white/10 mb-12 overflow-x-auto" role="tablist" aria-label="Service information tabs">
@@ -253,7 +253,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
@@ -263,6 +263,19 @@ const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 const activeTab = ref('features')
+const tabSectionRef = ref(null)
+
+// Re-run reveal whenever a new tab panel is rendered into the DOM
+watch(activeTab, () => {
+  nextTick(() => setTimeout(initReveal, 50))
+})
+
+function goToPricing() {
+  activeTab.value = 'pricing'
+  nextTick(() => {
+    tabSectionRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  })
+}
 
 // ROI calculator
 const roi = ref({ enquiries: 10, clientValue: 30000, conversionRate: 20 })

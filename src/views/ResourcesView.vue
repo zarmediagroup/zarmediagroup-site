@@ -53,26 +53,41 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <article
             v-for="(resource, i) in filteredResources"
-            :key="resource.slug"
+            :key="`${activeCategory}-${resource.slug}`"
             class="reveal-up group"
             :style="{ transitionDelay: (i * 60) + 'ms' }"
           >
-            <div class="h-full bg-white border border-navy-900/8 hover:border-gold-500/50 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+            <RouterLink :to="`/resources/${resource.slug}`" class="block h-full bg-white border border-navy-900/8 hover:border-gold-500/50 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden" :aria-label="`Read: ${resource.title}`">
               <!-- Resource image area -->
-              <div
-                class="relative w-full h-44 overflow-hidden"
-                :style="{ background: `linear-gradient(135deg, ${resource.gradientFrom} 0%, ${resource.gradientTo} 100%)` }"
-              >
-                <div class="absolute inset-0 flex items-center justify-center opacity-20" aria-hidden="true">
-                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="resource.icon"></svg>
-                </div>
-                <div class="absolute top-4 left-4">
-                  <span class="font-sans text-xs font-semibold text-white/90 bg-black/30 px-2.5 py-1 backdrop-blur-sm uppercase tracking-wide">
+              <div class="relative w-full h-48 overflow-hidden">
+                <!-- Real photo -->
+                <img
+                  :src="resource.image"
+                  :alt="resource.imageAlt"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  width="600"
+                  height="192"
+                />
+                <!-- Dark overlay with gradient tint -->
+                <div
+                  class="absolute inset-0 opacity-70"
+                  :style="{ background: `linear-gradient(135deg, ${resource.gradientFrom}cc 0%, ${resource.gradientTo}99 100%)` }"
+                  aria-hidden="true"
+                ></div>
+                <!-- Type badge -->
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="font-sans text-xs font-semibold text-white/95 bg-black/40 px-2.5 py-1 backdrop-blur-sm uppercase tracking-wide">
                     {{ resource.type }}
                   </span>
                 </div>
-                <div class="absolute bottom-4 right-4 w-10 h-10 flex items-center justify-center bg-gold-500/20 border border-gold-500/40 group-hover:bg-gold-500 transition-all duration-300" aria-hidden="true">
-                  <svg class="w-5 h-5 text-gold-500 group-hover:text-navy-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Read time -->
+                <div class="absolute bottom-4 left-4 z-10">
+                  <span class="font-sans text-white/70 text-xs">{{ resource.readTime }} read</span>
+                </div>
+                <!-- Arrow icon -->
+                <div class="absolute bottom-4 right-4 z-10 w-9 h-9 flex items-center justify-center bg-white/10 border border-white/30 group-hover:bg-white group-hover:border-white transition-all duration-300" aria-hidden="true">
+                  <svg class="w-4 h-4 text-white group-hover:text-navy-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                   </svg>
                 </div>
@@ -85,23 +100,28 @@
                 </div>
 
                 <h2 class="font-serif text-navy-900 text-lg font-medium mb-3 group-hover:text-gold-600 transition-colors leading-snug">
-                  <a :href="`/resources/${resource.slug}`" :aria-label="`Read: ${resource.title}`">
+                  <RouterLink :to="`/resources/${resource.slug}`" :aria-label="`Read: ${resource.title}`">
                     {{ resource.title }}
-                  </a>
+                  </RouterLink>
                 </h2>
                 <p class="font-sans text-charcoal-500 text-sm leading-relaxed mb-5">{{ resource.excerpt }}</p>
 
                 <div class="flex items-center justify-between pt-4 border-t border-navy-900/8">
                   <div class="flex items-center gap-2">
-                    <div class="w-7 h-7 rounded-full bg-navy-900 flex items-center justify-center" aria-hidden="true">
-                      <span class="font-serif text-gold-500 font-bold text-xs">{{ resource.authorInitials }}</span>
-                    </div>
+                    <img
+                      :src="resource.authorPhoto"
+                      :alt="resource.author"
+                      class="w-7 h-7 rounded-full object-cover object-top"
+                      loading="lazy"
+                      width="28"
+                      height="28"
+                    />
                     <span class="font-sans text-charcoal-400 text-xs">{{ resource.author }}</span>
                   </div>
                   <time class="font-sans text-charcoal-400 text-xs" :datetime="resource.dateISO">{{ resource.date }}</time>
                 </div>
               </div>
-            </div>
+            </RouterLink>
           </article>
         </div>
 
@@ -164,7 +184,7 @@
           Get Digital Strategy Insights<br/>for Accounting Firms
         </h2>
         <p class="font-sans text-navy-900/70 mb-8">
-          Join 2,400+ accountants and financial advisors who receive our fortnightly newsletter on digital strategy, compliance updates, and client growth tactics — tailored for the South African financial sector.
+          Join 300+ accountants and financial advisors who receive our fortnightly newsletter on digital strategy, compliance updates, and client growth tactics — tailored for the South African financial sector.
         </p>
         <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" @submit.prevent="handleNewsletterSubmit" aria-label="Newsletter signup for accountants">
           <label for="newsletter-email" class="sr-only">Email address</label>
@@ -184,7 +204,7 @@
         <p v-if="submitSuccess" id="newsletter-success" role="status" class="font-sans text-navy-900/80 text-sm mt-3">
           ✓ You're subscribed! First issue arriving this week.
         </p>
-        <p class="font-sans text-navy-900/50 text-xs mt-3">No spam. Unsubscribe anytime. 2,400+ subscribers.</p>
+        <p class="font-sans text-navy-900/50 text-xs mt-3">No spam. Unsubscribe anytime. 300+ subscribers.</p>
       </div>
     </section>
 
@@ -192,15 +212,22 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { RouterLink } from 'vue-router'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
+import { resources } from '@/data/resources.js'
 
 const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 const activeCategory = ref('all')
+
+// Re-run reveal whenever the filter changes so newly rendered cards become visible
+watch(activeCategory, () => {
+  nextTick(() => setTimeout(initReveal, 50))
+})
 const openFaq = ref(null)
 const email = ref('')
 const submitSuccess = ref(false)
@@ -260,144 +287,6 @@ const categories = [
   { id: 'case-studies', label: 'Case Studies', count: 3 },
   { id: 'compliance', label: 'Compliance', count: 2 },
   { id: 'seo', label: 'SEO & Growth', count: 1 },
-]
-
-const resources = [
-  {
-    slug: 'how-to-reduce-admin-accounting-firm',
-    type: 'Guide',
-    category: 'guides',
-    title: 'How to Reduce Admin at Your Accounting Firm in 2026',
-    excerpt: 'A step-by-step guide to identifying and eliminating the manual admin tasks wasting your accounting team\'s time — from client intake to document collection.',
-    author: 'Zara Mitchell, CA(SA)',
-    authorInitials: 'ZM',
-    readTime: '8 min',
-    date: 'Feb 2026',
-    dateISO: '2026-02-01',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>',
-    gradientFrom: '#122752',
-    gradientTo: '#1e3a6e',
-  },
-  {
-    slug: 'best-client-portal-small-accounting-firms',
-    type: 'Guide',
-    category: 'guides',
-    title: 'Best Client Portal for Small Accounting Firms: 2026 Comparison',
-    excerpt: 'Comparing the top client portal solutions for small accounting practices in South Africa — including build vs buy, costs, and integration capabilities.',
-    author: 'James Okafor',
-    authorInitials: 'JO',
-    readTime: '12 min',
-    date: 'Jan 2026',
-    dateISO: '2026-01-15',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>',
-    gradientFrom: '#1a2a50',
-    gradientTo: '#0d1e35',
-  },
-  {
-    slug: 'accounting-firm-website-design-guide',
-    type: 'Guide',
-    category: 'guides',
-    title: 'Accounting Firm Website Design: The Complete 2026 Guide',
-    excerpt: 'Everything your accounting firm website needs to generate leads, build trust, and comply with South African financial sector regulations.',
-    author: 'Priya Naidoo',
-    authorInitials: 'PN',
-    readTime: '15 min',
-    date: 'Jan 2026',
-    dateISO: '2026-01-08',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>',
-    gradientFrom: '#2c1a4e',
-    gradientTo: '#1a2a50',
-  },
-  {
-    slug: 'chen-associates-case-study',
-    type: 'Case Study',
-    category: 'case-studies',
-    title: 'How Chen & Associates Grew Leads by 340% in 90 Days',
-    excerpt: 'A detailed look at how a 3-partner accounting firm in Johannesburg transformed their online presence and automated their client intake with Zar Media Group.',
-    author: 'Zara Mitchell, CA(SA)',
-    authorInitials: 'ZM',
-    readTime: '6 min',
-    date: 'Dec 2025',
-    dateISO: '2025-12-10',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>',
-    gradientFrom: '#c9a84c',
-    gradientTo: '#a07c2c',
-  },
-  {
-    slug: 'pinnacle-tax-case-study',
-    type: 'Case Study',
-    category: 'case-studies',
-    title: 'Pinnacle Tax Advisory: 70% Admin Reduction Through Portal Integration',
-    excerpt: 'How a Cape Town tax firm saved 12 hours per week by integrating their website with Xero, DocuSign, and a custom client portal.',
-    author: 'Thomas van der Berg',
-    authorInitials: 'TV',
-    readTime: '7 min',
-    date: 'Nov 2025',
-    dateISO: '2025-11-20',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>',
-    gradientFrom: '#1e3a6e',
-    gradientTo: '#0a2040',
-  },
-  {
-    slug: 'martinez-financial-case-study',
-    type: 'Case Study',
-    category: 'case-studies',
-    title: 'Martinez Financial Group: Building Authority in Wealth Management',
-    excerpt: 'How a Pretoria wealth management firm repositioned their digital brand and increased qualified enquiries by 218% year-on-year.',
-    author: 'Priya Naidoo',
-    authorInitials: 'PN',
-    readTime: '5 min',
-    date: 'Oct 2025',
-    dateISO: '2025-10-15',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>',
-    gradientFrom: '#122752',
-    gradientTo: '#1a3a5c',
-  },
-  {
-    slug: 'popia-compliance-accounting-websites',
-    type: 'Compliance',
-    category: 'compliance',
-    title: 'POPIA Compliance for Accounting Firm Websites: 2026 Checklist',
-    excerpt: 'A practical guide to ensuring your accounting practice\'s website complies with South Africa\'s Protection of Personal Information Act.',
-    author: 'Thomas van der Berg',
-    authorInitials: 'TV',
-    readTime: '10 min',
-    date: 'Feb 2026',
-    dateISO: '2026-02-10',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
-    gradientFrom: '#1a2a3e',
-    gradientTo: '#0d1e35',
-  },
-  {
-    slug: 'fsca-website-requirements',
-    type: 'Compliance',
-    category: 'compliance',
-    title: 'FSCA Website Requirements for Financial Advisors in South Africa',
-    excerpt: 'What the Financial Sector Conduct Authority requires on your practice\'s website — licencing disclosures, fee transparency, and complaint procedures.',
-    author: 'Thomas van der Berg',
-    authorInitials: 'TV',
-    readTime: '9 min',
-    date: 'Jan 2026',
-    dateISO: '2026-01-22',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>',
-    gradientFrom: '#2c1a4e',
-    gradientTo: '#1e2a3e',
-  },
-  {
-    slug: 'seo-for-accounting-firms-south-africa',
-    type: 'SEO Guide',
-    category: 'seo',
-    title: 'SEO for Accounting Firms in South Africa: 2026 Strategy Guide',
-    excerpt: 'How to rank your accounting firm on Google for "accountant in [city]" and other high-intent financial keywords using proven on-page SEO strategies.',
-    author: 'Thomas van der Berg',
-    authorInitials: 'TV',
-    readTime: '14 min',
-    date: 'Feb 2026',
-    dateISO: '2026-02-18',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>',
-    gradientFrom: '#c9a84c',
-    gradientTo: '#a07c2c',
-  },
 ]
 
 const filteredResources = computed(() => {

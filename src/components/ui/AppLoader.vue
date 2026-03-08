@@ -15,13 +15,13 @@
     <!-- Central Logo Animation -->
     <div class="relative flex flex-col items-center">
       <!-- Logo image with fade-in -->
-      <div class="relative mb-8" ref="logoRef">
+      <div class="relative mb-1" ref="logoRef">
         <img
           src="/logo.png"
           alt="Zar Media Group"
-          class="h-16 w-auto object-contain brightness-0 invert logo-img"
+          class="h-120 w-auto object-contain brightness-0 invert logo-img"
           width="200"
-          height="64"
+          height="40"
           style="opacity: 0;"
         />
         <!-- White glow effect — opacity+scale only (GPU-composited, no box-shadow) -->
@@ -29,7 +29,7 @@
       </div>
 
       <!-- Brand Name -->
-      <div class="text-center mb-12 overflow-hidden" ref="brandRef">
+      <div class="text-center mb-2t overflow-hidden" ref="brandRef">
         <p class="font-sans text-white/40 text-xs tracking-[0.3em] uppercase mt-2 opacity-0 translate-y-4 brand-sub">
           Digital Business Outcomes
         </p>

@@ -6,8 +6,9 @@
     >
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p class="font-sans text-white/70 text-sm leading-relaxed">
-          We use cookies to enhance your experience and analyze site performance.
-          <a href="#" class="text-gold-500 hover:text-gold-400 underline">Privacy Policy</a>
+          We use cookies to enhance your experience and analyse site performance.
+          <RouterLink to="/privacy-policy" class="text-white/80 hover:text-white underline">Privacy Policy</RouterLink> ·
+          <RouterLink to="/cookie-policy" class="text-white/80 hover:text-white underline">Cookie Policy</RouterLink>
         </p>
         <div class="flex items-center gap-3 flex-shrink-0">
           <button
@@ -41,6 +42,7 @@ function accept() {
 }
 
 function decline() {
+  localStorage.setItem('zmg_cookies', 'declined')
   show.value = false
 }
 </script>

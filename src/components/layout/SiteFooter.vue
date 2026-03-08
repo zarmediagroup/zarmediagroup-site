@@ -132,9 +132,9 @@
           </p>
         </div>
         <div class="flex items-center gap-6">
-          <a href="#" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Terms of Service</a>
-          <a href="#" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Cookie Policy</a>
+          <RouterLink to="/privacy-policy" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Privacy Policy</RouterLink>
+          <RouterLink to="/terms-of-service" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Terms of Service</RouterLink>
+          <RouterLink to="/cookie-policy" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Cookie Policy</RouterLink>
         </div>
       </div>
     </div>

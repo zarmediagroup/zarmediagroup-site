@@ -63,7 +63,7 @@ export const useAppStore = defineStore('app', () => {
 
   function checkCookies() {
     const stored = localStorage.getItem('zmg_cookies')
-    if (stored === 'accepted') {
+    if (stored === 'accepted' || stored === 'declined') {
       cookiesAccepted.value = true
     }
   }

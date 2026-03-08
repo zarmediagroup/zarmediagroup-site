@@ -279,7 +279,7 @@ const team = [
     title: 'Business Analyst & Frontend Lead',
     department: 'Strategy',
     initials: 'ZA',
-    photo: '/Zubayr Abdullatief.png',
+    photo: '/zubayr-abdullatief-zar-media-group.png',
     bio: 'Oversees Frontend Development and Strategic Direction, delivering exceptional user experiences across all platforms.',
     fullBio:
       'Zubayr Abdullatief oversees Frontend Development and Strategic Direction, ensuring an exceptional user experience across all platforms. With a strong focus on intuitive design, performance, and usability, he leads the creation of interfaces that are both visually refined and conversion-focused — bridging the gap between business goals and seamless digital execution.',
@@ -292,7 +292,7 @@ const team = [
     title: 'Head of Software Engineering',
     department: 'Engineering',
     initials: 'ZM',
-    photo: '/Zubair Moerat.png',
+    photo: '/zubayr-moerat-zar-media-group.png',
     bio: 'Leads Software Development, ensuring a seamless backend infrastructure and a high-performing framework that supports every layer of the business.',
     fullBio:
       'Zubayr Moerat leads Software Development, ensuring a seamless backend infrastructure and a reliable, high-performing framework that supports every layer of the business. With a strong focus on efficiency, security, and scalability, he oversees the architecture that powers our platforms and client solutions — building systems that grow with our clients\' businesses.',
@@ -305,7 +305,7 @@ const team = [
     title: 'Marketing & SEO Lead',
     department: 'Marketing',
     initials: 'MH',
-    photo: '/Mubarak Haron.png',
+    photo: '/mubarak-haron-zar-media-group.png',
     bio: 'Leads Copywriting and SEO Strategy, ensuring every message is clear, compelling, and conversion-focused.',
     fullBio:
       'Mubarak Haron leads Copywriting and SEO Strategy, ensuring that every message is clear, compelling, and conversion-focused. With a strong emphasis on search engine optimisation and performance tracking, he oversees content strategy and digital visibility while ensuring that key performance indicators (KPIs) are consistently met and exceeded — turning organic traffic into qualified leads.',

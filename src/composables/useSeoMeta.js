@@ -7,16 +7,22 @@
  *  - Open Graph (og:*) tags
  *  - Twitter Card tags
  *  - JSON-LD structured data injection
- *  - BreadcrumbList schema helper
+ *  - Full support for plain strings AND computed/ref values
+ *  - Automatic re-application when reactive options change (e.g. article slug nav)
  *  - Cleanup on unmount to prevent schema bleed between routes
  */
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, isRef, watch } from 'vue'
 
 export const BASE_URL = 'https://zarmediagroup.com'
 export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`
 export const ORG_NAME = 'Zar Media Group'
 
 // ─── helpers ────────────────────────────────────────────────────────────────
+
+/** Unwrap a plain value, a Vue ref, or a computed ref */
+function val(v) {
+  return isRef(v) ? v.value : v
+}
 
 function upsertMeta(attr, attrValue, content) {
   if (!content) return
@@ -58,34 +64,32 @@ function removeSchema(uid) {
 
 /**
  * @param {Object} options
- * @param {string} options.title          - Page <title> (50–60 chars)
- * @param {string} options.description    - Meta description (150–160 chars)
- * @param {string} options.keywords       - Comma-separated keywords
- * @param {string} [options.canonical]    - Relative path, e.g. '/services/waas'
- * @param {string} [options.ogImage]      - Absolute or relative image URL
- * @param {string} [options.ogType]       - 'website' | 'article' (default: 'website')
- * @param {Array}  [options.schemas]      - Array of JSON-LD schema objects
+ * @param {string|Ref<string>} options.title          - Page <title> (50–60 chars)
+ * @param {string|Ref<string>} options.description    - Meta description (150–160 chars)
+ * @param {string|Ref<string>} [options.keywords]     - Comma-separated keywords
+ * @param {string|Ref<string>} [options.canonical]    - Relative path, e.g. '/services/waas'
+ * @param {string|Ref<string>} [options.ogImage]      - Absolute or relative image URL
+ * @param {string}             [options.ogType]       - 'website' | 'article' (default: 'website')
+ * @param {Array|Ref<Array>}   [options.schemas]      - Array of JSON-LD schema objects
  */
 export function useSeoMeta(options) {
   const schemaIds = []
 
-  onMounted(() => {
-    const {
-      title,
-      description,
-      keywords,
-      canonical,
-      ogImage,
-      ogType = 'website',
-      schemas = [],
-    } = options
+  function applyMeta() {
+    const title       = val(options.title)
+    const description = val(options.description)
+    const keywords    = val(options.keywords)
+    const canonical   = val(options.canonical)
+    const ogImage     = val(options.ogImage)
+    const ogType      = val(options.ogType) || 'website'
+    const schemas     = val(options.schemas) || []
 
     // ── <title> ──
     if (title) document.title = title
 
     // ── standard meta ──
     upsertMeta('name', 'description', description)
-    upsertMeta('name', 'keywords', keywords)
+    if (keywords) upsertMeta('name', 'keywords', keywords)
     upsertMeta('name', 'robots', 'index, follow')
     upsertMeta('name', 'author', ORG_NAME)
 
@@ -118,13 +122,23 @@ export function useSeoMeta(options) {
     upsertMeta('name', 'twitter:image', image)
     upsertMeta('name', 'twitter:image:alt', `${ORG_NAME} — ${title}`)
 
-    // ── JSON-LD schemas ──
+    // ── JSON-LD schemas — remove old, inject new ──
+    schemaIds.forEach(removeSchema)
+    schemaIds.length = 0
     schemas.forEach((schema, i) => {
       const uid = `zmg-schema-${i}-${schema['@type'] || 'generic'}`
       schemaIds.push(uid)
       injectSchema(schema, uid)
     })
-  })
+  }
+
+  onMounted(applyMeta)
+
+  // Re-apply whenever any reactive option changes (e.g. navigating between articles)
+  const reactiveOptions = Object.values(options).filter(isRef)
+  if (reactiveOptions.length > 0) {
+    watch(reactiveOptions, applyMeta)
+  }
 
   onUnmounted(() => {
     schemaIds.forEach(removeSchema)
@@ -270,6 +284,64 @@ export const SCHEMAS = {
     }
   },
 
+  /**
+   * BlogPosting / Article schema — used on every resource detail page.
+   * Google uses this to understand, index, and display rich results for articles.
+   */
+  article({ headline, description, image, datePublished, dateModified, author, authorRole, url, keywords }) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline,
+      description,
+      image: {
+        '@type': 'ImageObject',
+        url: image.startsWith('http') ? image : `${BASE_URL}${image}`,
+        width: 1200,
+        height: 630,
+      },
+      datePublished,
+      dateModified: dateModified || datePublished,
+      author: {
+        '@type': 'Person',
+        name: author,
+        jobTitle: authorRole,
+        worksFor: {
+          '@type': 'Organization',
+          name: ORG_NAME,
+          url: BASE_URL,
+        },
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: ORG_NAME,
+        url: BASE_URL,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${BASE_URL}/logo.png`,
+          width: 200,
+          height: 60,
+        },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url.startsWith('http') ? url : `${BASE_URL}${url}`,
+      },
+      url: url.startsWith('http') ? url : `${BASE_URL}${url}`,
+      keywords: keywords || '',
+      inLanguage: 'en-ZA',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: ORG_NAME,
+        url: BASE_URL,
+      },
+      about: {
+        '@type': 'Thing',
+        name: 'Accounting Firm Digital Strategy',
+      },
+    }
+  },
+
   breadcrumb(items) {
     // items: [{ name, url }]
     return {
@@ -314,6 +386,3 @@ export const SCHEMAS = {
     }
   },
 }
-
-
-
