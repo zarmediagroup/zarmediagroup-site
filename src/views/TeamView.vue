@@ -276,26 +276,26 @@ const teamValues = [
 const team = [
   {
     name: 'Zubayr Abdullatief',
-    title: 'Chief Executive Officer',
+    title: 'Founder & Chief Executive Officer',
     department: 'Leadership',
     initials: 'ZA',
     photo: '/zubayr-abdullatief-zar-media-group.png',
-    bio: 'Leads Zarmediagroup with a focus on vision, growth, and delivering measurable outcomes for financial sector clients across South Africa.',
+    bio: 'Founded Zar Media Group with a vision to build the leading digital agency for financial sector professionals in South Africa.',
     fullBio:
-      'Zubayr Abdullatief is the Chief Executive Officer of Zarmediagroup, setting the strategic direction and vision that drives the agency forward. With deep expertise in digital strategy, client success, and the South African financial services landscape, he leads the business with a relentless focus on outcomes — ensuring that every solution we deliver creates tangible growth and competitive advantage for our clients.',
+      'Zubayr Abdullatief is the Founder and Chief Executive Officer of Zar Media Group. He founded the agency with a clear vision: to give accountants, financial advisors, and financial service providers the digital presence they deserve — built on compliance, performance, and measurable growth. He sets the strategic direction of the business and works closely with clients to ensure every solution delivers real competitive advantage in the South African & Global financial sector.',
     email: 'zubayr@zarmediagroup.com',
     linkedin: 'https://www.linkedin.com/in/zubayrlatief',
     expertise: ['Strategic Leadership', 'Digital Strategy', 'Business Growth', 'Client Success', 'Financial Sector'],
   },
   {
     name: 'Zubair Moerat',
-    title: 'Chief Technical Officer',
+    title: 'Co-Founder & Chief Technical Officer',
     department: 'Engineering',
     initials: 'ZM',
     photo: '/zubayr-moerat-zar-media-group.png',
-    bio: 'Architects the technical foundation of Zarmediagroup, ensuring every platform is secure, scalable, and built to perform under real-world demand.',
+    bio: 'Co-founded Zar Media Group and leads all technical strategy and engineering, building the secure, scalable infrastructure that underpins every client solution.',
     fullBio:
-      'Zubair Moerat is the Chief Technical Officer of Zar Media Group, responsible for all technical strategy, software architecture, and engineering excellence across the business. With a deep focus on security, scalability, and reliability, he designs and oversees the systems that power our platforms and client solutions — ensuring the technology we ship is compliant, high-performing, and built to last.',
+      'Zubair Moerat is the Co-Founder and Chief Technical Officer of Zar Media Group. From the ground up, he architected the technical foundation that the agency is built on — designing systems that are secure, scalable, and compliant with the requirements of the financial sector. He leads all software architecture, infrastructure, and engineering decisions, ensuring that every platform we deliver is reliable, high-performing, and built to grow alongside our clients\' businesses.',
     email: 'zubair@zarmediagroup.com',
     linkedin: 'https://www.linkedin.com/in/zubair-moerat-843083380',
     expertise: ['Technical Strategy', 'Software Architecture', 'Security & Scalability', 'Infrastructure', 'Systems Integration'],
