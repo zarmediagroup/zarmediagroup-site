@@ -85,8 +85,8 @@
               <svg class="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
-              <a href="mailto:hello@zarmediagroup.com" class="font-sans text-white/50 text-sm hover:text-white transition-colors">
-                hello@zarmediagroup.com
+              <a href="mailto:info@zarmediagroup.com" class="font-sans text-white/50 text-sm hover:text-white transition-colors">
+                info@zarmediagroup.com
               </a>
             </li>
             <li class="flex items-start gap-3">

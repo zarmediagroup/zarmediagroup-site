@@ -68,7 +68,7 @@
           <div class="gold-divider-center"></div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
           <article
             v-for="(member, i) in team"
             :key="member.name"
@@ -77,17 +77,19 @@
             @click="selectedMember = member"
           >
             <div class="relative overflow-hidden border border-white/10 group-hover:border-gold-500/50 transition-all duration-300 hover:shadow-card-hover">
-              <!-- Avatar -->
-              <div
-                class="relative w-full aspect-[4/5] overflow-hidden"
-                :style="{ background: `linear-gradient(135deg, ${member.gradientFrom}, ${member.gradientTo})` }"
-              >
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <span class="font-serif text-6xl font-bold text-white/20">{{ member.initials }}</span>
-                </div>
-                <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/40 to-transparent"></div>
+              <!-- Photo -->
+              <div class="relative w-full aspect-[4/5] overflow-hidden bg-navy-800">
+                <img
+                  :src="member.photo"
+                  :alt="`${member.name} — ${member.title} at Zar Media Group`"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  width="400"
+                  height="500"
+                />
+                <div class="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div class="absolute top-4 right-4">
-                  <span class="font-sans text-xs text-white/80 bg-black/40 px-2 py-1 backdrop-blur-sm">{{ member.department }}</span>
+                  <span class="font-sans text-xs text-white/90 bg-black/50 px-2 py-1 backdrop-blur-sm tracking-wider uppercase">{{ member.department }}</span>
                 </div>
               </div>
 
@@ -148,17 +150,49 @@
               </svg>
             </button>
             <div class="flex items-center gap-6 mb-6">
-              <div class="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
-                   :style="{ background: `linear-gradient(135deg, ${selectedMember.gradientFrom}, ${selectedMember.gradientTo})` }"
-                   aria-hidden="true">
-                <span class="font-serif text-2xl font-bold text-white/60">{{ selectedMember.initials }}</span>
+              <div class="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border border-white/10">
+                <img
+                  :src="selectedMember.photo"
+                  :alt="selectedMember.name"
+                  class="w-full h-full object-cover object-top"
+                  width="80"
+                  height="80"
+                />
               </div>
               <div>
                 <h3 class="font-serif text-white text-xl">{{ selectedMember.name }}</h3>
                 <p class="font-sans text-gold-500 text-xs font-semibold uppercase tracking-wide mt-1">{{ selectedMember.title }}</p>
+                <p class="font-sans text-white/30 text-xs mt-1 tracking-wider">{{ selectedMember.department }}</p>
               </div>
             </div>
             <p class="font-sans text-white/60 text-sm leading-relaxed mb-6">{{ selectedMember.fullBio }}</p>
+
+            <!-- Contact -->
+            <div class="flex flex-col sm:flex-row gap-3 mb-6">
+              <a
+                :href="`mailto:${selectedMember.email}`"
+                class="flex items-center gap-2 px-4 py-2.5 border border-white/10 hover:border-white/30 transition-colors group"
+                :aria-label="`Email ${selectedMember.name}`"
+              >
+                <svg class="w-3.5 h-3.5 text-white/40 group-hover:text-white transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span class="font-sans text-white/50 text-xs group-hover:text-white transition-colors">{{ selectedMember.email }}</span>
+              </a>
+              <a
+                :href="selectedMember.linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 px-4 py-2.5 border border-white/10 hover:border-white/30 transition-colors group"
+                :aria-label="`${selectedMember.name} on LinkedIn`"
+              >
+                <svg class="w-3.5 h-3.5 text-white/40 group-hover:text-white transition-colors flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span class="font-sans text-white/50 text-xs group-hover:text-white transition-colors">LinkedIn Profile</span>
+              </a>
+            </div>
+
             <div class="flex flex-wrap gap-2">
               <span v-for="skill in selectedMember.expertise" :key="skill" class="font-sans text-xs text-gold-500 bg-gold-500/10 border border-gold-500/20 px-2.5 py-1">{{ skill }}</span>
             </div>
@@ -167,18 +201,21 @@
       </Transition>
     </Teleport>
 
-    <!-- ══ WORKING WITH US CTA ══ -->
-    <section class="section-padding-sm bg-cream border-t border-navy-900/8" aria-labelledby="join-cta-heading">
+    <!-- ══ CONTACT CTA ══ -->
+    <section class="section-padding bg-navy-900" aria-labelledby="contact-cta-heading">
       <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center reveal-up">
-        <span class="section-label">Work With Us</span>
-        <h2 id="join-cta-heading" class="font-serif text-display-sm text-navy-900 mb-4">
-          Partner with Specialists Who<br/><em>Understand Your Industry</em>
+        <span class="section-label">Get In Touch</span>
+        <h2 id="contact-cta-heading" class="font-serif text-display-sm text-white mb-4">
+          Ready to Work with<br/><em class="text-gradient">Our Team?</em>
         </h2>
-        <p class="font-sans text-charcoal-500 mb-8">
+        <p class="font-sans text-white/50 mb-10 text-lg leading-relaxed">
           Whether you're an accounting firm looking to modernise your website, or a financial advisor who wants to automate client intake — we bring the experience to deliver results, not just websites.
         </p>
-        <RouterLink to="/contact" class="btn-primary" aria-label="Talk to our team about your accounting firm website">
-          Talk to Our Team
+        <RouterLink to="/contact" class="btn-primary" aria-label="Contact Zar Media Group about your accounting firm website">
+          Contact Us
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
         </RouterLink>
       </div>
     </section>
@@ -238,56 +275,43 @@ const teamValues = [
 
 const team = [
   {
-    name: 'Zara Mitchell',
-    title: 'Founder & Strategy Director',
-    department: 'Leadership',
-    initials: 'ZM',
-    bio: 'Former CA(SA) turned digital strategist. 12 years helping South African financial firms grow through digital.',
+    name: 'Zubayr Abdullatief',
+    title: 'Business Analyst & Frontend Lead',
+    department: 'Strategy',
+    initials: 'ZA',
+    photo: '/Zubayr Abdullatief.png',
+    bio: 'Oversees Frontend Development and Strategic Direction, delivering exceptional user experiences across all platforms.',
     fullBio:
-      'Zara spent eight years as a Chartered Accountant before founding Zar Media Group. Her firsthand experience of the administrative burden facing accounting firms in South Africa led her to build a digital agency that truly understands the financial sector. She leads strategy and client partnerships for all major accounts.',
-    linkedin: 'https://linkedin.com/in/zaramitchell',
-    expertise: ['Digital Strategy', 'Financial Sector SEO', 'CA(SA)', 'Client Acquisition'],
-    gradientFrom: '#122752',
-    gradientTo: '#1e3a6e',
+      'Zubayr Abdullatief oversees Frontend Development and Strategic Direction, ensuring an exceptional user experience across all platforms. With a strong focus on intuitive design, performance, and usability, he leads the creation of interfaces that are both visually refined and conversion-focused — bridging the gap between business goals and seamless digital execution.',
+    email: 'zubayr@zarmediagroup.com',
+    linkedin: 'https://www.linkedin.com/in/zubayrlatief',
+    expertise: ['Frontend Development', 'UX Strategy', 'Conversion Optimisation', 'Interface Design', 'Business Analysis'],
   },
   {
-    name: 'James Okafor',
-    title: 'Head of Technology',
+    name: 'Zubayr Moerat',
+    title: 'Head of Software Engineering',
     department: 'Engineering',
-    initials: 'JO',
-    bio: 'Full-stack architect specialising in fintech integrations, client portals, and compliance-grade infrastructure.',
+    initials: 'ZM',
+    photo: '/Zubair Moerat.png',
+    bio: 'Leads Software Development, ensuring a seamless backend infrastructure and a high-performing framework that supports every layer of the business.',
     fullBio:
-      'James leads our engineering team with a focus on fintech API integrations and secure client portal development. He has built workflow automation systems for more than 40 accounting firms, connecting Xero, QuickBooks, HubSpot, and custom practice management systems into seamless digital experiences.',
-    linkedin: 'https://linkedin.com/in/jamesokafor',
-    expertise: ['Vue.js', 'API Integration', 'Client Portals', 'Xero & QuickBooks', 'Security'],
-    gradientFrom: '#1a3a5c',
-    gradientTo: '#0f2440',
+      'Zubayr Moerat leads Software Development, ensuring a seamless backend infrastructure and a reliable, high-performing framework that supports every layer of the business. With a strong focus on efficiency, security, and scalability, he oversees the architecture that powers our platforms and client solutions — building systems that grow with our clients\' businesses.',
+    email: 'zubair@zarmediagroup.com',
+    linkedin: 'https://www.linkedin.com/in/zubair-moerat-843083380',
+    expertise: ['Backend Architecture', 'Security & Scalability', 'Infrastructure', 'CI/CD Pipelines', 'Systems Integration'],
   },
   {
-    name: 'Priya Naidoo',
-    title: 'Lead UX & Brand Designer',
-    department: 'Design',
-    initials: 'PN',
-    bio: 'Creates premium digital experiences that communicate trust and authority for financial professionals.',
+    name: 'Mubarak Haron',
+    title: 'Marketing & SEO Lead',
+    department: 'Marketing',
+    initials: 'MH',
+    photo: '/Mubarak Haron.png',
+    bio: 'Leads Copywriting and SEO Strategy, ensuring every message is clear, compelling, and conversion-focused.',
     fullBio:
-      'Priya specialises in the intersection of design and conversion psychology for high-trust professional services. She has crafted visual identities for 50+ accounting and financial advisory firms, developing a signature style that communicates authority, trust, and expertise without being cold or intimidating to prospective clients.',
-    linkedin: 'https://linkedin.com/in/priyanaidoo',
-      expertise: ['Brand Identity', 'UX Design', 'Conversion Optimisation', 'Financial Sector Design'],
-      gradientFrom: '#2c1a4e',
-      gradientTo: '#1a2a50',
-    },
-    {
-      name: 'Thomas van der Berg',
-      title: 'Compliance & SEO Director',
-      department: 'Compliance & Growth',
-      initials: 'TV',
-      bio: 'Ensures every accounting firm website we build meets SA financial regulations and ranks for the right keywords.',
-      fullBio:
-        'Thomas has a background in financial compliance and brings deep expertise in South African regulatory requirements including FSCA licensing pages, POPIA data handling, and GDPR compliance for financial firms serving international clients. He also leads our SEO programme, helping accounting firms rank for high-intent financial keywords.',
-      linkedin: 'https://linkedin.com/in/thomasvanderberg',
-      expertise: ['Financial Compliance', 'Technical SEO', 'GDPR', 'POPIA', 'FSCA Requirements'],
-      gradientFrom: '#1e2a3e',
-      gradientTo: '#0d1e35',
-    },
+      'Mubarak Haron leads Copywriting and SEO Strategy, ensuring that every message is clear, compelling, and conversion-focused. With a strong emphasis on search engine optimisation and performance tracking, he oversees content strategy and digital visibility while ensuring that key performance indicators (KPIs) are consistently met and exceeded — turning organic traffic into qualified leads.',
+    email: 'mubarak@zarmediagroup.com',
+    linkedin: 'https://www.linkedin.com/in/mubarakharon55',
+    expertise: ['SEO Strategy', 'Copywriting', 'Content Marketing', 'KPI Tracking', 'Digital Visibility'],
+  },
 ]
 </script>

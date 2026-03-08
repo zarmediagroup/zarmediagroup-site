@@ -150,16 +150,16 @@
           >
             <RouterLink :to="service.link" class="block h-full" :aria-label="`${service.title} — ${service.description}`">
               <article class="relative h-full bg-white border border-navy-900/8 p-8 transition-all duration-500 hover:border-gold-500/50 hover:shadow-card-hover group-hover:-translate-y-2 overflow-hidden">
-                <div class="absolute top-6 right-6 font-serif text-6xl font-bold text-navy-900/5 group-hover:text-gold-500/10 transition-colors" aria-hidden="true">
+                <div class="absolute top-6 right-6 font-serif text-6xl font-bold text-navy-900/10 group-hover:text-gold-500/10 transition-colors" aria-hidden="true">
                   {{ String(i + 1).padStart(2, '0') }}
                 </div>
                 <div class="w-14 h-14 flex items-center justify-center border border-gold-500/20 bg-gold-500/5 mb-8 group-hover:bg-gold-500 group-hover:border-gold-500 transition-all duration-300" aria-hidden="true">
-                  <svg class="w-6 h-6 text-gold-500 group-hover:text-navy-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="service.icon"></svg>
+                  <svg class="w-6 h-6 text-gold-900 group-hover:text-navy-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="service.icon"></svg>
                 </div>
                 <h3 class="font-serif text-xl text-navy-900 mb-4 group-hover:text-navy-900 transition-colors">{{ service.title }}</h3>
                 <p class="font-sans text-charcoal-500 text-sm leading-relaxed mb-6">{{ service.description }}</p>
                 <div class="flex flex-wrap gap-2 mb-6">
-                  <span v-for="tag in service.tags" :key="tag" class="font-sans text-xs text-gold-600 bg-gold-500/10 px-2.5 py-1 border border-gold-500/20">
+                  <span v-for="tag in service.tags" :key="tag" class="font-sans text-xs text-gold-700 bg-gold-500/10 px-2.5 py-1 border border-gold-500/20">
                     {{ tag }}
                   </span>
                 </div>
