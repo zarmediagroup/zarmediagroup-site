@@ -264,6 +264,9 @@
                       <span v-else>Get Free Audit →</span>
                     </button>
                   </div>
+                  <p v-if="submitError" class="font-sans text-red-600 text-sm mt-3 text-center" role="alert">
+                    {{ submitError }}
+                  </p>
                 </fieldset>
 
                 <!-- Success state -->
@@ -391,12 +394,30 @@ const formSteps = ['About You', 'Your Practice', 'Your Needs', 'Complete']
 function nextStep() { if (currentStep.value < formSteps.length - 1) currentStep.value++ }
 function prevStep() { if (currentStep.value > 0) currentStep.value-- }
 
+const submitError = ref('')
+
 async function handleSubmit() {
   if (!form.value.consent) return
   isSubmitting.value = true
-  await new Promise(resolve => setTimeout(resolve, 1500))
-  isSubmitting.value = false
-  currentStep.value = 3
+  submitError.value = ''
+
+  try {
+    const res = await fetch('/mail.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form.value),
+    })
+    const json = await res.json()
+    if (json.success) {
+      currentStep.value = 3
+    } else {
+      submitError.value = json.message || 'Something went wrong. Please try again.'
+    }
+  } catch {
+    submitError.value = 'Could not connect. Please email us directly at info@zarmediagroup.com'
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
 useSeoMeta({
