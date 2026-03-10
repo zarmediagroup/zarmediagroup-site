@@ -250,6 +250,10 @@
                     </label>
                   </div>
 
+                  <div v-if="submitError" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm font-sans" role="alert">
+                    {{ submitError }}
+                  </div>
+
                   <div class="flex gap-3">
                     <button type="button" class="btn-ghost flex-1" @click="prevStep">
                       ← Back
@@ -376,6 +380,7 @@ onMounted(() => setTimeout(initReveal, 50))
 
 const currentStep = ref(0)
 const isSubmitting = ref(false)
+const submitError = ref('')
 const form = ref({
   firstName: '',
   lastName: '',
@@ -405,16 +410,28 @@ async function handleSubmit() {
     const res = await fetch('/mail.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form.value),
+      body: JSON.stringify({
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        email: form.value.email,
+        phone: form.value.phone,
+        firmName: form.value.firmName,
+        firmType: form.value.firmType,
+        website: form.value.website,
+        services: form.value.services,
+        message: form.value.message,
+      }),
     })
-    const json = await res.json()
-    if (json.success) {
+
+    const result = await res.json()
+
+    if (result.success) {
       currentStep.value = 3
     } else {
-      submitError.value = json.message || 'Something went wrong. Please try again.'
+      submitError.value = result.message || 'Something went wrong. Please try again or email us directly.'
     }
   } catch {
-    submitError.value = 'Could not connect. Please email us directly at info@zarmediagroup.com'
+    submitError.value = 'Could not reach the server. Please try again or email us at info@zarmediagroup.com.'
   } finally {
     isSubmitting.value = false
   }
