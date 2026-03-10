@@ -2,11 +2,11 @@
   <div class="team-page">
 
     <!-- ══ HERO ══ -->
-    <section class="relative min-h-[60vh] flex items-end pb-20 bg-navy-900 overflow-hidden pt-40" aria-label="Team page hero">
+    <section class="relative min-h-screen flex items-center bg-navy-900 overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-24" aria-label="Team page hero">
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30"></div>
-        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30"></div>
+        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30 hidden lg:block"></div>
+        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30 hidden lg:block"></div>
       </div>
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[{ label: 'About', path: '/about' }, { label: 'Our Team', path: '/about/team' }]" />
@@ -20,6 +20,10 @@
           We are strategists, designers, compliance experts, and engineers who work exclusively with accountants, financial advisors, bookkeepers, and financial service providers. Deep sector specialisation is why our clients stay for years.
         </p>
         <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
+      </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
+        <span class="font-sans text-white/30 text-xs tracking-widest uppercase">Scroll</span>
+        <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
       </div>
     </section>
 
@@ -139,7 +143,7 @@
           :aria-label="`Bio for ${selectedMember?.name}`"
           aria-modal="true"
         >
-          <div class="bg-navy-800 border border-white/10 max-w-lg w-full p-8 relative">
+          <div class="bg-navy-800 border border-white/10 max-w-lg w-full p-5 sm:p-8 relative max-h-[90vh] overflow-y-auto">
             <button
               class="absolute top-4 right-4 text-white/40 hover:text-white transition-colors p-2"
               @click="selectedMember = null"
@@ -149,8 +153,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
               </svg>
             </button>
-            <div class="flex items-center gap-6 mb-6">
-              <div class="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border border-white/10">
+            <div class="flex items-center gap-4 sm:gap-6 mb-6">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden flex-shrink-0 border border-white/10">
                 <img
                   :src="selectedMember.photo"
                   :alt="selectedMember.name"

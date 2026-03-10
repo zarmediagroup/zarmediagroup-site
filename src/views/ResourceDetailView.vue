@@ -3,7 +3,7 @@
 
     <!-- ══ HERO ══ -->
     <section
-      class="relative min-h-[55vh] flex items-end pb-20 overflow-hidden pt-40"
+      class="relative min-h-screen flex items-center overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-24"
       aria-label="Resource article hero"
     >
       <!-- Background photo -->
@@ -24,8 +24,8 @@
       <div class="absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true"
            style="background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px); background-size: 60px 60px;">
       </div>
-      <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-white/20" aria-hidden="true"></div>
-      <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-white/20" aria-hidden="true"></div>
+      <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-white/20 hidden lg:block" aria-hidden="true"></div>
+      <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-white/20 hidden lg:block" aria-hidden="true"></div>
 
       <div class="relative max-w-4xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[
@@ -61,6 +61,10 @@
         </div>
 
         <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
+      </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
+        <span class="font-sans text-white/30 text-xs tracking-widest uppercase">Scroll</span>
+        <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
       </div>
     </section>
 

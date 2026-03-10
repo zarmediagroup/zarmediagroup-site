@@ -14,7 +14,7 @@
         <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30 hidden lg:block"></div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 pt-40 lg:pt-48 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 pt-18 lg:pt-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <!-- Hero Text -->
         <div class="hero-content">
           <div class="reveal-up">
@@ -26,11 +26,11 @@
             SEO H1: Primary keyword "managed websites" + "accountants" in first heading.
             One H1 per page — never duplicated.
           -->
-          <h1 class="font-serif text-display-xl text-white mb-8 leading-tight reveal-up" style="transition-delay: 100ms;">
+          <h3 class="font-serif text-display-lg text-white mb-2 leading-tight reveal-up" style="transition-delay: 100ms;">
             Managed Websites &amp;<br/>
             <span class="text-gradient">Client Portals</span><br/>
             for Accountants.
-          </h1>
+          </h3>
 
           <p class="font-sans text-white/60 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg reveal-up" style="transition-delay: 200ms;">
             Zar Media Group helps <strong class="text-white/80">accounting firms, tax advisors, and bookkeepers</strong> across South Africa reduce admin, automate client intake, and build a compliant digital presence that wins new business.
@@ -303,7 +303,7 @@
             <div
               v-for="sector in sectors"
               :key="sector.name"
-              class="reveal-up group p-6 border border-white/10 hover:border-gold-500/50 transition-all duration-300 text-center"
+              class="reveal-up group p-4 sm:p-6 border border-white/10 hover:border-gold-500/50 transition-all duration-300 text-center"
               :style="{ transitionDelay: sector.delay }"
             >
               <div class="w-10 h-10 mx-auto mb-4 flex items-center justify-center border border-gold-500/30 bg-gold-500/10 group-hover:bg-gold-500 group-hover:border-gold-500 transition-all" aria-hidden="true">

@@ -2,7 +2,8 @@
   <Transition name="slide-up">
     <div
       v-if="show"
-      class="fixed bottom-0 left-0 right-0 z-50 bg-navy-900/95 backdrop-blur-md border-t border-white/10 py-4 px-6"
+      class="fixed bottom-0 left-0 right-0 bg-navy-900/95 backdrop-blur-md border-t border-white/10 py-4 px-6"
+      style="z-index: 101;"
     >
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p class="font-sans text-white/70 text-sm leading-relaxed">

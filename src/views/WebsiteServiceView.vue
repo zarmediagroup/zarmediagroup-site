@@ -2,11 +2,11 @@
   <div class="website-service-page">
 
     <!-- ══ HERO ══ -->
-    <section class="relative min-h-[65vh] flex items-end pb-20 bg-navy-900 overflow-hidden pt-40" aria-label="Service page hero">
+    <section class="relative min-h-screen flex items-center bg-navy-900 overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-24" aria-label="Service page hero">
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30"></div>
-        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30"></div>
+        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30 hidden lg:block"></div>
+        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30 hidden lg:block"></div>
       </div>
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[
@@ -36,6 +36,10 @@
             View Pricing
           </button>
         </div>
+      </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
+        <span class="font-sans text-white/30 text-xs tracking-widest uppercase">Scroll</span>
+        <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
       </div>
     </section>
 
@@ -74,7 +78,7 @@
     <section class="section-padding bg-navy-900" aria-label="Features, pricing, and ROI calculator" ref="tabSectionRef">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <!-- Tab Nav -->
-        <div class="flex gap-0 border-b border-white/10 mb-12 overflow-x-auto" role="tablist" aria-label="Service information tabs">
+        <div class="flex gap-0 border-b border-white/10 mb-8 sm:mb-12 overflow-x-auto -mx-6 px-6 lg:mx-0 lg:px-0" role="tablist" aria-label="Service information tabs">
           <button
             v-for="tab in tabs"
             :key="tab.id"

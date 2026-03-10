@@ -2,11 +2,11 @@
   <div class="contact-page">
 
     <!-- ══ HERO ══ -->
-    <section class="relative min-h-[55vh] flex items-end pb-20 bg-navy-900 overflow-hidden pt-40" aria-label="Contact page hero">
+    <section class="relative min-h-screen flex items-center bg-navy-900 overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-24" aria-label="Contact page hero">
       <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30"></div>
-        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30"></div>
+        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30 hidden lg:block"></div>
+        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30 hidden lg:block"></div>
       </div>
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[{ label: 'Contact', path: '/contact' }]" />
@@ -21,16 +21,20 @@
         </p>
         <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
       </div>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
+        <span class="font-sans text-white/30 text-xs tracking-widest uppercase">Scroll</span>
+        <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
+      </div>
     </section>
 
     <!-- ══ CONTACT LAYOUT ══ -->
     <section class="section-padding bg-cream" aria-label="Contact form and information">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-start">
 
           <!-- ── Left: Form ── -->
           <div class="lg:col-span-3 reveal-up">
-            <div class="bg-white border border-navy-900/8 p-8 lg:p-10">
+            <div class="bg-white border border-navy-900/8 p-5 sm:p-8 lg:p-10">
               <div class="mb-8">
                 <h2 class="font-serif text-display-sm text-navy-900 mb-2">Request a Free Audit</h2>
                 <p class="font-sans text-charcoal-500 text-sm">
@@ -39,7 +43,7 @@
               </div>
 
               <!-- Multi-step progress -->
-              <div class="flex items-center gap-0 mb-10" role="list" aria-label="Form completion steps">
+              <div class="flex items-center gap-0 mb-8 sm:mb-10" role="list" aria-label="Form completion steps">
                 <div
                   v-for="(step, i) in formSteps"
                   :key="step"
@@ -47,7 +51,7 @@
                   role="listitem"
                 >
                   <div
-                    class="w-8 h-8 flex items-center justify-center font-sans font-bold text-xs border transition-all duration-300 flex-shrink-0"
+                    class="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center font-sans font-bold text-[10px] sm:text-xs border transition-all duration-300 flex-shrink-0"
                     :class="currentStep > i
                       ? 'bg-gold-500 border-gold-500 text-navy-900'
                       : currentStep === i
@@ -195,7 +199,7 @@
                     <p class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wider mb-3">
                       Services you're interested in
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3">
                       <label
                         v-for="service in serviceOptions"
                         :key="service.id"

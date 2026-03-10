@@ -2,7 +2,7 @@
   <div class="legal-page">
 
     <!-- ══ HERO ══ -->
-    <section class="relative min-h-[40vh] flex items-end pb-16 bg-navy-900 overflow-hidden pt-40" aria-label="Cookie Policy hero">
+    <section class="relative min-h-[40vh] flex items-end pb-16 bg-navy-900 overflow-hidden pt-28 lg:pt-40" aria-label="Cookie Policy hero">
       <div class="absolute inset-0 pointer-events-none opacity-[0.025]" style="background-image: linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px); background-size: 60px 60px;" aria-hidden="true"></div>
       <div class="relative max-w-4xl mx-auto px-6 lg:px-8 w-full">
         <span class="section-label">Legal</span>

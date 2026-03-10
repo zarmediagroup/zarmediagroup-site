@@ -1,7 +1,8 @@
 <template>
   <header
     ref="navRef"
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    class="fixed top-0 left-0 right-0 transition-all duration-500 pointer-events-auto"
+    style="z-index: 100;"
     :class="[
       appStore.isScrolled
         ? 'bg-navy-900/95 backdrop-blur-md shadow-navy py-0'
@@ -30,7 +31,7 @@
           </RouterLink>
 
           <!-- About Dropdown -->
-          <div class="relative" @mouseenter="openDropdown('about')" @mouseleave="closeDropdown">
+          <div class="relative dropdown-trigger" @mouseenter="openDropdown('about')" @mouseleave="closeDropdown">
             <button class="nav-link flex items-center gap-1" :class="{ active: isAboutActive }">
               About Us
               <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': activeDropdown === 'about' }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,15 +39,15 @@
               </svg>
             </button>
             <Transition name="dropdown">
-              <div v-if="activeDropdown === 'about'" class="dropdown-menu">
-                <RouterLink to="/what-we-do" class="dropdown-item" @click="closeDropdown">
+              <div v-if="activeDropdown === 'about'" class="dropdown-menu" @mouseenter="openDropdown('about')">
+                <RouterLink to="/what-we-do" class="dropdown-item" @click="closeDropdownNow">
                   <span class="dropdown-icon">◆</span>
                   <div>
                     <div class="dropdown-title">Optimizing Systems</div>
                     <div class="dropdown-desc">How we drive outcomes</div>
                   </div>
                 </RouterLink>
-                <RouterLink to="/about/team" class="dropdown-item" @click="closeDropdown">
+                <RouterLink to="/about/team" class="dropdown-item" @click="closeDropdownNow">
                   <span class="dropdown-icon">◆</span>
                   <div>
                     <div class="dropdown-title">Meet the Team</div>
@@ -58,7 +59,7 @@
           </div>
 
           <!-- Services Dropdown -->
-          <div class="relative" @mouseenter="openDropdown('services')" @mouseleave="closeDropdown">
+          <div class="relative dropdown-trigger" @mouseenter="openDropdown('services')" @mouseleave="closeDropdown">
             <button class="nav-link flex items-center gap-1" :class="{ active: isServicesActive }">
               Services
               <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': activeDropdown === 'services' }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,22 +67,22 @@
               </svg>
             </button>
             <Transition name="dropdown">
-              <div v-if="activeDropdown === 'services'" class="dropdown-menu w-72">
-                <RouterLink to="/services/website-as-a-service" class="dropdown-item" @click="closeDropdown">
+              <div v-if="activeDropdown === 'services'" class="dropdown-menu w-72" @mouseenter="openDropdown('services')">
+                <RouterLink to="/services/website-as-a-service" class="dropdown-item" @click="closeDropdownNow">
                   <span class="dropdown-icon">◆</span>
                   <div>
                     <div class="dropdown-title">Website as a Service</div>
                     <div class="dropdown-desc">Premium managed web presence</div>
                   </div>
                 </RouterLink>
-                <RouterLink to="/services/workflow-integration" class="dropdown-item" @click="closeDropdown">
+                <RouterLink to="/services/workflow-integration" class="dropdown-item" @click="closeDropdownNow">
                   <span class="dropdown-icon">◆</span>
                   <div>
                     <div class="dropdown-title">Workflow Integration</div>
                     <div class="dropdown-desc">Seamless system connectivity</div>
                   </div>
                 </RouterLink>
-                <RouterLink to="/services/compliance-trust" class="dropdown-item" @click="closeDropdown">
+                <RouterLink to="/services/compliance-trust" class="dropdown-item" @click="closeDropdownNow">
                   <span class="dropdown-icon">◆</span>
                   <div>
                     <div class="dropdown-title">Compliance & Trust</div>
@@ -125,9 +126,12 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
+  </header>
+
+  <!-- Mobile Menu Overlay — Teleported to body so backdrop-filter on header doesn't break fixed positioning -->
+  <Teleport to="body">
     <Transition name="mobile-menu">
-      <div v-if="appStore.isNavOpen" class="lg:hidden fixed inset-0 top-20 bg-navy-900/98 backdrop-blur-lg z-40 overflow-y-auto">
+      <div v-if="appStore.isNavOpen" class="lg:hidden fixed inset-0 top-[5rem] bg-navy-900/98 backdrop-blur-lg overflow-y-auto" style="z-index: 99;">
         <div class="flex flex-col px-6 py-8 gap-2">
           <MobileNavItem to="/" label="Home" @click="appStore.closeNav()" />
 
@@ -190,7 +194,7 @@
         </div>
       </div>
     </Transition>
-  </header>
+  </Teleport>
 </template>
 
 <script setup>
@@ -221,7 +225,12 @@ function openDropdown(name) {
 function closeDropdown() {
   dropdownTimeout = setTimeout(() => {
     activeDropdown.value = null
-  }, 150)
+  }, 200)
+}
+
+function closeDropdownNow() {
+  clearTimeout(dropdownTimeout)
+  activeDropdown.value = null
 }
 
 function toggleMobileSection(section) {
@@ -230,10 +239,25 @@ function toggleMobileSection(section) {
 </script>
 
 <style scoped>
+.dropdown-trigger {
+  padding-bottom: 0.5rem;
+  margin-bottom: -0.5rem;
+}
+
 .dropdown-menu {
-  @apply absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64
+  @apply absolute top-full left-1/2 -translate-x-1/2 w-64
          bg-navy-900 border border-white/10
-         shadow-navy-lg py-2 z-50;
+         shadow-navy-lg py-2;
+  z-index: 60;
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -0.75rem;
+  left: 0;
+  right: 0;
+  height: 0.75rem;
 }
 
 .dropdown-item {
@@ -257,8 +281,10 @@ function toggleMobileSection(section) {
 .dropdown-desc {
   @apply font-sans text-xs text-white/40 mt-0.5;
 }
+</style>
 
-/* Mobile menu animation */
+<!-- Unscoped so transitions work on Teleported mobile menu -->
+<style>
 .mobile-menu-enter-active,
 .mobile-menu-leave-active {
   transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
