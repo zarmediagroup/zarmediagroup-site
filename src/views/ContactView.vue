@@ -268,6 +268,9 @@
                       <span v-else>Get Free Audit →</span>
                     </button>
                   </div>
+                  <p v-if="submitError" class="font-sans text-red-600 text-sm mt-3 text-center" role="alert">
+                    {{ submitError }}
+                  </p>
                 </fieldset>
 
                 <!-- Success state -->
@@ -395,6 +398,8 @@ const formSteps = ['About You', 'Your Practice', 'Your Needs', 'Complete']
 
 function nextStep() { if (currentStep.value < formSteps.length - 1) currentStep.value++ }
 function prevStep() { if (currentStep.value > 0) currentStep.value-- }
+
+const submitError = ref('')
 
 async function handleSubmit() {
   if (!form.value.consent) return
