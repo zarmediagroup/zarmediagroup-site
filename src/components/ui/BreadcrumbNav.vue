@@ -1,7 +1,7 @@
 <template>
   <nav
     aria-label="Breadcrumb"
-    class="flex items-center gap-2 font-sans text-xs text-white/40 mb-6"
+    class="flex items-center gap-1.5 sm:gap-2 font-sans text-[10px] sm:text-xs text-white/40 mb-4 sm:mb-6 flex-wrap"
   >
     <RouterLink
       to="/"

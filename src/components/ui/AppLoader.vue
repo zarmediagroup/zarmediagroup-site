@@ -19,7 +19,7 @@
         <img
           src="/logo.png"
           alt="Zar Media Group"
-          class="h-120 w-auto object-contain brightness-0 invert logo-img"
+          class="h-50 w-auto object-contain brightness-0 invert logo-img"
           width="200"
           height="40"
           style="opacity: 0;"

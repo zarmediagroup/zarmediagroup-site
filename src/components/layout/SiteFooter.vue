@@ -1,8 +1,8 @@
 <template>
   <footer class="bg-navy-950 border-t border-white/5">
     <!-- Main Footer -->
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16 lg:py-24">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12 lg:gap-8">
 
         <!-- Brand Column -->
         <div class="lg:col-span-2">
@@ -131,7 +131,7 @@
             Reg No: 2026/166396/07 · Cape Town, South Africa
           </p>
         </div>
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 sm:gap-6 flex-wrap justify-center sm:justify-end">
           <RouterLink to="/privacy-policy" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Privacy Policy</RouterLink>
           <RouterLink to="/terms-of-service" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Terms of Service</RouterLink>
           <RouterLink to="/cookie-policy" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Cookie Policy</RouterLink>
