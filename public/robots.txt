@@ -11,8 +11,5 @@ Disallow: /private/
 Disallow: /*?*utm_
 Disallow: /*?*ref=
 
-# Crawl-delay for polite bots
-Crawl-delay: 2
-
 # Sitemap location
 Sitemap: https://zarmediagroup.com/sitemap.xml

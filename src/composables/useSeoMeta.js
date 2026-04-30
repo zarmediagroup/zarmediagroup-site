@@ -70,6 +70,7 @@ function removeSchema(uid) {
  * @param {string|Ref<string>} [options.canonical]    - Relative path, e.g. '/services/waas'
  * @param {string|Ref<string>} [options.ogImage]      - Absolute or relative image URL
  * @param {string}             [options.ogType]       - 'website' | 'article' (default: 'website')
+ * @param {string|Ref<string>} [options.robots]       - Robots directive (default: 'index, follow')
  * @param {Array|Ref<Array>}   [options.schemas]      - Array of JSON-LD schema objects
  */
 export function useSeoMeta(options) {
@@ -82,6 +83,7 @@ export function useSeoMeta(options) {
     const canonical   = val(options.canonical)
     const ogImage     = val(options.ogImage)
     const ogType      = val(options.ogType) || 'website'
+    const robots      = val(options.robots) || 'index, follow'
     const schemas     = val(options.schemas) || []
 
     // ── <title> ──
@@ -90,7 +92,7 @@ export function useSeoMeta(options) {
     // ── standard meta ──
     upsertMeta('name', 'description', description)
     if (keywords) upsertMeta('name', 'keywords', keywords)
-    upsertMeta('name', 'robots', 'index, follow')
+    upsertMeta('name', 'robots', robots)
     upsertMeta('name', 'author', ORG_NAME)
 
     // ── canonical ──
@@ -259,7 +261,7 @@ export const SCHEMAS = {
     }
   },
 
-  service({ name, description, areaServed = 'ZA' } = {}) {
+  service({ name, description } = {}) {
     return {
       '@context': 'https://schema.org',
       '@type': 'Service',

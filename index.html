@@ -138,14 +138,25 @@
     <!-- ══ Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID ══ -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1MSZEXGGC"></script>
     <script>
+      const storedCookieChoice = (() => {
+        try {
+          return localStorage.getItem('zmg_cookies');
+        } catch {
+          return null;
+        }
+      })();
+      window.__zmgAnalyticsConsentGranted = storedCookieChoice === 'accepted';
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      gtag('consent', 'default', {
+        analytics_storage: window.__zmgAnalyticsConsentGranted ? 'granted' : 'denied',
+      });
       gtag('config', 'G-Z1MSZEXGGC', {
         // Redact IP for POPIA / GDPR compliance
         anonymize_ip: true,
-        // Only fire after cookie consent (set to false until user accepts)
-        send_page_view: true
+        // Manual SPA route tracking after explicit consent
+        send_page_view: false
       });
     </script>
   </head>

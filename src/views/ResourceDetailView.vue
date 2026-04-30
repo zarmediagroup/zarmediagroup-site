@@ -202,7 +202,7 @@
 import { computed, onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { useScrollReveal } from '@/composables/useScrollReveal'
-import { useSeoMeta, SCHEMAS, BASE_URL } from '@/composables/useSeoMeta'
+import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import { resources, getResourceBySlug } from '@/data/resources.js'
 
@@ -246,7 +246,13 @@ const seoKeywords = computed(() =>
   resource.value?.keywords ?? 'accounting resources, financial services South Africa, Zar Media Group'
 )
 
-const seoCanonical = computed(() => `/resources/${route.params.slug}`)
+const seoCanonical = computed(() => (
+  resource.value ? `/resources/${route.params.slug}` : '/resources'
+))
+
+const seoRobots = computed(() => (
+  resource.value ? 'index, follow' : 'noindex, follow'
+))
 
 const seoOgImage = computed(() =>
   resource.value?.image ?? '/og-image.jpg'
@@ -281,6 +287,7 @@ useSeoMeta({
   description: seoDescription,
   keywords: seoKeywords,
   canonical: seoCanonical,
+  robots: seoRobots,
   ogImage: seoOgImage,
   ogType: 'article',
   schemas: seoSchemas,

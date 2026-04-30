@@ -9,7 +9,7 @@
         <h1 class="font-serif text-display-md text-white mt-4 mb-4">Privacy Policy</h1>
         <p class="font-sans text-white/50 text-sm">
           Effective Date: <strong class="text-white/70">1 March 2026</strong> &nbsp;·&nbsp;
-          Last Updated: <strong class="text-white/70">8 March 2026</strong>
+          Last Updated: <strong class="text-white/70">1 May 2026</strong>
         </p>
         <div class="gold-divider mt-6"></div>
       </div>
@@ -60,14 +60,25 @@
             <li>Service interests and enquiry messages</li>
             <li>Newsletter subscription email</li>
           </ul>
+          <p class="font-sans text-charcoal-500 text-sm leading-relaxed mt-2">
+            When you submit our contact form, your message is delivered to our inbox through our website hosting
+            infrastructure and <strong>Resend</strong> (see section 5).
+          </p>
 
           <h3 class="font-sans font-semibold text-navy-900 text-base mb-3 mt-6">2.2 Information Collected Automatically</h3>
+          <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
+            When you use our website, limited technical information may be processed by our hosting and analytics
+            providers. <strong>Google Analytics 4</strong> is only used for audience measurement after you click
+            <strong>Accept</strong> on our cookie banner (we use Google Consent Mode so analytics storage stays off
+            until then). If you click <strong>Decline</strong>, we do not use GA4 to measure your browsing on this site.
+            See our <RouterLink to="/cookie-policy">Cookie Policy</RouterLink> for details.
+          </p>
           <ul class="legal-list">
-            <li>Pages visited and time spent on the site (via Google Analytics 4)</li>
+            <li>Pages visited and time spent on the site (via Google Analytics 4, only if you accept analytics cookies)</li>
             <li>Device type, browser, and operating system</li>
-            <li>IP address (anonymised)</li>
-            <li>Referring URL and geographic region</li>
-            <li>Cookie data (see our <RouterLink to="/cookie-policy">Cookie Policy</RouterLink>)</li>
+            <li>IP address (anonymised in GA4 when enabled)</li>
+            <li>Referring URL and broad geographic region</li>
+            <li>Cookie and similar storage data (see our <RouterLink to="/cookie-policy">Cookie Policy</RouterLink>)</li>
           </ul>
 
           <!-- 3 -->
@@ -86,8 +97,8 @@
           <h2 class="font-serif text-navy-900 text-2xl mb-4 mt-10">4. Legal Basis for Processing (POPIA &amp; GDPR)</h2>
           <div class="gold-divider mb-6"></div>
           <ul class="legal-list">
-            <li><strong>Consent:</strong> Where you have given clear consent (e.g. newsletter sign-up, contact form submission).</li>
-            <li><strong>Legitimate Interest:</strong> To improve our services, respond to enquiries, and conduct analytics.</li>
+            <li><strong>Consent:</strong> Where you have given clear consent (e.g. newsletter sign-up, contact form submission, and analytics via our cookie banner when you choose Accept).</li>
+            <li><strong>Legitimate Interest:</strong> To improve our services, keep our website secure, and respond to enquiries (where not overridden by your choices).</li>
             <li><strong>Legal Obligation:</strong> Where we are required to retain or disclose data by law.</li>
             <li><strong>Contractual Necessity:</strong> Where processing is necessary to deliver agreed services.</li>
           </ul>
@@ -99,7 +110,9 @@
             We do not sell, rent, or trade your personal information. We may share data with:
           </p>
           <ul class="legal-list">
-            <li><strong>Google LLC</strong> — for analytics via Google Analytics 4 (data processed in the US under Standard Contractual Clauses)</li>
+            <li><strong>Google LLC</strong> — for website analytics via Google Analytics 4 when you accept analytics cookies (data may be processed outside South Africa; Google provides appropriate safeguards such as Standard Contractual Clauses where applicable)</li>
+            <li><strong>Resend, Inc.</strong> — to transmit contact form messages to our team by email (message content includes the information you submitted)</li>
+            <li><strong>Vercel Inc.</strong> — website hosting and delivery of our web application (may process technical data such as IP address and request logs as part of providing the service)</li>
             <li><strong>Email service providers</strong> — for newsletter delivery (only with your consent)</li>
             <li><strong>Legal authorities</strong> — where required by South African law or court order</li>
             <li><strong>Professional advisors</strong> — auditors or legal counsel, under strict confidentiality</li>

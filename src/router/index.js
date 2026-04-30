@@ -169,6 +169,15 @@ const router = createRouter({
   },
 })
 
+router.onError((err) => {
+  const msg = err?.message || String(err)
+  if (msg.includes('Failed to fetch dynamically imported module') || msg.includes('Importing a module script failed')) {
+    window.location.reload()
+    return
+  }
+  console.error(err)
+})
+
 // ── Global head management ──────────────────────────────────────────────────
 // useSeoMeta in each view handles the full per-page update.
 // The router guard here provides a fast fallback title update.
@@ -182,7 +191,7 @@ router.beforeEach((to, _from, next) => {
 // ── Google Analytics 4 — SPA page-view tracking ────────────────────────────
 // Fires a page_view event on every route change so GA4 sees each page correctly.
 router.afterEach((to) => {
-  if (typeof window.gtag === 'function') {
+  if (typeof window.gtag === 'function' && window.__zmgAnalyticsConsentGranted === true) {
     window.gtag('event', 'page_view', {
       page_title: to.meta?.title || document.title,
       page_path: to.fullPath,

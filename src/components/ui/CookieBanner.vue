@@ -43,7 +43,7 @@ function accept() {
 }
 
 function decline() {
-  localStorage.setItem('zmg_cookies', 'declined')
+  appStore.declineCookies()
   show.value = false
 }
 </script>

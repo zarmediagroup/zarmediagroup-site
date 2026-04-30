@@ -11,16 +11,22 @@
 
         <!-- Modal Container -->
         <div
+          role="dialog"
+          aria-modal="true"
+          :aria-labelledby="titleId"
           class="modal-container relative w-full z-10 overflow-y-auto max-h-[90vh]"
           :class="[sizeClasses]"
+          @keydown.esc="$emit('update:modelValue', false)"
         >
           <!-- Header -->
           <div class="flex items-start justify-between p-6 lg:p-8 border-b border-navy-900/10" :class="[dark ? 'border-white/10 bg-navy-900' : 'bg-white']">
             <div>
               <p v-if="label" class="section-label text-xs mb-1">{{ label }}</p>
-              <h3 class="font-serif text-xl lg:text-2xl" :class="[dark ? 'text-white' : 'text-navy-900']">{{ title }}</h3>
+              <h3 :id="titleId" class="font-serif text-xl lg:text-2xl" :class="[dark ? 'text-white' : 'text-navy-900']">{{ title }}</h3>
             </div>
             <button
+              type="button"
+              :aria-label="`Close ${title || 'dialog'}`"
               class="flex-shrink-0 ml-4 w-8 h-8 flex items-center justify-center border transition-all"
               :class="[dark ? 'border-white/20 text-white/50 hover:text-white hover:border-white/50' : 'border-navy-900/20 text-navy-900/50 hover:text-navy-900 hover:border-navy-900/50']"
               @click="$emit('update:modelValue', false)"
@@ -48,7 +54,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
+
+const titleId = useId()
 
 const props = defineProps({
   modelValue: { type: Boolean, default: false },

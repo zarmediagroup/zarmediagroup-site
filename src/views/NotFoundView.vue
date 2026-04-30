@@ -14,6 +14,17 @@
   </div>
 </template>
 
+<script setup>
+import { useSeoMeta } from '@/composables/useSeoMeta'
+
+useSeoMeta({
+  title: 'Page Not Found | Zar Media Group',
+  description: 'The page you are looking for could not be found.',
+  canonical: '/404',
+  robots: 'noindex, follow',
+})
+</script>
+
 
 
 

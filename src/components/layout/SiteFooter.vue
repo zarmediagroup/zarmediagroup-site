@@ -29,12 +29,15 @@
                 v-model="email"
                 type="email"
                 placeholder="your@email.com"
+                autocomplete="email"
                 class="flex-1 px-4 py-3 bg-navy-900 border border-white/10 text-white text-sm placeholder-white/30 focus:outline-none focus:border-white transition-colors"
               />
               <button type="submit" class="px-5 py-3 bg-white text-navy-900 font-semibold text-xs hover:bg-navy-200 transition-colors">
                 →
               </button>
             </form>
+            <p v-if="newsletterMessage" class="font-sans text-gold-400/90 text-xs mt-2" role="status">{{ newsletterMessage }}</p>
+            <p v-if="newsletterError" class="font-sans text-red-400/90 text-xs mt-2" role="alert">{{ newsletterError }}</p>
           </div>
 
           <!-- Social Links -->
@@ -146,6 +149,8 @@ import { ref } from 'vue'
 
 const currentYear = new Date().getFullYear()
 const email = ref('')
+const newsletterMessage = ref('')
+const newsletterError = ref('')
 
 const companyLinks = [
   { to: '/', label: 'Home' },
@@ -175,12 +180,16 @@ const socials = [
 ]
 
 function subscribeNewsletter() {
-  if (email.value) {
-    // Integration point for Mailchimp/ConvertKit
-    console.log('Newsletter signup:', email.value)
-    email.value = ''
-    alert('Thank you for subscribing to our industry insights!')
+  newsletterMessage.value = ''
+  newsletterError.value = ''
+  if (!email.value.trim()) {
+    newsletterError.value = 'Please enter your email address.'
+    return
   }
+  // Integration point: Mailchimp / ConvertKit / list API
+  newsletterMessage.value =
+    'Thanks for your interest. Please use the contact page or email info@zarmediagroup.com to join our list until one-click signup is connected here.'
+  email.value = ''
 }
 </script>
 

@@ -72,6 +72,18 @@
 
               <form @submit.prevent="handleSubmit" novalidate :aria-label="`Contact form step ${currentStep + 1} of ${formSteps.length}`">
 
+                <!-- Bot trap: leave empty (hidden from users) -->
+                <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+                  <label for="websiteTrap" class="sr-only">Leave this field blank</label>
+                  <input
+                    id="websiteTrap"
+                    v-model="websiteTrap"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
                 <!-- Step 1: About You -->
                 <fieldset v-if="currentStep === 0" class="space-y-5">
                   <legend class="font-sans font-semibold text-navy-900 text-sm mb-6 block">Step 1: Tell us about yourself</legend>
@@ -245,7 +257,7 @@
                     />
                     <label for="consent" class="font-sans text-charcoal-500 text-xs leading-relaxed cursor-pointer">
                       I agree to Zar Media Group processing my information as described in the
-                      <a href="/privacy-policy" class="text-gold-600 hover:underline" target="_blank">Privacy Policy</a>.
+                      <a href="/privacy-policy" class="text-gold-600 hover:underline" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                       This form is POPIA and GDPR compliant.
                     </label>
                   </div>
@@ -381,6 +393,8 @@ onMounted(() => setTimeout(initReveal, 50))
 const currentStep = ref(0)
 const isSubmitting = ref(false)
 const submitError = ref('')
+/** Honeypot — must stay empty */
+const websiteTrap = ref('')
 const form = ref({
   firstName: '',
   lastName: '',
@@ -399,15 +413,17 @@ const formSteps = ['About You', 'Your Practice', 'Your Needs', 'Complete']
 function nextStep() { if (currentStep.value < formSteps.length - 1) currentStep.value++ }
 function prevStep() { if (currentStep.value > 0) currentStep.value-- }
 
-const submitError = ref('')
+const contactSubmitUrl =
+  import.meta.env.VITE_CONTACT_ENDPOINT?.trim() || '/api/contact'
 
 async function handleSubmit() {
   if (!form.value.consent) return
+  if (websiteTrap.value) return
   isSubmitting.value = true
   submitError.value = ''
 
   try {
-    const res = await fetch('/mail.php', {
+    const res = await fetch(contactSubmitUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -420,12 +436,19 @@ async function handleSubmit() {
         website: form.value.website,
         services: form.value.services,
         message: form.value.message,
+        websiteTrap: websiteTrap.value,
       }),
     })
 
     const result = await res.json()
 
     if (result.success) {
+      if (typeof window.gtag === 'function' && window.__zmgAnalyticsConsentGranted === true) {
+        window.gtag('event', 'generate_lead', {
+          method: 'contact_form',
+          page_path: window.location.pathname,
+        })
+      }
       currentStep.value = 3
     } else {
       submitError.value = result.message || 'Something went wrong. Please try again or email us directly.'

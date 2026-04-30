@@ -42,6 +42,13 @@ function handleScroll() {
   appStore.updateScroll(window.scrollY)
 }
 
+function handleEscape(e) {
+  if (e.key === 'Escape') {
+    appStore.closeModal()
+    appStore.closeNav()
+  }
+}
+
 // Route transitions
 router.beforeEach(() => {
   appStore.setPageLoading(true)
@@ -59,18 +66,12 @@ function onLoadComplete() {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   appStore.checkCookies()
-
-  // Escape key closes modals/nav
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      appStore.closeModal()
-      appStore.closeNav()
-    }
-  })
+  document.addEventListener('keydown', handleEscape)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  document.removeEventListener('keydown', handleEscape)
 })
 </script>
 

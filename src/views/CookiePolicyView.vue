@@ -9,7 +9,7 @@
         <h1 class="font-serif text-display-md text-white mt-4 mb-4">Cookie Policy</h1>
         <p class="font-sans text-white/50 text-sm">
           Effective Date: <strong class="text-white/70">1 March 2026</strong> &nbsp;·&nbsp;
-          Last Updated: <strong class="text-white/70">8 March 2026</strong>
+          Last Updated: <strong class="text-white/70">1 May 2026</strong>
         </p>
         <div class="gold-divider mt-6"></div>
       </div>
@@ -43,9 +43,10 @@
           <h2 class="font-serif text-navy-900 text-2xl mb-4 mt-10">2. Cookies We Use</h2>
           <div class="gold-divider mb-6"></div>
 
-          <h3 class="font-sans font-semibold text-navy-900 text-base mb-3">2.1 Essential / Functional Cookies</h3>
+          <h3 class="font-sans font-semibold text-navy-900 text-base mb-3">2.1 Essential / Functional Storage</h3>
           <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
-            These cookies are necessary for the website to function correctly. They cannot be disabled.
+            We use strictly necessary storage so the site can remember your cookie choice. This is implemented using
+            browser <strong>local storage</strong> (not a third-party advertising cookie).
           </p>
 
           <!-- Cookie table -->
@@ -62,7 +63,7 @@
                 <tr class="border-b border-navy-900/8 bg-white">
                   <td class="font-sans text-navy-900 font-medium px-4 py-3 text-xs"><code>zmg_cookies</code></td>
                   <td class="font-sans text-charcoal-500 px-4 py-3 text-xs">Stores your cookie consent choice (accepted / declined)</td>
-                  <td class="font-sans text-charcoal-500 px-4 py-3 text-xs">Persistent (localStorage)</td>
+                  <td class="font-sans text-charcoal-500 px-4 py-3 text-xs">Persistent (browser localStorage; first-party)</td>
                 </tr>
               </tbody>
             </table>
@@ -70,9 +71,20 @@
 
           <h3 class="font-sans font-semibold text-navy-900 text-base mb-3">2.2 Analytics Cookies</h3>
           <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
-            We use <strong>Google Analytics 4 (GA4)</strong> to understand how visitors interact with our website.
-            This data is aggregated and anonymised — it helps us improve our content and user experience. IP addresses
-            are anonymised before storage.
+            We use <strong>Google Analytics 4 (GA4)</strong> to understand how visitors interact with our website when
+            analytics is enabled. We use <strong>Google Consent Mode</strong>: until you click <strong>Accept</strong> on
+            our cookie banner, analytics storage remains denied and GA4 is not allowed to use cookies for measurement
+            in the usual way. After you accept, GA4 may set first-party cookies (such as those listed below) to
+            distinguish sessions and approximate usage. IP addresses are configured to be anonymised in GA4.
+          </p>
+          <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
+            If you click <strong>Decline</strong>, we do not send page-view measurement events to GA4 from our site
+            for your session, and your choice is stored locally so the banner does not reappear.
+          </p>
+          <p class="font-sans text-charcoal-500 text-sm leading-relaxed mb-4">
+            Technical note: the Google tag script may still be requested when pages load so Consent Mode can be applied;
+            with <strong>Decline</strong>, analytics storage remains denied and we do not enable our SPA route measurement
+            events described above.
           </p>
 
           <div class="overflow-x-auto mb-8">
@@ -155,9 +167,9 @@
 
           <div class="bg-white border border-navy-900/8 p-5 mt-2 mb-6">
             <p class="font-sans text-charcoal-600 text-sm leading-relaxed">
-              <strong>Note:</strong> Google Analytics on this website tracks visitor behaviour regardless of the Accept/Decline
-              choice on our cookie banner. The banner serves as a notice of this activity. If you wish to opt out of
-              GA tracking specifically, please use the Google opt-out add-on linked above.
+              <strong>Note:</strong> Analytics cookies are only enabled after you click <strong>Accept</strong> on our
+              cookie banner. If you click <strong>Decline</strong>, non-essential analytics tracking remains disabled.
+              You can also use the Google opt-out add-on linked above for additional control.
             </p>
           </div>
 

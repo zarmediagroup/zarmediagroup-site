@@ -11,6 +11,7 @@ export const useAppStore = defineStore('app', () => {
   const scrollY = ref(0)
   const isScrolled = ref(false)
   const cookiesAccepted = ref(false)
+  const analyticsConsentGranted = ref(false)
   const currentTheme = ref('dark-nav') // 'dark-nav' | 'light-nav'
 
   // Computed
@@ -58,13 +59,38 @@ export const useAppStore = defineStore('app', () => {
 
   function acceptCookies() {
     cookiesAccepted.value = true
+    analyticsConsentGranted.value = true
     localStorage.setItem('zmg_cookies', 'accepted')
+    window.__zmgAnalyticsConsentGranted = true
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted',
+      })
+    }
+  }
+
+  function declineCookies() {
+    cookiesAccepted.value = true
+    analyticsConsentGranted.value = false
+    localStorage.setItem('zmg_cookies', 'declined')
+    window.__zmgAnalyticsConsentGranted = false
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'denied',
+      })
+    }
   }
 
   function checkCookies() {
     const stored = localStorage.getItem('zmg_cookies')
-    if (stored === 'accepted' || stored === 'declined') {
+    if (stored === 'accepted') {
       cookiesAccepted.value = true
+      analyticsConsentGranted.value = true
+      window.__zmgAnalyticsConsentGranted = true
+    } else if (stored === 'declined') {
+      cookiesAccepted.value = true
+      analyticsConsentGranted.value = false
+      window.__zmgAnalyticsConsentGranted = false
     }
   }
 
@@ -78,6 +104,7 @@ export const useAppStore = defineStore('app', () => {
     scrollY,
     isScrolled,
     cookiesAccepted,
+    analyticsConsentGranted,
     currentTheme,
     // Computed
     navIsTransparent,
@@ -90,6 +117,7 @@ export const useAppStore = defineStore('app', () => {
     closeModal,
     updateScroll,
     acceptCookies,
+    declineCookies,
     checkCookies,
   }
 })

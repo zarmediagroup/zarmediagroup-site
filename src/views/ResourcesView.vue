@@ -104,9 +104,7 @@
                 </div>
 
                 <h2 class="font-serif text-navy-900 text-lg font-medium mb-3 group-hover:text-gold-600 transition-colors leading-snug">
-                  <RouterLink :to="`/resources/${resource.slug}`" :aria-label="`Read: ${resource.title}`">
-                    {{ resource.title }}
-                  </RouterLink>
+                  {{ resource.title }}
                 </h2>
                 <p class="font-sans text-charcoal-500 text-sm leading-relaxed mb-5">{{ resource.excerpt }}</p>
 

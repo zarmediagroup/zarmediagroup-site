@@ -26,11 +26,11 @@
             SEO H1: Primary keyword "managed websites" + "accountants" in first heading.
             One H1 per page — never duplicated.
           -->
-          <h3 class="font-serif text-display-lg text-white mb-2 leading-tight reveal-up" style="transition-delay: 100ms;">
+          <h1 class="font-serif text-display-lg text-white mb-2 leading-tight reveal-up" style="transition-delay: 100ms;">
             Managed Websites &amp;<br/>
             <span class="text-gradient">Client Portals</span><br/>
             for Accountants.
-          </h3>
+          </h1>
 
           <p class="font-sans text-white/60 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg reveal-up" style="transition-delay: 200ms;">
             Zar Media Group helps <strong class="text-white/80">accounting firms, tax advisors, and bookkeepers</strong> across South Africa reduce admin, automate client intake, and build a compliant digital presence that wins new business.

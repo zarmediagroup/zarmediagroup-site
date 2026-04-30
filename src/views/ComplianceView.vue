@@ -110,7 +110,7 @@
 
           <div class="space-y-3 reveal-up" style="transition-delay: 150ms;">
             <div
-              v-for="(item, i) in complianceChecklist"
+              v-for="item in complianceChecklist"
               :key="item.check"
               class="flex items-start gap-4 p-4 border transition-all duration-200"
               :class="item.common
