@@ -141,7 +141,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 stagger-children">
           <div
             v-for="(service, i) in services"
             :key="service.title"
@@ -478,6 +478,14 @@ const stats = [
 ]
 
 const services = [
+  {
+    title: 'Client Portals & CRM',
+    description:
+      'Client-facing accounting portals and CRM-connected intake: secure document exchange, compliance portal workflows, and integrations with HubSpot, Xero, and DocuSign.',
+    link: '/services/accounting-portals-crm',
+    tags: ['Accounting Portal', 'Client-Facing CRM', 'POPIA-aware'],
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>',
+  },
   {
     title: 'Website as a Service',
     description:

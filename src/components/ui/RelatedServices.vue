@@ -6,7 +6,7 @@
         <h2 class="font-serif text-display-sm text-white">Related Services</h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-5">
         <RouterLink
           v-for="service in services"
           :key="service.to"
@@ -58,7 +58,7 @@ import { computed } from 'vue'
 const props = defineProps({
   /**
    * IDs of services to EXCLUDE (i.e. the current page's service)
-   * Values: 'waas' | 'workflow' | 'compliance'
+   * Values: 'waas' | 'workflow' | 'compliance' | 'portals-crm'
    */
   exclude: {
     type: Array,
@@ -67,6 +67,14 @@ const props = defineProps({
 })
 
 const ALL_SERVICES = [
+  {
+    id: 'portals-crm',
+    to: '/services/accounting-portals-crm',
+    title: 'Client Portals & CRM',
+    description:
+      'Accounting portals, client-facing CRM journeys, and compliance-focused client portals — integrated with your website and practice stack.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>',
+  },
   {
     id: 'waas',
     to: '/services/website-as-a-service',

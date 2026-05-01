@@ -188,7 +188,7 @@ useSeoMeta({
   description:
     'Purpose-built compliant digital presence for regulated financial industries. GDPR, POPIA, WCAG 2.1 AA, and financial sector regulation-ready websites for accountants, financial advisors, and tax professionals.',
   keywords:
-    'compliant website financial services, compliant digital presence regulated industries, GDPR financial website, financial services web compliance, POPIA compliance website, accounting website compliance, WCAG financial website',
+    'compliance portal, client facing accounting portal, compliant website financial services, compliant digital presence regulated industries, GDPR financial website, financial services web compliance, POPIA compliance website, accounting website compliance, WCAG financial website',
   canonical: '/services/compliance-trust',
   schemas: [
     SCHEMAS.breadcrumb([

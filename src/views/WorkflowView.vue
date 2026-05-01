@@ -203,7 +203,7 @@ useSeoMeta({
   description:
     'Connect your accounting website to QuickBooks, Xero, HubSpot, and Calendly. CRM integration for accountants that eliminates manual data entry and automates client onboarding. South Africa.',
   keywords:
-    'CRM integration for accountants, workflow automation bookkeepers, accounting software integration, client portal for accountants, Xero HubSpot integration, best client portal small accounting firms, how to reduce admin accounting firms',
+    'CRM system accountants, client facing CRM, CRM integration for accountants, workflow automation bookkeepers, accounting software integration, client portals for accounting, accounting portal, client portal for accountants, Xero HubSpot integration, best client portal small accounting firms, how to reduce admin accounting firms',
   canonical: '/services/workflow-integration',
   schemas: [
     SCHEMAS.breadcrumb([

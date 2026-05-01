@@ -249,6 +249,7 @@ export const SCHEMAS = {
         '@type': 'OfferCatalog',
         name: 'Digital Services for Accountants',
         itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Client Portals & CRM for Accountants' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website as a Service' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workflow Integration' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Compliance & Trust' } },

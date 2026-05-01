@@ -10,7 +10,7 @@ const routes = [
       description:
         'Zar Media Group helps accountants and financial firms cut admin, automate workflows, and build compliant digital presences. Managed websites + client portals for South African financial professionals.',
       keywords:
-        'website for accountants, managed website financial advisors, client portal for accountants, accounting firm website design, Zar Media Group, South Africa',
+        'website for accountants, managed website financial advisors, client portals for accounting, accounting portal, client portal for accountants, accounting firm website design, Zar Media Group, South Africa',
       canonical: '/',
     },
   },
@@ -62,8 +62,21 @@ const routes = [
       description:
         'Connect your accounting website to QuickBooks, Xero, HubSpot, and Calendly. CRM integration for accountants that eliminates manual data entry and automates client onboarding.',
       keywords:
-        'CRM integration for accountants, workflow automation bookkeepers, accounting software integration, client portal for accountants, Xero HubSpot integration',
+        'CRM system accountants, client facing CRM, CRM integration for accountants, workflow automation bookkeepers, accounting software integration, client portal for accountants, Xero HubSpot integration',
       canonical: '/services/workflow-integration',
+    },
+  },
+  {
+    path: '/services/accounting-portals-crm',
+    name: 'AccountingPortalsCrm',
+    component: () => import('@/views/AccountingPortalsCrmView.vue'),
+    meta: {
+      title: 'Client Portals & CRM for Accountants | Zar Media Group',
+      description:
+        'Client-facing accounting portals and CRM-connected workflows for South African firms: client portals for accounting, compliance portal, accounting portal, and client-facing CRM on your website.',
+      keywords:
+        'CRM system accountants, client portals for accounting, compliance portal, client facing portal, accounting portal, client facing CRM, client facing accounting portal',
+      canonical: '/services/accounting-portals-crm',
     },
   },
   {
@@ -75,7 +88,7 @@ const routes = [
       description:
         'Purpose-built compliant digital presence for regulated financial industries. GDPR, WCAG 2.1 AA, and financial sector regulation-ready websites for accountants, RIAs, and tax professionals.',
       keywords:
-        'compliant website financial services, compliant digital presence regulated industries, GDPR financial website, financial services web compliance, accounting website compliance',
+        'compliance portal, compliant website financial services, compliant digital presence regulated industries, GDPR financial website, financial services web compliance, accounting website compliance, client facing accounting portal',
       canonical: '/services/compliance-trust',
     },
   },

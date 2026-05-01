@@ -161,6 +161,7 @@ const companyLinks = [
 ]
 
 const serviceLinks = [
+  { to: '/services/accounting-portals-crm', label: 'Client Portals & CRM' },
   { to: '/services/website-as-a-service', label: 'Website as a Service' },
   { to: '/services/workflow-integration', label: 'Workflow Integration' },
   { to: '/services/compliance-trust', label: 'Compliance & Trust' },

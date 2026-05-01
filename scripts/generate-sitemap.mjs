@@ -21,6 +21,7 @@ const sitemapStaticPathList = [
   '/about/team',
   '/services/website-as-a-service',
   '/services/workflow-integration',
+  '/services/accounting-portals-crm',
   '/services/compliance-trust',
   '/resources',
   '/contact',
