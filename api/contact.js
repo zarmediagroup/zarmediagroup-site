@@ -3,7 +3,11 @@
  * Env (set in Vercel Dashboard → Project → Settings → Environment Variables):
  *   RESEND_API_KEY   — required (https://resend.com/api-keys)
  *   CONTACT_TO_EMAIL — recipient(s); comma-separated optional (default: info@zarmediagroup.com)
- *   RESEND_FROM      — verified sender, e.g. "Zar Media Group <hello@yourdomain.com>"
+ *   RESEND_FROM      — verified sender on a SUBDOMAIN Resend recommends for deliverability, e.g.
+ *                      "Zar Media Group <notifications@mail.zarmediagroup.com>"
+ *                      Avoid using the same address as CONTACT_TO_EMAIL as From (e.g. info→info),
+ *                      which often causes greylisting / “Delivery delayed” on Google and others.
+ *                      Verify the subdomain domain in Resend and add its DNS records before going live.
  */
 
 function clean(str) {
