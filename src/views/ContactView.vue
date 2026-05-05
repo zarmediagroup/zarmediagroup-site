@@ -448,6 +448,10 @@ async function handleSubmit() {
           method: 'contact_form',
           page_path: window.location.pathname,
         })
+        window.gtag('event', 'ads_conversion_Submit_lead_form_1', {
+          method: 'contact_form',
+          page_path: window.location.pathname,
+        })
       }
       currentStep.value = 3
     } else {
