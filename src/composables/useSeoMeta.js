@@ -116,14 +116,6 @@ export function useSeoMeta(options) {
     upsertMeta('property', 'og:site_name', ORG_NAME)
     upsertMeta('property', 'og:locale', 'en_ZA')
 
-    // ── Twitter Cards ──
-    upsertMeta('name', 'twitter:card', 'summary_large_image')
-    upsertMeta('name', 'twitter:site', '@zarmediagroup')
-    upsertMeta('name', 'twitter:title', title)
-    upsertMeta('name', 'twitter:description', description)
-    upsertMeta('name', 'twitter:image', image)
-    upsertMeta('name', 'twitter:image:alt', `${ORG_NAME} — ${title}`)
-
     // ── JSON-LD schemas — remove old, inject new ──
     schemaIds.forEach(removeSchema)
     schemaIds.length = 0
