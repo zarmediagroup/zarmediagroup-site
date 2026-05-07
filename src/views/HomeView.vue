@@ -18,7 +18,7 @@
         <!-- Hero Text -->
         <div class="hero-content">
           <div class="reveal-up">
-            <span class="section-label">Financial Sector Digital Agency · South Africa</span>
+            <span class="section-label">Financial sector digital agency · South Africa · Client admin automation</span>
             <div class="gold-divider"></div>
           </div>
 
@@ -32,13 +32,22 @@
             for Accountants.
           </h1>
 
-          <p class="font-sans text-white/60 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg reveal-up" style="transition-delay: 200ms;">
-            Zar Media Group helps <strong class="text-white/80">accounting firms, tax advisors, and bookkeepers</strong> across South Africa reduce admin, automate client intake, and build a compliant digital presence that wins new business.
+          <p class="font-sans text-white/60 text-lg lg:text-xl leading-relaxed mb-6 max-w-lg reveal-up" style="transition-delay: 200ms;">
+            We help <strong class="text-white/80">accounting firms, tax advisors, and bookkeepers</strong> across South Africa <strong class="text-white/80">automate client admin</strong>—fewer document chases, cleaner intake, and a compliant site that converts.
           </p>
 
+          <ul class="font-sans text-white/55 text-sm space-y-2.5 mb-10 max-w-lg reveal-up" style="transition-delay: 250ms;" aria-label="What you get">
+            <li v-for="line in heroQuickWins" :key="line" class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>{{ line }}</span>
+            </li>
+          </ul>
+
           <div class="flex flex-col sm:flex-row gap-4 reveal-up" style="transition-delay: 300ms;">
-            <RouterLink to="/contact" class="btn-primary" aria-label="Transform your accounting practice — contact us">
-              Transform Your Practice
+            <RouterLink to="/contact" class="btn-primary" aria-label="Book a strategy call with Zar Media Group">
+              Book a strategy call
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
               </svg>
@@ -47,6 +56,13 @@
               See Our Approach
             </RouterLink>
           </div>
+
+          <p class="font-sans text-white/35 text-xs sm:text-sm mt-6 max-w-lg reveal-up" style="transition-delay: 350ms;">
+            Prefer the phone?
+            <a href="tel:+27685070088" class="text-gold-500/90 hover:text-gold-400 underline-offset-2 hover:underline">+27&nbsp;68&nbsp;507&nbsp;0088</a>
+            ·
+            <RouterLink to="/contact" class="text-gold-500/90 hover:text-gold-400 underline-offset-2 hover:underline">Message the team</RouterLink>
+          </p>
 
           <!-- Trust Badges -->
           <div class="mt-12 pt-12 border-t border-white/10 reveal-up" style="transition-delay: 400ms;">
@@ -107,6 +123,22 @@
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
         <span class="font-sans text-white/30 text-xs tracking-widest uppercase">Scroll</span>
         <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
+      </div>
+    </section>
+
+    <!-- ==================== EARLY CTA (homepage skimmers → contact converts) ==================== -->
+    <section class="bg-navy-800/90 border-y border-white/10 py-10" aria-label="Book a consultation">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <p class="font-sans text-white/85 text-base lg:text-lg max-w-2xl leading-relaxed text-center lg:text-left">
+          If you landed from search or ads, skip the scroll: tell us what you're trying to fix—<strong class="text-white">portals, intake, CRM handoffs,</strong> or a site that doesn't reflect your firm.
+        </p>
+        <RouterLink
+          to="/contact"
+          class="btn-primary shrink-0 self-center lg:self-auto whitespace-normal text-center px-8"
+          aria-label="Contact Zar Media Group to discuss your accounting firm website"
+        >
+          Get in touch
+        </RouterLink>
       </div>
     </section>
 
@@ -212,7 +244,13 @@
               </div>
             </div>
 
-            <div class="mt-10 reveal-up" style="transition-delay: 700ms;">
+            <div class="mt-10 flex flex-wrap gap-4 reveal-up" style="transition-delay: 700ms;">
+              <RouterLink to="/contact" class="btn-primary" aria-label="Book a call about reducing admin at your accounting firm">
+                Book a fit call
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </RouterLink>
               <RouterLink to="/what-we-do" class="btn-secondary" aria-label="Learn about our full approach to accounting firm websites">
                 Our Full Approach
               </RouterLink>
@@ -455,6 +493,12 @@ useSeoMeta({
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 const trustBadges = ['GDPR Compliant', 'WCAG 2.1 AA', 'Compliance-First', 'SA Financial Sector']
+
+const heroQuickWins = [
+  'Branded client portals & secure document exchange on your domain',
+  'Website workflows wired to CRM, practice tools, and e-sign—not siloed forms',
+  'Managed iteration: compliance, speed, and CRO without hiring an in-house team',
+]
 
 const dashboardMetrics = [
   { value: '+340%', label: 'Lead Growth' },

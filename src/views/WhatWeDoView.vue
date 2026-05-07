@@ -20,6 +20,17 @@
           We don't just build accounting firm websites — we design, automate, and optimise complete digital workflows that reduce admin by up to 70% and help accounting firms, bookkeepers, and financial advisors win more clients.
         </p>
         <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
+        <div class="flex flex-col sm:flex-row gap-4 mt-10 reveal-up" style="transition-delay: 300ms;">
+          <RouterLink to="/contact" class="btn-primary" aria-label="Book a call about digital workflow optimisation for your firm">
+            Book a workflow review
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </RouterLink>
+          <RouterLink to="/services/accounting-portals-crm" class="btn-ghost" aria-label="Explore client portals and CRM for accountants">
+            See portals &amp; CRM
+          </RouterLink>
+        </div>
       </div>
       <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
         <span class="font-sans text-white/30 text-xs tracking-widest uppercase">Scroll</span>

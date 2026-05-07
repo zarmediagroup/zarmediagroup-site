@@ -86,12 +86,17 @@
           <p class="font-sans text-charcoal-600 text-lg leading-relaxed mt-6">
             Whether you call it a <strong>client facing portal</strong>, <strong>client facing accounting portal</strong>, or <strong>client portals for accounting</strong> — we implement it as part of <RouterLink to="/services/website-as-a-service" class="text-navy-900 font-semibold hover:underline">Website as a Service</RouterLink>: managed hosting, updates, and continuous optimisation so the portal stays fast, secure, and on-brand.
           </p>
-          <RouterLink to="/resources" class="btn-primary inline-flex mt-8">
-            Read portal &amp; CRM guides
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </RouterLink>
+          <div class="flex flex-col sm:flex-row gap-4 mt-8">
+            <RouterLink to="/contact" class="btn-primary inline-flex">
+              Discuss your portal brief
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </RouterLink>
+            <RouterLink to="/resources" class="btn-secondary inline-flex">
+              Read guides
+            </RouterLink>
+          </div>
         </div>
         <div class="reveal-up p-8 bg-navy-900 border border-white/10 text-white/70 font-sans text-sm leading-relaxed">
           <p class="mb-4">
