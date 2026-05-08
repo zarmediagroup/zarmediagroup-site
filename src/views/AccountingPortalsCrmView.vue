@@ -21,15 +21,15 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </RouterLink>
-          <RouterLink to="/services/workflow-integration" class="btn-ghost" aria-label="See technical workflow and CRM integration details">
-            Technical Integrations
+          <RouterLink to="/services/client-portal" class="btn-ghost" aria-label="View the client portal and document vault product tour">
+            View client portal
           </RouterLink>
         </div>
         <p class="font-sans text-white/45 text-sm mt-6 reveal-up" style="transition-delay: 350ms;">
-          <RouterLink to="/services/client-portal" class="text-gold-400 hover:underline underline-offset-2">
-            View the admin portal &amp; document vault tour
+          Technical integration details:
+          <RouterLink to="/services/workflow-integration" class="text-gold-400 hover:underline underline-offset-2">
+            Workflow &amp; CRM integration
           </RouterLink>
-          — live screenshots of client management, vault, and audit views.
         </p>
       </div>
     </section>

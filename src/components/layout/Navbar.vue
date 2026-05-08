@@ -43,8 +43,8 @@
                 <RouterLink to="/what-we-do" class="dropdown-item" @click="closeDropdownNow">
                   <span class="dropdown-icon">◆</span>
                   <div>
-                    <div class="dropdown-title">Optimizing Systems</div>
-                    <div class="dropdown-desc">How we drive outcomes</div>
+                    <div class="dropdown-title">How we work</div>
+                    <div class="dropdown-desc">Process &amp; outcomes for firms</div>
                   </div>
                 </RouterLink>
                 <RouterLink to="/about/team" class="dropdown-item" @click="closeDropdownNow">
@@ -72,14 +72,7 @@
                   <span class="dropdown-icon">◆</span>
                   <div>
                     <div class="dropdown-title">Client Portals &amp; CRM</div>
-                    <div class="dropdown-desc">Accounting portals &amp; client-facing CRM</div>
-                  </div>
-                </RouterLink>
-                <RouterLink to="/services/client-portal" class="dropdown-item" @click="closeDropdownNow">
-                  <span class="dropdown-icon">◆</span>
-                  <div>
-                    <div class="dropdown-title">Client portal tour</div>
-                    <div class="dropdown-desc">Document vault &amp; admin workflow</div>
+                    <div class="dropdown-desc">Portals, CRM journeys &amp; product tour link inside</div>
                   </div>
                 </RouterLink>
                 <RouterLink to="/services/website-as-a-service" class="dropdown-item" @click="closeDropdownNow">
@@ -112,9 +105,9 @@
             Resources
           </RouterLink>
 
-          <!-- CTA -->
+          <!-- Primary conversion — single obvious action -->
           <RouterLink to="/contact" class="btn-primary text-xs py-3 px-6 ml-4">
-            Start a Project
+            Book a call
           </RouterLink>
         </div>
 
@@ -162,7 +155,7 @@
             </button>
             <Transition name="accordion">
               <div v-if="mobileSection === 'about'" class="py-2 pl-4">
-                <MobileNavItem to="/what-we-do" label="Optimizing Systems" sub @click="appStore.closeNav()" />
+                <MobileNavItem to="/what-we-do" label="How we work" sub @click="appStore.closeNav()" />
                 <MobileNavItem to="/about/team" label="Meet the Team" sub @click="appStore.closeNav()" />
               </div>
             </Transition>
@@ -182,7 +175,6 @@
             <Transition name="accordion">
               <div v-if="mobileSection === 'services'" class="py-2 pl-4">
                 <MobileNavItem to="/services/accounting-portals-crm" label="Client Portals & CRM" sub @click="appStore.closeNav()" />
-                <MobileNavItem to="/services/client-portal" label="Client portal tour" sub @click="appStore.closeNav()" />
                 <MobileNavItem to="/services/website-as-a-service" label="Website as a Service" sub @click="appStore.closeNav()" />
                 <MobileNavItem to="/services/workflow-integration" label="Workflow Integration" sub @click="appStore.closeNav()" />
                 <MobileNavItem to="/services/compliance-trust" label="Compliance & Trust" sub @click="appStore.closeNav()" />
@@ -196,7 +188,7 @@
           <!-- Mobile CTA -->
           <div class="mt-8 pt-8 border-t border-white/10">
             <RouterLink to="/contact" class="btn-primary w-full justify-center" @click="appStore.closeNav()">
-              Start a Project
+              Book a call
             </RouterLink>
             <div class="mt-6 flex items-center gap-6 justify-center">
               <a href="https://linkedin.com/company/zarmediagroup" target="_blank" rel="noopener" class="text-white/40 hover:text-white transition-colors">

@@ -113,7 +113,7 @@
 
           <div class="mt-8">
             <RouterLink to="/contact" class="btn-ghost text-xs py-3 px-5">
-              Start a Project
+              Book a call
             </RouterLink>
           </div>
         </div>
@@ -162,7 +162,6 @@ const companyLinks = [
 
 const serviceLinks = [
   { to: '/services/accounting-portals-crm', label: 'Client Portals & CRM' },
-  { to: '/services/client-portal', label: 'Client Portal Tour' },
   { to: '/services/website-as-a-service', label: 'Website as a Service' },
   { to: '/services/workflow-integration', label: 'Workflow Integration' },
   { to: '/services/compliance-trust', label: 'Compliance & Trust' },
