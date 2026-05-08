@@ -75,6 +75,13 @@
                     <div class="dropdown-desc">Accounting portals &amp; client-facing CRM</div>
                   </div>
                 </RouterLink>
+                <RouterLink to="/services/client-portal" class="dropdown-item" @click="closeDropdownNow">
+                  <span class="dropdown-icon">◆</span>
+                  <div>
+                    <div class="dropdown-title">Client portal tour</div>
+                    <div class="dropdown-desc">Document vault &amp; admin workflow</div>
+                  </div>
+                </RouterLink>
                 <RouterLink to="/services/website-as-a-service" class="dropdown-item" @click="closeDropdownNow">
                   <span class="dropdown-icon">◆</span>
                   <div>
@@ -175,6 +182,7 @@
             <Transition name="accordion">
               <div v-if="mobileSection === 'services'" class="py-2 pl-4">
                 <MobileNavItem to="/services/accounting-portals-crm" label="Client Portals & CRM" sub @click="appStore.closeNav()" />
+                <MobileNavItem to="/services/client-portal" label="Client portal tour" sub @click="appStore.closeNav()" />
                 <MobileNavItem to="/services/website-as-a-service" label="Website as a Service" sub @click="appStore.closeNav()" />
                 <MobileNavItem to="/services/workflow-integration" label="Workflow Integration" sub @click="appStore.closeNav()" />
                 <MobileNavItem to="/services/compliance-trust" label="Compliance & Trust" sub @click="appStore.closeNav()" />
@@ -219,7 +227,7 @@ const isAboutActive = computed(() =>
   ['WhatWeDo', 'Team'].includes(route.name)
 )
 const isServicesActive = computed(() =>
-  ['WebsiteService', 'WorkflowIntegration', 'ComplianceTrust', 'AccountingPortalsCrm'].includes(route.name)
+  ['WebsiteService', 'WorkflowIntegration', 'ComplianceTrust', 'AccountingPortalsCrm', 'ClientPortal'].includes(route.name)
 )
 
 function openDropdown(name) {

@@ -22,6 +22,7 @@ const sitemapStaticPathList = [
   '/services/website-as-a-service',
   '/services/workflow-integration',
   '/services/accounting-portals-crm',
+  '/services/client-portal',
   '/services/compliance-trust',
   '/resources',
   '/contact',

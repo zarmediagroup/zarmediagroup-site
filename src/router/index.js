@@ -73,10 +73,23 @@ const routes = [
     meta: {
       title: 'Client Portals & CRM for Accountants | Zar Media Group',
       description:
-        'Client-facing accounting portals and CRM-connected workflows for South African firms: client portals for accounting, compliance portal, accounting portal, and client-facing CRM on your website.',
+        'Client-facing accounting portals and CRM-connected workflows for South African firms: client portals for accounting, compliance portal, accounting portal, client-facing CRM, and an optional client document portal with admin dashboard tour.',
       keywords:
-        'CRM system accountants, client portals for accounting, compliance portal, client facing portal, accounting portal, client facing CRM, client facing accounting portal',
+        'CRM system accountants, client portals for accounting, compliance portal, client facing portal, accounting portal, client facing CRM, client facing accounting portal, accounting client portal, document vault',
       canonical: '/services/accounting-portals-crm',
+    },
+  },
+  {
+    path: '/services/client-portal',
+    name: 'ClientPortal',
+    component: () => import('@/views/ClientPortalView.vue'),
+    meta: {
+      title: 'Accounting Client Portal & Document Vault | Zar Media Group',
+      description:
+        'Tour Zar Media Group’s SA accounting client portal (demo screenshots — not real clients): client directory, all-documents queue, profiles & vault. Tax, payroll & POPIA-conscious workflows.',
+      keywords:
+        'accounting client portal South Africa, client document portal, document vault accounting firm, POPIA client portal, tax document portal accountants, Zar Media Group',
+      canonical: '/services/client-portal',
     },
   },
   {

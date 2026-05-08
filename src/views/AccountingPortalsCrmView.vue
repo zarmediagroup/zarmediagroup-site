@@ -25,6 +25,12 @@
             Technical Integrations
           </RouterLink>
         </div>
+        <p class="font-sans text-white/45 text-sm mt-6 reveal-up" style="transition-delay: 350ms;">
+          <RouterLink to="/services/client-portal" class="text-gold-400 hover:underline underline-offset-2">
+            View the admin portal &amp; document vault tour
+          </RouterLink>
+          — live screenshots of client management, vault, and audit views.
+        </p>
       </div>
     </section>
 
@@ -217,7 +223,7 @@ const faqs = [
 useSeoMeta({
   title: 'Client Portals & CRM for Accountants | Zar Media Group',
   description:
-    'Client-facing portals and CRM integration for accounting firms in South Africa: accounting portal, compliance portal, client portals for accounting, and client-facing CRM on your website — built for POPIA-conscious workflows.',
+    'Client-facing portals and CRM integration for accounting firms in South Africa: accounting portal, compliance portal, client portals for accounting, client-facing CRM, plus an optional client document portal with admin dashboard — built for POPIA-conscious workflows.',
   keywords:
     'CRM system accountants, client portals for accounting, compliance portal, client facing portal, accounting portal, client facing CRM, client facing accounting portal, CRM integration accountants South Africa',
   canonical: '/services/accounting-portals-crm',
