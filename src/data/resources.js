@@ -79,8 +79,10 @@ export const resources = [
     type: 'Guide',
     category: 'guides',
     title: 'Best Client Portal for Small Accounting Firms: 2026 Comparison',
+    /** Shorter SERP title; on-page H1 stays `title`. */
+    seoTitle: 'Best Client Portals for Small Firms (2026) | Compare & Save Admin',
     excerpt:
-      'Comparing the top client portal solutions for small accounting practices in South Africa — including build vs buy, costs, and integration capabilities.',
+      'Build vs buy for SA practices: real cost ranges, Xero & DocuSign integration, POPIA-friendly hosting — plus when a branded portal on your own site beats another SaaS login.',
     keywords: 'best client portal small accounting firms, client portal accounting South Africa, accounting firm portal comparison, Xero client portal, accounting document portal, build vs buy client portal',
     author: 'Zubayr Abdullatief',
     authorInitials: 'ZA',
@@ -150,8 +152,9 @@ export const resources = [
     type: 'Guide',
     category: 'guides',
     title: 'Accounting Firm Website Design: The Complete 2026 Guide',
+    seoTitle: 'Accounting Firm Website Design (2026) | Leads, Trust & POPIA',
     excerpt:
-      'Everything your accounting firm website needs to generate leads, build trust, and comply with South African financial sector regulations.',
+      'Pages you need, trust & lead-gen patterns, POPIA cookie consent, and fast Core Web Vitals — a practical checklist for South African accounting & tax practices before you redesign.',
     keywords: 'accounting firm website design, accountant website design South Africa, financial services website, accounting firm website guide, website for accountants 2026, professional accountant website',
     author: 'Zubayr Abdullatief',
     authorInitials: 'ZA',

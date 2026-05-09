@@ -477,11 +477,11 @@ const faqs = [
 ]
 
 useSeoMeta({
-  title: 'Zar Media Group | Managed Websites & Client Portals for Accountants',
+  title: 'Zar Media Group | Managed Websites & Client Portals for Accountants (SA)',
   description:
-    'Zar Media Group helps accountants and financial firms cut admin, automate workflows, and build compliant digital presences. Managed websites + client portals for South African financial professionals.',
+    'Cut admin and grow enquiries — managed accounting firm websites, branded client portals & CRM-connected workflows. POPIA-aware builds for South Africa’s accountants, bookkeepers & FSPs. See services & contact.',
   keywords:
-    'website for accountants, managed website financial advisors, client portal for accountants, accounting firm website design, CRM integration accountants, compliant website financial services, South Africa',
+    'Zar Media Group, website for accountants South Africa, managed website financial advisors, client portal accountants, accounting firm website design, CRM integration accountants, compliant website financial services',
   canonical: '/',
   schemas: [
     SCHEMAS.organization(),

@@ -33,6 +33,12 @@ function normalizePathname(pathname) {
   return pathname
 }
 
+/** Legacy WordPress/Elementor URLs → consolidated resources (301-equivalent for SEO). */
+const LEGACY_REDIRECTS = {
+  '/elementor-193': '/resources/best-client-portal-small-accounting-firms',
+  '/elementor-504': '/resources/accounting-firm-website-design-guide',
+}
+
 export const config = {
   matcher: ['/((?!api/).*)'],
 }
@@ -45,6 +51,11 @@ export default function middleware(request) {
 
   const lastSeg = pathname.split('/').pop() || ''
   if (lastSeg.includes('.')) return next()
+
+  const legacyTarget = LEGACY_REDIRECTS[pathname]
+  if (legacyTarget) {
+    return Response.redirect(new URL(legacyTarget, request.url).href, 308)
+  }
 
   if (staticSet.has(pathname)) return next()
 

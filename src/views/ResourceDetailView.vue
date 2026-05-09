@@ -231,11 +231,11 @@ const relatedResources = computed(() => {
 
 // ── Per-article SEO — all reactive computed refs so they update on slug change ──
 
-const seoTitle = computed(() =>
-  resource.value
-    ? `${resource.value.title} | Zar Media Group`
-    : 'Resource Not Found | Zar Media Group'
-)
+const seoTitle = computed(() => {
+  if (!resource.value) return 'Resource Not Found | Zar Media Group'
+  if (resource.value.seoTitle) return resource.value.seoTitle
+  return `${resource.value.title} | Zar Media Group`
+})
 
 const seoDescription = computed(() =>
   resource.value?.excerpt ??

@@ -239,11 +239,11 @@ onMounted(() => setTimeout(initReveal, 50))
 const selectedMember = ref(null)
 
 useSeoMeta({
-  title: 'Our Team | Zar Media Group — Financial Digital Experts',
+  title: 'Meet the Team | Zar Media Group — SA Specialists for Accounting & FSP Websites',
   description:
-    'Meet the strategists, designers, and compliance specialists behind Zar Media Group. A dedicated team serving accountants and financial service providers across South Africa.',
+    'Who builds Zar Media Group’s websites and portals? Meet Cape Town–based strategists, designers & engineers focused on accountants, advisors & FSPs — POPIA-aware workflows, CRM integrations & managed compliance.',
   keywords:
-    'Zar Media Group team, financial digital agency South Africa, accounting website specialists, financial sector web design experts',
+    'Zar Media Group team, accounting website agency South Africa, financial digital specialists Cape Town, FSP website team SA, Zar Media leadership',
   canonical: '/about/team',
   schemas: [
     SCHEMAS.breadcrumb([

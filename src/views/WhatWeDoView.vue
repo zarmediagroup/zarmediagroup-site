@@ -217,11 +217,11 @@ const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 useSeoMeta({
-  title: 'How We Work | Digital Workflow Optimisation for Accounting Firms',
+  title: 'How We Work | Websites, Portals & Workflow Automation for Accountants',
   description:
-    'See how Zar Media Group helps accounting firms reduce admin, improve client intake, and grow revenue through managed websites and CRM workflow integration. Serving South Africa.',
+    'Our process: discovery → compliant UX → integrations (CRM, Xero, DocuSign) → launch → ongoing SEO & CRO. Built for SA accounting firms that want less admin and more qualified leads.',
   keywords:
-    'digital workflow optimisation accountants, accounting firm website design, how to reduce admin accounting firms, financial sector digital transformation, CRM integration bookkeepers, South Africa',
+    'how Zar Media Group works, accounting firm digital process, workflow optimisation accountants, CRM integration bookkeepers South Africa, managed website methodology accountants',
   canonical: '/what-we-do',
   schemas: [
     SCHEMAS.breadcrumb([
