@@ -220,69 +220,6 @@ export const resources = [
     ],
   },
   {
-    slug: 'chen-associates-case-study',
-    type: 'Case Study',
-    category: 'case-studies',
-    title: 'How Chen & Associates Grew Leads by 340% in 90 Days',
-    excerpt:
-      'A detailed look at how a 3-partner accounting firm in Johannesburg transformed their online presence and automated their client intake with Zar Media Group.',
-    keywords: 'accounting firm lead generation, accounting website case study, Zar Media Group case study, accounting firm digital marketing, Johannesburg accounting firm website, accounting firm SEO results',
-    author: 'Mubarak Haron',
-    authorInitials: 'MH',
-    authorRole: 'Head of SEO & Content Strategy',
-    authorPhoto: '/mubarak-haron-zar-media-group.png',
-    image: '/accounting-firm-seo-metrics-analytics.jpg',
-    imageAlt: 'SEO metrics and analytics dashboard showing 340% lead growth for Chen Associates accounting firm',
-    readTime: '6 min',
-    date: 'Dec 2025',
-    dateISO: '2025-12-10',
-    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>',
-    gradientFrom: '#1a1a1a',
-    gradientTo: '#333333',
-    content: [
-      {
-        type: 'intro',
-        text: 'Chen & Associates is a three-partner accounting and tax advisory firm based in Sandton, Johannesburg. Like many practices of their size, they had an outdated website that failed to reflect the quality of their work — and a client intake process that relied entirely on phone calls and email chains.',
-      },
-      {
-        type: 'heading',
-        text: 'The Challenge',
-      },
-      {
-        type: 'paragraph',
-        text: 'Before engaging Zar Media Group, Chen & Associates averaged 4–6 inbound enquiries per month from their website. Their site had not been updated since 2019, had no mobile optimisation, and ranked on page 3 of Google for their primary service keywords. Their client onboarding process required an average of 11 email exchanges before a new client was set up in their system.',
-      },
-      {
-        type: 'heading',
-        text: 'The Solution',
-      },
-      {
-        type: 'paragraph',
-        text: 'Zar Media Group redesigned the Chen & Associates website from the ground up on our Professional Website as a Service plan. The new site featured a mobile-first design, a clear service hierarchy with dedicated landing pages for tax advisory, audit, and bookkeeping services, and an automated client intake form that integrated directly with their Xero practice management platform. We also implemented a targeted SEO strategy focused on high-intent keywords in the Sandton and Johannesburg North market.',
-      },
-      {
-        type: 'heading',
-        text: 'The Results — 90 Days Post-Launch',
-      },
-      {
-        type: 'paragraph',
-        text: 'Within 90 days of the new website launching, Chen & Associates saw website enquiries increase from an average of 5 per month to 22 per month — a 340% increase. Their average ranking position for "accountant Sandton" moved from position 28 to position 4. Client onboarding time dropped from 11 email exchanges to an average of 2, thanks to the automated intake form. The partners estimated a saving of 6–8 hours of admin per week across the firm.',
-      },
-      {
-        type: 'heading',
-        text: 'What Made the Difference',
-      },
-      {
-        type: 'paragraph',
-        text: '"What surprised us most was how quickly the SEO results came through," said the managing partner. "We expected to wait 6 months for Google rankings to improve. We saw meaningful movement within 6 weeks. And the client portal has genuinely changed how we operate — clients love the self-service aspect, and our admin load has dropped significantly."',
-      },
-      {
-        type: 'cta',
-        text: 'Want results like Chen & Associates? Get in touch to discuss your firm\'s digital transformation.',
-      },
-    ],
-  },
-  {
     slug: 'pinnacle-tax-case-study',
     type: 'Case Study',
     category: 'case-studies',
@@ -405,6 +342,73 @@ export const resources = [
       {
         type: 'cta',
         text: 'Ready to build digital authority in your niche? Talk to our team about a content and website strategy.',
+      },
+    ],
+  },
+  {
+    slug: 'abc-inc-chartered-accountants-website-case-study',
+    type: 'Case Study',
+    category: 'case-studies',
+    title: 'ABC INC: Chartered Accountants Website & Client Journey (Cape Town)',
+    seoTitle: 'ABC INC Accounting Website Case Study (Cape Town) | Zar Media Group',
+    excerpt:
+      'How we delivered a SAICA-forward, POPIA-conscious public site for a Cape Town chartered accounting practice — with clear services, client portal hand-off, and structured lead capture.',
+    keywords:
+      'ABC INC accountants Cape Town, chartered accountant website South Africa, SAICA accounting firm website, accounting website case study, Zar Media Group portfolio, A Level Business Consultants website, professional accountant web design South Africa',
+    author: 'Zubayr Abdullatief',
+    authorInitials: 'ZA',
+    authorRole: 'Founder & Chief Executive Officer',
+    authorPhoto: '/zubayr-abdullatief-zar-media-group.png',
+    image: '/accounting-firm-office-cape-town.png',
+    imageAlt: 'Cape Town professional accounting firm environment — case study for ABC INC website by Zar Media Group',
+    readTime: '6 min',
+    date: 'May 2026',
+    dateISO: '2026-05-14',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>',
+    gradientFrom: '#0f172a',
+    gradientTo: '#1e293b',
+    content: [
+      {
+        type: 'intro',
+        text: 'Zar Media Group designed and launched the public website for ABC INC — a SAICA-registered chartered accounting practice serving South African businesses from Cape Town. The production site runs on alevelbusinessconsultants.co.za; on-site branding presents the practice as ABC INC, with chartered accountant positioning, clear regulatory context (SAICA, CIPC, SARS, POPIA), and practical paths for prospects to book time or explore services.',
+      },
+      {
+        type: 'heading',
+        text: 'What the practice needed',
+      },
+      {
+        type: 'paragraph',
+        text: 'Professional services buyers decide in seconds. The firm needed a site that immediately signals chartered quality, explains service lines without overwhelming jargon, and routes visitors toward a consultation or a structured next step — while staying appropriate for a regulated, trust-heavy category.',
+      },
+      {
+        type: 'heading',
+        text: 'What we built',
+      },
+      {
+        type: 'paragraph',
+        text: 'We implemented a structured information architecture: hero positioning and proof points, scannable service modules (annual financial statements, bookkeeping, tax, CIPC, advisory), a transparent “how we work” narrative, illustrative engagement scenarios (clearly labelled as anonymised illustrations — not performance claims), testimonials, and a bookkeeping cost illustration with honest framing as an estimate — not a quote.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Lead capture is intentional: consultation scheduling, service exploration, and a visible path to the client portal — so logged-in client work and public marketing feel like one brand. Technical delivery prioritises fast load, accessible typography, and mobile-first layouts so Google and users see the same quality the firm delivers offline.',
+      },
+      {
+        type: 'heading',
+        text: 'SEO, trust, and backlinks',
+      },
+      {
+        type: 'paragraph',
+        text: 'For search engines, the case study page you are reading provides a relevant, crawlable endorsement on zarmediagroup.com pointing to the client domain — a natural editorial link. For humans, it shows prospects that we ship real accounting-sector sites, not generic templates. We recommend the client keeps a clear credit link from their footer (for example “Website by Zar Media Group”) so authority flows both ways and visitors can verify the relationship.',
+      },
+      {
+        type: 'external',
+        text: 'Explore the live ABC INC experience (client portal, services, booking, and compliance messaging) on the production domain.',
+        href: 'https://www.alevelbusinessconsultants.co.za/',
+        label: 'Visit alevelbusinessconsultants.co.za',
+      },
+      {
+        type: 'cta',
+        text: 'Building or refreshing your accounting firm website? Ask us about Website as a Service and portal-ready launches.',
       },
     ],
   },

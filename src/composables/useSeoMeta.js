@@ -156,7 +156,7 @@ export const SCHEMAS = {
       },
       legalName: 'ZARMEDIAGROUP (PTY) LTD',
       description:
-        'Managed website and workflow integration solutions for accountants and financial service providers across South Africa.',
+        'Client portals built and managed for accountants and financial service providers across South Africa—with firm websites, intake, and workflows kept in the same managed programme.',
       foundingDate: '2024',
       identifier: {
         '@type': 'PropertyValue',
@@ -242,7 +242,7 @@ export const SCHEMAS = {
         name: 'Digital Services for Accountants',
         itemListElement: [
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Client Portals & CRM for Accountants' } },
-          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website as a Service' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website as a Service (firm site managed with your portal)' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workflow Integration' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Compliance & Trust' } },
         ],

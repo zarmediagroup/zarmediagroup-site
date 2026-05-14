@@ -241,9 +241,9 @@ function handleNewsletterSubmit() {
 
 const faqs = [
   {
-    question: 'How do I reduce admin for my accounting firm using a website?',
+    question: 'How do I reduce admin for my accounting firm with a client portal?',
     answer:
-      'Reducing admin for your accounting firm starts with connecting your website to your practice management systems. Online enquiry forms that auto-populate your CRM, self-service appointment booking, automated document collection portals, and e-signature integrations can eliminate hours of manual work every week.',
+      'Start by moving repeatable client work out of email: secure document exchange, checklist-driven uploads, e-signatures, and CRM-ready intake. When your portal and firm website share the same managed stack, fewer enquiries fall through the cracks and your team stops re-keying data.',
   },
   {
     question: 'What should an accounting firm website include?',
@@ -258,7 +258,7 @@ const faqs = [
   {
     question: 'Is Website as a Service right for a small bookkeeping practice?',
     answer:
-      'Yes — our Essentials plan is specifically designed for sole practitioners and small bookkeeping practices. You get a professionally designed, fully managed website from R2,999/month, which typically generates ROI within the first month by attracting even one new client.',
+      'Yes — our Essentials plan is specifically designed for sole practitioners and small bookkeeping practices. You get a professionally designed firm website plus portal-ready foundations from R2,999/month, which typically generates ROI within the first month by attracting even one new client.',
   },
   {
     question: 'How does Zar Media Group help with financial sector compliance on websites?',

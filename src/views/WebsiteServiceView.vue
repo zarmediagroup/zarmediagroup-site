@@ -20,7 +20,7 @@
           <span class="text-gradient">for Accountants</span>
         </h1>
         <p class="font-sans text-white/60 text-lg max-w-2xl leading-relaxed reveal-up" style="transition-delay: 200ms;">
-          A fully managed, continuously optimised accounting firm website on a monthly subscription. No one-time builds that age and decay — a living digital asset that generates leads and reduces admin every single month.
+          Your <strong class="text-white/80">firm website on a monthly subscription</strong>, continuously optimised—managed alongside the <strong class="text-white/80">client portal and intake stack</strong> so marketing, compliance, and day-to-day client work stay aligned. No one-off builds that quietly rot.
         </p>
         <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
 
@@ -53,7 +53,7 @@
           </h2>
           <div class="gold-divider"></div>
           <p class="font-sans text-charcoal-600 text-lg leading-relaxed mt-6">
-            Traditional website projects fail accounting firms because they're one-time builds that become outdated within months. Our <strong>Website as a Service for the financial sector</strong> model ensures your online presence is always current, always optimised, and always converting new clients.
+            Traditional website projects fail accounting firms because they're disconnected from how clients actually work with you. Our <strong>Website as a Service for the financial sector</strong> keeps your public site current and converting—while we maintain it as part of the same managed programme as your <strong>client portal and workflows</strong>.
           </p>
         </div>
 
@@ -292,9 +292,9 @@ const roiUplift = computed(() => projectedRevenue.value - currentRevenue.value)
 useSeoMeta({
   title: 'Website as a Service for Accountants | Zar Media Group',
   description:
-    'A fully managed, continuously optimised website for accountants and financial advisors. No one-time builds — ongoing excellence with guaranteed ROI. Website as a Service for the financial sector.',
+    'Firm website managed alongside your client portal—continuously optimised for accountants and financial advisors. Website as a Service keeps your public site and portal-led workflows aligned.',
   keywords:
-    'Website as a Service financial sector, managed website for accountants, accounting firm website design, website for financial advisors, WaaS South Africa, managed accounting website',
+    'Website as a Service financial sector, client portal accountants, managed firm website, accounting firm website design, website for financial advisors, WaaS South Africa, managed accounting website',
   canonical: '/services/website-as-a-service',
   schemas: [
     SCHEMAS.breadcrumb([
@@ -305,13 +305,13 @@ useSeoMeta({
     SCHEMAS.service({
       name: 'Website as a Service for Accountants',
       description:
-        'A fully managed, continuously optimised accounting firm website. Includes design, development, hosting, compliance review, SEO, and conversion optimisation — all on a monthly subscription.',
+        'Managed accounting firm website on a monthly subscription—design, hosting, compliance, SEO, and CRO—delivered as part of the same programme as your client portal and connected workflows.',
     }),
     SCHEMAS.faqPage([
       {
         question: 'What is Website as a Service (WaaS) for accounting firms?',
         answer:
-          'Website as a Service is a monthly subscription model where Zar Media Group designs, builds, hosts, maintains, and continuously optimises your accounting firm website. Unlike traditional one-time builds, WaaS ensures your site never becomes outdated and keeps generating leads month after month.',
+          'Website as a Service is a monthly subscription where Zar Media Group designs, builds, hosts, maintains, and continuously optimises your firm website. It is structured to stay aligned with your client portal and intake automations so prospects and logged-in clients see one coherent, compliant experience.',
       },
       {
         question: 'How much does a managed website for accountants cost?',

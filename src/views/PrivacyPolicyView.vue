@@ -33,8 +33,8 @@
           <h2 class="font-serif text-navy-900 text-2xl mb-4 mt-10">1. Who We Are</h2>
           <div class="gold-divider mb-6"></div>
           <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
-            Zar Media Group is a B2B digital agency specialising in managed websites, workflow integration, and
-            compliance-focused digital solutions for accountants and financial service providers.
+            Zar Media Group is a B2B digital agency specialising in client portals, workflow integration, firm websites managed alongside those portals,
+            and compliance-focused digital solutions for accountants and financial service providers.
           </p>
           <ul class="legal-list">
             <li><strong>Legal Name:</strong> ZARMEDIAGROUP (PTY) LTD</li>
@@ -61,7 +61,7 @@
             <li>Newsletter subscription email</li>
           </ul>
           <p class="font-sans text-charcoal-500 text-sm leading-relaxed mt-2">
-            When you submit our contact form, your message is delivered to our inbox through our website hosting
+            When you use our contact page (chat assistant or enquiry flow), your message is delivered to our inbox through our website hosting
             infrastructure and <strong>Resend</strong> (see section 5).
           </p>
 
@@ -97,7 +97,7 @@
           <h2 class="font-serif text-navy-900 text-2xl mb-4 mt-10">4. Legal Basis for Processing (POPIA &amp; GDPR)</h2>
           <div class="gold-divider mb-6"></div>
           <ul class="legal-list">
-            <li><strong>Consent:</strong> Where you have given clear consent (e.g. newsletter sign-up, contact form submission, and analytics via our cookie banner when you choose Accept).</li>
+            <li><strong>Consent:</strong> Where you have given clear consent (e.g. newsletter sign-up, contact page submission, and analytics via our cookie banner when you choose Accept).</li>
             <li><strong>Legitimate Interest:</strong> To improve our services, keep our website secure, and respond to enquiries (where not overridden by your choices).</li>
             <li><strong>Legal Obligation:</strong> Where we are required to retain or disclose data by law.</li>
             <li><strong>Contractual Necessity:</strong> Where processing is necessary to deliver agreed services.</li>
@@ -111,7 +111,7 @@
           </p>
           <ul class="legal-list">
             <li><strong>Google LLC</strong> — for website analytics via Google Analytics 4 when you accept analytics cookies (data may be processed outside South Africa; Google provides appropriate safeguards such as Standard Contractual Clauses where applicable)</li>
-            <li><strong>Resend, Inc.</strong> — to transmit contact form messages to our team by email (message content includes the information you submitted)</li>
+            <li><strong>Resend, Inc.</strong> — to transmit contact page enquiries to our team by email (message content includes the information you submitted)</li>
             <li><strong>Vercel Inc.</strong> — website hosting and delivery of our web application (may process technical data such as IP address and request logs as part of providing the service)</li>
             <li><strong>Email service providers</strong> — for newsletter delivery (only with your consent)</li>
             <li><strong>Legal authorities</strong> — where required by South African law or court order</li>
@@ -122,7 +122,7 @@
           <h2 class="font-serif text-navy-900 text-2xl mb-4 mt-10">6. Data Retention</h2>
           <div class="gold-divider mb-6"></div>
           <ul class="legal-list">
-            <li><strong>Contact form enquiries:</strong> Retained for 3 years from last contact</li>
+            <li><strong>Contact page enquiries:</strong> Retained for 3 years from last contact</li>
             <li><strong>Newsletter subscriptions:</strong> Retained until you unsubscribe</li>
             <li><strong>Analytics data:</strong> Retained for 14 months in Google Analytics (default)</li>
             <li><strong>Client project data:</strong> Retained for 5 years after project completion for legal purposes</li>

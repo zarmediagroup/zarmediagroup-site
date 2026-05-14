@@ -18,22 +18,22 @@
         <!-- Hero Text -->
         <div class="hero-content">
           <div class="reveal-up">
-            <span class="section-label">Financial sector digital agency · South Africa · Client admin automation</span>
+            <span class="section-label">Financial sector digital agency · South Africa · Client portals &amp; admin automation</span>
             <div class="gold-divider"></div>
           </div>
 
           <!--
-            SEO H1: Primary keyword "managed websites" + "accountants" in first heading.
+            SEO H1: Primary focus client portals for accountants; firm website managed in the same programme.
             One H1 per page — never duplicated.
           -->
           <h1 class="font-serif text-display-lg text-white mb-2 leading-tight reveal-up" style="transition-delay: 100ms;">
-            Managed Websites &amp;<br/>
-            <span class="text-gradient">Client Portals</span><br/>
+            Client Portals<br/>
+            <span class="text-gradient">Built &amp; Managed</span><br/>
             for Accountants.
           </h1>
 
           <p class="font-sans text-white/60 text-lg lg:text-xl leading-relaxed mb-6 max-w-lg reveal-up" style="transition-delay: 200ms;">
-            We help <strong class="text-white/80">accounting firms, tax advisors, and bookkeepers</strong> across South Africa <strong class="text-white/80">automate client admin</strong>—fewer document chases, cleaner intake, and a compliant site that converts.
+            We design, launch, and run <strong class="text-white/80">branded client portals</strong> on your domain—secure documents, intake, and handoffs to CRM—while we <strong class="text-white/80">keep your firm website managed</strong> in the same stack so prospects and clients meet one coherent experience.
           </p>
 
           <ul class="font-sans text-white/55 text-sm space-y-2.5 mb-10 max-w-lg reveal-up" style="transition-delay: 250ms;" aria-label="What you get">
@@ -135,7 +135,7 @@
         <RouterLink
           to="/contact"
           class="btn-primary shrink-0 self-center lg:self-auto whitespace-normal text-center px-8"
-          aria-label="Contact Zar Media Group to discuss your accounting firm website"
+          aria-label="Contact Zar Media Group to discuss your client portal and firm website"
         >
           Get in touch
         </RouterLink>
@@ -224,7 +224,7 @@
             </h2>
             <div class="gold-divider reveal-up" style="transition-delay: 150ms;"></div>
             <p class="font-sans text-white/60 text-lg leading-relaxed mb-10 reveal-up" style="transition-delay: 200ms;">
-              Most agencies build websites. We build <strong class="text-white/80">digital business systems</strong> that automate client intake, sync with your accounting software, and comply with financial sector regulations — so you spend less time on admin and more time on billable work.
+              Most agencies ship a brochure site and leave you to duct-tape a portal. We build and manage <strong class="text-white/80">the client portal as the operational hub</strong>—then maintain your <strong class="text-white/80">firm website, intake, and compliance</strong> in the same programme so nothing drifts out of sync.
             </p>
 
             <div class="space-y-6 stagger-children">
@@ -251,7 +251,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
               </RouterLink>
-              <RouterLink to="/what-we-do" class="btn-secondary" aria-label="Learn about our full approach to accounting firm websites">
+              <RouterLink to="/what-we-do" class="btn-secondary" aria-label="Learn about our full approach to portals and firm websites">
                 Our Full Approach
               </RouterLink>
             </div>
@@ -413,15 +413,15 @@
       <div class="relative max-w-3xl mx-auto px-6 lg:px-8 text-center">
         <span class="section-label reveal-up">Ready to Reduce Admin?</span>
         <h2 id="cta-heading" class="font-serif text-display-md text-white mb-6 reveal-up" style="transition-delay: 100ms;">
-          Get a Free Website Audit<br/><em class="text-gold-400">for Your Accounting Firm</em>
+          Get a Free Portal &amp; Site Review<br/><em class="text-gold-400">for Your Accounting Firm</em>
         </h2>
         <div class="gold-divider-center reveal-up" style="transition-delay: 150ms;"></div>
         <p class="font-sans text-white/60 text-lg leading-relaxed mb-10 reveal-up" style="transition-delay: 200ms;">
-          Join 127+ financial professionals who've transformed their digital presence with Zar Media Group. We'll audit your current site and show you exactly how to reduce admin and attract more clients — free, no obligation.
+          Join 127+ financial professionals who've transformed their digital presence with Zar Media Group. We'll review your client portal (or gap), firm website, and handoffs to practice tools—then show how to cut admin and win more qualified work. Free, no obligation.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-up" style="transition-delay: 300ms;">
-          <RouterLink to="/contact" class="btn-primary" aria-label="Schedule a free consultation for your accounting firm website">
-            Get a Free Audit
+          <RouterLink to="/contact" class="btn-primary" aria-label="Schedule a free consultation for your client portal and firm website">
+            Get a Free Review
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>
@@ -452,12 +452,12 @@ const faqs = [
   {
     question: 'How does Zar Media Group help accountants reduce admin?',
     answer:
-      'We build and manage compliant websites integrated with your CRM, accounting software, and client portals — automating repetitive tasks like appointment booking, document collection, and client onboarding. Our clients typically save 8–15 hours of admin per week.',
+      'We build and manage branded client portals on your domain—secure document exchange, intake, reminders, and CRM handoffs—while keeping your firm website managed in the same programme. That removes duplicate logins, siloed forms, and neglected brochure sites. Our clients typically save 8–15 hours of admin per week.',
   },
   {
     question: 'What is Website as a Service (WaaS) for financial firms?',
     answer:
-      'Instead of a one-time website build that decays over time, WaaS is a monthly subscription that gives you a fully managed, continuously optimised digital presence. We handle design, development, hosting, updates, compliance, SEO, and CRO — so you never have to worry about your website again.',
+      'WaaS is our monthly subscription for the whole client-facing stack: client portal operations plus your firm website, hosting, updates, compliance checks, SEO, and CRO. Instead of a one-off build that drifts, you get a continuously improved portal-led experience prospects and clients actually use.',
   },
   {
     question: 'What is the best client portal for small accounting firms?',
@@ -467,7 +467,7 @@ const faqs = [
   {
     question: 'Do you build websites that comply with financial sector regulations?',
     answer:
-      'Yes — compliance is the foundation of everything we build, not an afterthought. Every website we create for financial professionals is reviewed against relevant regulations including GDPR, WCAG 2.1 AA accessibility standards, and local South African financial sector requirements.',
+      'Yes — compliance is the foundation of everything we build, not an afterthought. Every client portal and firm website we ship for financial professionals is reviewed against relevant regulations including GDPR, WCAG 2.1 AA accessibility standards, and local South African financial sector requirements.',
   },
   {
     question: 'Do you serve accounting firms outside South Africa?',
@@ -477,11 +477,11 @@ const faqs = [
 ]
 
 useSeoMeta({
-  title: 'Zar Media Group | Managed Websites & Client Portals for Accountants (SA)',
+  title: 'Zar Media Group | Client Portals for Accountants — Managed Firm Website (SA)',
   description:
-    'Cut admin and grow enquiries — managed accounting firm websites, branded client portals & CRM-connected workflows. POPIA-aware builds for South Africa’s accountants, bookkeepers & FSPs. See services & contact.',
+    'Build and manage branded client portals for SA accounting firms—secure documents, intake, CRM sync—plus your firm website maintained in the same programme. POPIA-aware. Book a strategy call.',
   keywords:
-    'Zar Media Group, website for accountants South Africa, managed website financial advisors, client portal accountants, accounting firm website design, CRM integration accountants, compliant website financial services',
+    'Zar Media Group, client portal accountants South Africa, build client portal accounting firm, manage client portal, accounting client portal, website for accountants South Africa, CRM integration accountants, compliant client portal financial services',
   canonical: '/',
   schemas: [
     SCHEMAS.organization(),
@@ -495,13 +495,13 @@ useSeoMeta({
 const trustBadges = ['GDPR Compliant', 'WCAG 2.1 AA', 'Compliance-First', 'SA Financial Sector']
 
 const heroQuickWins = [
-  'Branded client portals & secure document exchange on your domain',
-  'Website workflows wired to CRM, practice tools, and e-sign—not siloed forms',
-  'Managed iteration: compliance, speed, and CRO without hiring an in-house team',
+  'Branded client portals with secure upload, checklists, and reminders on your domain',
+  'Portal-led workflows to CRM, practice tools, and e-sign—your firm site stays in sync',
+  'Ongoing management: portal uptime, compliance, speed, and CRO without an in-house dev team',
 ]
 
 const dashboardMetrics = [
-  { value: '+340%', label: 'Lead Growth' },
+  { value: '+218%', label: 'Enquiry uplift' },
   { value: '98%', label: 'Uptime' },
   { value: '4.9★', label: 'Reviews' },
 ]
@@ -516,7 +516,7 @@ const outcomeCards = [
 
 const stats = [
   { value: 127, label: 'Financial Clients Served', prefix: '', suffix: '+' },
-  { value: 340, label: 'Average Lead Increase', prefix: '', suffix: '%' },
+  { value: 218, label: 'Peak YoY enquiries', prefix: '', suffix: '%' },
   { value: 98, label: 'Client Retention Rate', prefix: '', suffix: '%' },
   { value: 8, label: 'Years of Excellence', prefix: '', suffix: '+' },
 ]
@@ -533,9 +533,9 @@ const services = [
   {
     title: 'Website as a Service',
     description:
-      'A fully managed, continuously optimised accounting firm website. No one-time builds — a digital asset that grows your practice every month.',
+      'Your marketing site stays fast, on-brand, and compliant—managed alongside your client portal so intake, SEO, and trust signals do not drift apart.',
     link: '/services/website-as-a-service',
-    tags: ['Managed', 'Optimised', 'Compliant'],
+    tags: ['Portal-aligned', 'Optimised', 'Compliant'],
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>',
   },
   {
@@ -559,12 +559,12 @@ const services = [
 const valuePoints = [
   {
     title: 'Financial Sector Exclusive',
-    desc: 'We only build websites for accountants and financial professionals. Deep specialisation means better outcomes.',
+    desc: 'We specialise in accountant client portals and the firm websites that feed them—not generic SMB brochure projects.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>',
   },
   {
     title: 'Compliance-First Architecture',
-    desc: 'Every accounting firm website we build starts with your regulatory requirements — not design preferences.',
+    desc: 'Portal authentication, data flows, and your public site are scoped to your regulatory requirements first—not retrofitted later.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
   },
   {
@@ -575,20 +575,14 @@ const valuePoints = [
 ]
 
 const processSteps = [
-  { title: 'Discovery & Strategy', desc: 'Deep-dive into your firm, clients, and competitive landscape to identify digital opportunities.' },
-  { title: 'Compliance Review', desc: 'Audit South African and international regulatory requirements for your digital presence.' },
-  { title: 'Design & Architecture', desc: 'Build a premium accounting firm website that converts prospects and inspires trust.' },
-  { title: 'Integration & Launch', desc: 'Connect your website to your CRM, Xero/QuickBooks, and workflows, then launch.' },
-  { title: 'Optimise & Grow', desc: 'Continuous monitoring, A/B testing, and admin automation improvements every month.' },
+  { title: 'Discovery & Strategy', desc: 'Map client journeys, portal workflows, and where your firm site should convert vs. hand off to logged-in clients.' },
+  { title: 'Compliance Review', desc: 'Audit South African and international regulatory requirements for portal data, marketing capture, and your public site.' },
+  { title: 'Design & Architecture', desc: 'Design the client portal experience and a firm website that routes prospects cleanly into intake and portal access.' },
+  { title: 'Integration & Launch', desc: 'Connect portal and site to your CRM, Xero/QuickBooks, e-sign, and practice tools—then launch as one programme.' },
+  { title: 'Optimise & Grow', desc: 'Continuous monitoring of portal usage, admin saves, and public-site CRO—iterated monthly, not once a year.' },
 ]
 
 const testimonials = [
-  {
-    quote: 'Zar Media Group transformed our online presence completely. We saw a 340% increase in qualified leads within the first quarter. They understand the financial sector like no other agency in South Africa.',
-    author: 'Michael Chen, CA(SA)',
-    role: 'Managing Partner, Chen & Associates',
-    initials: 'MC',
-  },
   {
     quote: 'Finally an agency that speaks our language. They knew our compliance requirements before we even mentioned them. Our new site has become our best business development tool.',
     author: 'Sarah Johnson',

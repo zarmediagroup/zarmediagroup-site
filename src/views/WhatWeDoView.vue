@@ -17,7 +17,7 @@
           for <span class="text-gradient">Accounting Firms</span>
         </h1>
         <p class="font-sans text-white/60 text-lg max-w-2xl leading-relaxed reveal-up" style="transition-delay: 200ms;">
-          We don't just build accounting firm websites — we design, automate, and optimise complete digital workflows that reduce admin by up to 70% and help accounting firms, bookkeepers, and financial advisors win more clients.
+          We start with <strong class="text-white/80">client portals and intake workflows</strong> your team runs every day—then design, automate, and optimise the firm website and integrations around them so you cut admin by up to 70% and win more qualified clients.
         </p>
         <div class="gold-divider mt-8 reveal-up" style="transition-delay: 250ms;"></div>
         <div class="flex flex-col sm:flex-row gap-4 mt-10 reveal-up" style="transition-delay: 300ms;">
@@ -75,7 +75,7 @@
             </h2>
             <div class="gold-divider mb-8"></div>
             <p class="font-sans text-charcoal-600 text-base leading-relaxed mb-8">
-              Our approach to <strong>accounting firm website design</strong> starts with your business outcomes. We connect your online presence to your CRM, automate client intake, and ensure every touchpoint reflects the trust and expertise your clients expect.
+              Our approach starts with <strong>how clients actually engage your firm</strong>—portal tasks, document exchange, and CRM-ready intake—then aligns your public site, compliance, and practice tools so nothing sits in a silo.
             </p>
             <div class="space-y-4">
               <div
@@ -194,7 +194,7 @@
         <p class="font-sans text-white/60 mb-8">
           See how we've helped 127+ accounting firms, bookkeepers, and financial advisors across South Africa transform their digital presence and save 8–15 hours of admin per week.
         </p>
-        <RouterLink to="/contact" class="btn-primary" aria-label="Book a strategy call to discuss your accounting firm website">
+        <RouterLink to="/contact" class="btn-primary" aria-label="Book a strategy call to discuss your client portal and firm website">
           Book a Strategy Call
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -217,11 +217,11 @@ const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 useSeoMeta({
-  title: 'How We Work | Websites, Portals & Workflow Automation for Accountants',
+  title: 'How We Work | Client Portals, Firm Websites & Workflow Automation',
   description:
-    'Our process: discovery → compliant UX → integrations (CRM, Xero, DocuSign) → launch → ongoing SEO & CRO. Built for SA accounting firms that want less admin and more qualified leads.',
+    'Our process: discovery → compliant portal & UX → integrations (CRM, Xero, DocuSign) → launch → ongoing improvements. Built for SA accounting firms that want less admin and one joined-up client experience.',
   keywords:
-    'how Zar Media Group works, accounting firm digital process, workflow optimisation accountants, CRM integration bookkeepers South Africa, managed website methodology accountants',
+    'how Zar Media Group works, accounting firm client portal process, workflow optimisation accountants, CRM integration bookkeepers South Africa, managed client portal methodology accountants',
   canonical: '/what-we-do',
   schemas: [
     SCHEMAS.breadcrumb([
@@ -231,7 +231,7 @@ useSeoMeta({
     SCHEMAS.service({
       name: 'Digital Strategy & Workflow Optimisation for Accounting Firms',
       description:
-        'Zar Media Group designs, builds, and continuously optimises digital workflows for accounting firms and financial professionals — reducing admin, automating client intake, and ensuring compliance.',
+        'Zar Media Group designs, builds, and manages client portals and connected firm websites for accounting practices—reducing admin, automating intake, and keeping compliance continuous.',
     }),
   ],
 })
@@ -245,11 +245,11 @@ const problems = [
 ]
 
 const solutions = [
-  'Fully managed website for accountants, continuously optimised for search and conversion',
+  'Client portals built and managed for accountants—with your firm website kept in the same programme',
   'Automated client intake with e-signatures, document upload, and instant CRM sync',
   'CRM integration for accountants connecting Xero, QuickBooks, and HubSpot',
   'Compliance-first architecture covering GDPR, POPIA, and financial sector standards',
-  'Premium accounting firm website design that positions you as the expert in your market',
+  'Premium public-site and portal UX that positions you as the expert in your market',
 ]
 
 const process = [
@@ -336,7 +336,7 @@ const capabilities = [
 
 const results = [
   { value: '127+', label: 'Accounting Firms Served' },
-  { value: '340%', label: 'Avg. Lead Increase' },
+  { value: '218%', label: 'Peak YoY enquiries' },
   { value: '70%', label: 'Admin Reduction' },
   { value: '98%', label: 'Client Retention' },
 ]

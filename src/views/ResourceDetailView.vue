@@ -92,6 +92,25 @@
               {{ block.text }}
             </p>
 
+            <!-- External project link (case studies) -->
+            <div
+              v-else-if="block.type === 'external'"
+              class="my-8 p-6 bg-white border border-navy-900/10 reveal-up"
+            >
+              <p v-if="block.text" class="font-sans text-charcoal-600 text-sm mb-4 leading-relaxed">{{ block.text }}</p>
+              <a
+                :href="block.href"
+                class="btn-primary inline-flex items-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ block.label }}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+            </div>
+
             <!-- CTA block -->
             <div v-else-if="block.type === 'cta'"
                  class="mt-12 p-8 bg-navy-900 reveal-up">

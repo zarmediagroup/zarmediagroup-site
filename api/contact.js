@@ -74,6 +74,13 @@ export default async function handler(req, res) {
   const firmType = clean(body?.firmType)
   const website = clean(body?.website)
   const message = clean(body?.message)
+  const sourceRaw = clean(body?.source).toLowerCase()
+  const sourceLabel =
+    sourceRaw === 'chat_float'
+      ? 'floating chat assistant'
+      : sourceRaw === 'chat'
+        ? 'contact assistant'
+        : 'contact form'
   const services = Array.isArray(body?.services)
     ? body.services.map((s) => clean(s)).filter(Boolean).join(', ')
     : ''
@@ -117,11 +124,16 @@ MESSAGE:
   ${message}
 
 ==============================================
-  Sent via zarmediagroup.com contact form
+  Sent via zarmediagroup.com ${sourceLabel}
 ==============================================
 `.trim()
 
-  const subject = `New Contact Form Submission — ${firstName} ${lastName}`
+  const subject =
+    sourceRaw === 'chat_float'
+      ? `New Floating Chat Enquiry — ${firstName} ${lastName}`.trim()
+      : sourceRaw === 'chat'
+        ? `New Contact Chat Enquiry — ${firstName} ${lastName}`.trim()
+        : `New Contact Form Submission — ${firstName} ${lastName}`
 
   try {
     const r = await fetch('https://api.resend.com/emails', {

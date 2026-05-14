@@ -20,6 +20,7 @@
       </main>
       <SiteFooter />
       <CookieBanner v-if="!appStore.cookiesAccepted" />
+      <FloatingContactChat />
     </template>
   </div>
 </template>
@@ -33,6 +34,7 @@ import PageLoader from '@/components/ui/PageLoader.vue'
 import Navbar from '@/components/layout/Navbar.vue'
 import SiteFooter from '@/components/layout/SiteFooter.vue'
 import CookieBanner from '@/components/ui/CookieBanner.vue'
+import FloatingContactChat from '@/components/contact/FloatingContactChat.vue'
 
 const appStore = useAppStore()
 const router = useRouter()

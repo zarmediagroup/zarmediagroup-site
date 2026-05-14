@@ -90,7 +90,7 @@
           </h2>
           <div class="gold-divider"></div>
           <p class="font-sans text-charcoal-600 text-lg leading-relaxed mt-6">
-            Whether you call it a <strong>client facing portal</strong>, <strong>client facing accounting portal</strong>, or <strong>client portals for accounting</strong> — we implement it as part of <RouterLink to="/services/website-as-a-service" class="text-navy-900 font-semibold hover:underline">Website as a Service</RouterLink>: managed hosting, updates, and continuous optimisation so the portal stays fast, secure, and on-brand.
+            Whether you call it a <strong>client facing portal</strong>, <strong>client facing accounting portal</strong>, or <strong>client portals for accounting</strong> — we deliver it through <RouterLink to="/services/website-as-a-service" class="text-navy-900 font-semibold hover:underline">Website as a Service</RouterLink>: the portal is the operational hub, with your firm website, hosting, updates, and optimisation managed in the same subscription.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 mt-8">
             <RouterLink to="/contact" class="btn-primary inline-flex">
@@ -216,7 +216,7 @@ const faqs = [
   {
     question: 'How is this different from off-the-shelf client portal software?',
     answer:
-      'Off-the-shelf products solve one piece. We implement portals as part of your managed website and connect them to CRM, Xero, QuickBooks, DocuSign, and practice workflows — so the experience matches your brand and your operational reality.',
+      'Off-the-shelf products solve one piece. We build and manage your client portal and connect it to CRM, Xero, QuickBooks, DocuSign, and practice workflows—with your firm website maintained in the same programme so the experience matches your brand and operational reality.',
   },
 ]
 

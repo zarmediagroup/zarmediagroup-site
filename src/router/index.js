@@ -6,11 +6,11 @@ const routes = [
     name: 'Home',
     component: () => import('@/views/HomeView.vue'),
     meta: {
-      title: 'Zar Media Group | Managed Websites & Client Portals for Accountants',
+      title: 'Zar Media Group | Client Portals for Accountants — Managed Firm Website',
       description:
-        'Zar Media Group helps accountants and financial firms cut admin, automate workflows, and build compliant digital presences. Managed websites + client portals for South African financial professionals.',
+        'Zar Media Group builds and manages client portals for accountants—secure documents, intake, CRM sync—while keeping your firm website in the same programme. Serving South African financial professionals.',
       keywords:
-        'website for accountants, managed website financial advisors, client portals for accounting, accounting portal, client portal for accountants, accounting firm website design, Zar Media Group, South Africa',
+        'client portal accountants, build client portal accounting firm, manage client portal, client portals for accounting, accounting portal, website for accountants, accounting firm website design, Zar Media Group, South Africa',
       canonical: '/',
     },
   },
@@ -21,7 +21,7 @@ const routes = [
     meta: {
       title: 'How We Work | Digital Workflow Optimisation for Accounting Firms',
       description:
-        'See how Zar Media Group helps accounting firms reduce admin, improve client intake, and grow revenue through managed websites and workflow integration. Serving financial professionals across South Africa.',
+        'See how Zar Media Group helps accounting firms reduce admin with client portals, CRM-connected intake, and firm websites managed in one programme. Serving financial professionals across South Africa.',
       keywords:
         'digital workflow optimisation accountants, accounting firm website design, how to reduce admin accounting firms, financial sector digital transformation, South Africa',
       canonical: '/what-we-do',
@@ -47,9 +47,9 @@ const routes = [
     meta: {
       title: 'Website as a Service for Accountants | Zar Media Group',
       description:
-        'A fully managed, continuously optimised website for accountants and financial advisors. No one-time builds — ongoing excellence with guaranteed ROI. Website as a Service for financial sector firms.',
+        'Firm website managed alongside your client portal—continuously optimised for accountants and financial advisors. Website as a Service keeps your public site and portal stack aligned.',
       keywords:
-        'Website as a Service financial sector, managed website for accountants, accounting firm website design, website for financial advisors, WaaS South Africa',
+        'Website as a Service financial sector, client portal accountants, managed firm website, accounting firm website design, website for financial advisors, WaaS South Africa',
       canonical: '/services/website-as-a-service',
     },
   },
