@@ -4,19 +4,22 @@
     :class="
       variant === 'floating'
         ? 'h-full min-h-0 flex-1 overflow-hidden p-3 sm:p-4'
-        : 'bg-white border border-navy-900/8 p-5 sm:p-8 lg:p-10 min-h-[560px] max-h-[min(720px,calc(100vh-12rem))]'
+        : 'bg-white border border-navy-900/8 shadow-card-hover min-h-[min(640px,70vh)] max-h-[min(780px,calc(100vh-14rem))] flex flex-col overflow-hidden'
     "
   >
-    <div :class="variant === 'floating' ? 'mb-3 flex-shrink-0' : 'mb-5 flex-shrink-0'">
-      <h2
-        class="font-serif text-navy-900 mb-0"
-        :class="variant === 'floating' ? 'text-lg' : 'text-display-sm'"
-      >
-        {{ variant === 'floating' ? 'Chat' : 'Chat with us' }}
-      </h2>
-      <p v-if="variant === 'page'" class="font-sans text-charcoal-500 text-sm mt-2">
-        Questions or a free audit.
+    <div
+      v-if="variant === 'page'"
+      class="flex-shrink-0 bg-navy-900 px-5 sm:px-8 py-5 border-b border-gold-500/20"
+    >
+      <h2 class="font-serif text-white text-xl sm:text-2xl mb-1">Enquiry assistant</h2>
+      <p class="font-sans text-white/55 text-sm">
+        Tap <strong class="text-white/85">Start</strong>, then choose questions or a free audit.
       </p>
+    </div>
+    <div v-else :class="variant === 'floating' ? 'mb-3 flex-shrink-0' : 'mb-5 flex-shrink-0'">
+      <h2 class="font-serif text-navy-900 mb-0" :class="variant === 'floating' ? 'text-lg' : 'text-display-sm'">
+        Chat
+      </h2>
     </div>
 
     <!-- Bot trap -->
@@ -33,8 +36,12 @@
 
     <div
       ref="scrollRef"
-      class="flex-1 overflow-y-auto pr-1 mb-3"
-      :class="variant === 'floating' ? 'min-h-[88px] space-y-2' : 'min-h-[280px] space-y-3'"
+      class="flex-1 overflow-y-auto mb-3"
+      :class="
+        variant === 'floating'
+          ? 'min-h-[88px] space-y-2 pr-1'
+          : 'min-h-[280px] space-y-3 px-5 sm:px-8'
+      "
       role="log"
       aria-relevant="additions"
       aria-live="polite"
@@ -73,7 +80,7 @@
     </div>
 
     <!-- Success -->
-    <div v-if="phase === 'done'" class="text-center py-5 border-t border-navy-900/10" role="status">
+    <div v-if="phase === 'done'" class="text-center py-5 border-t border-navy-900/10" :class="footerPad" role="status">
       <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center bg-gold-500 border border-gold-500" aria-hidden="true">
         <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
@@ -86,7 +93,7 @@
     </div>
 
     <!-- Intent: what do you want first? -->
-    <div v-else-if="phase === 'intent'" class="border-t border-navy-900/10 pt-3 flex-shrink-0">
+    <div v-else-if="phase === 'intent'" class="border-t border-navy-900/10 pt-3 flex-shrink-0" :class="footerPad">
       <div class="flex flex-col gap-2">
         <button
           v-for="opt in intentOptions"
@@ -101,7 +108,7 @@
     </div>
 
     <!-- Q&A about services -->
-    <div v-else-if="phase === 'qa'" class="border-t border-navy-900/10 pt-3 flex-shrink-0 space-y-2">
+    <div v-else-if="phase === 'qa'" class="border-t border-navy-900/10 pt-3 flex-shrink-0 space-y-2" :class="footerPad">
       <div class="grid grid-cols-2 gap-1.5 max-h-[7.5rem] overflow-y-auto pr-0.5">
         <button
           v-for="t in KNOWLEDGE_TOPICS"
@@ -130,7 +137,7 @@
     </div>
 
     <!-- Intro CTA -->
-    <div v-else-if="phase === 'intro'" class="border-t border-navy-900/10 pt-3 flex-shrink-0">
+    <div v-else-if="phase === 'intro'" class="border-t border-navy-900/10 pt-3 flex-shrink-0" :class="footerPad">
       <button type="button" class="btn-primary w-full text-sm py-2.5" @click="beginIntentStep">
         Start
       </button>
@@ -274,9 +281,9 @@ const leadPath = ref('direct')
 const discussedTopicLabels = ref([])
 
 const intentOptions = [
-  { id: 'services', title: 'Questions' },
-  { id: 'audit', title: 'Free audit' },
-  { id: 'general', title: 'Other' },
+  { id: 'audit', title: 'Free website audit' },
+  { id: 'services', title: 'Questions about our services' },
+  { id: 'general', title: 'Something else' },
 ]
 
 const form = ref({
@@ -296,10 +303,12 @@ const trapId = computed(() => `chatWebsiteTrap-${props.instanceId}`)
 const consentId = computed(() => `chatConsent-${props.instanceId}`)
 const inputId = computed(() => `contact-chat-input-${props.instanceId}`)
 const qaInputId = computed(() => `contact-chat-qa-${props.instanceId}`)
+const footerPad = computed(() => (props.variant === 'page' ? 'px-5 sm:px-8 pb-5' : ''))
 
 const serviceOptions = [
+  { id: 'portal', label: 'Client portal' },
   { id: 'waas', label: 'Website as a Service' },
-  { id: 'workflow', label: 'Workflow' },
+  { id: 'workflow', label: 'Workflow & CRM' },
   { id: 'compliance', label: 'Compliance' },
 ]
 
@@ -426,7 +435,7 @@ function startIntake() {
 function prefillServicesFromDiscussed() {
   const map = {
     waas: 'waas',
-    portals: 'workflow',
+    portals: 'portal',
     workflow: 'workflow',
     compliance: 'compliance',
   }
@@ -595,7 +604,7 @@ async function submitEnquiry() {
 watch(messages, () => scrollToBottom(), { deep: true })
 
 onMounted(() => {
-  pushBot('Hi — questions or a free audit? Tap Start.')
+  pushBot('Hi — I can answer questions about client portals and firm websites, or start a free audit. Tap Start when you are ready.')
   phase.value = 'intro'
 })
 </script>
