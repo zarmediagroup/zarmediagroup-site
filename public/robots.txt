@@ -1,15 +1,28 @@
 User-agent: *
 Allow: /
 
-# Disallow private/admin paths
+# Private app paths
 Disallow: /admin/
 Disallow: /dashboard/
 Disallow: /api/
 Disallow: /private/
 
-# Disallow URL patterns with query params that produce duplicates
+# Legacy WordPress (old site — do not crawl)
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /cgi-sys/
+
+# Legacy Elementor / test pages
+Disallow: /elementor-
+Disallow: /dummy-page/
+
+# WordPress query-string duplicates
+Disallow: /*?*page_id=
+Disallow: /*?*elementor_
+
+# Marketing query params
 Disallow: /*?*utm_
 Disallow: /*?*ref=
 
-# Sitemap location
 Sitemap: https://zarmediagroup.com/sitemap.xml

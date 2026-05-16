@@ -2,6 +2,19 @@ Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
+# ── Legacy WordPress / Elementor SEO (301) ──
+RewriteRule ^web-development/?$ /services/website-as-a-service [R=301,L]
+RewriteRule ^elementor-193/?$ /resources/best-client-portal-small-accounting-firms [R=301,L]
+RewriteRule ^elementor-504/?$ /resources/accounting-firm-website-design-guide [R=301,L]
+RewriteRule ^elementor-[0-9]+.*$ /resources [R=301,L]
+RewriteRule ^resources/how-to-reduce-admin-in-accounting-firm/?$ /resources/how-to-reduce-admin-accounting-firm [R=301,L]
+RewriteRule ^resources/pinnacle-tax-near-story/?$ /resources/pinnacle-tax-case-study [R=301,L]
+RewriteRule ^resources/chen-associates-case-study/?$ /resources/abc-inc-chartered-accountants-website-case-study [R=301,L]
+RewriteRule ^resources/top-6-compliance-accounting-websites/?$ /resources/popia-compliance-accounting-websites [R=301,L]
+RewriteRule ^resources/four-rebuild-requirements/?$ /resources/fsca-website-requirements [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)page_id= [NC]
+RewriteRule ^$ /? [R=301,L]
+
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"

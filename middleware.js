@@ -1,5 +1,12 @@
 import { next } from '@vercel/functions/middleware'
 import { STATIC_PATHS, RESOURCE_SLUGS } from './generated/middleware-paths.js'
+import {
+  normalizePathname,
+  isLegacyGonePath,
+  resolvePathRedirect,
+  resolveResourceSlugRedirect,
+  resolveQueryLegacy,
+} from './src/seo/legacy-seo.js'
 
 const staticSet = new Set(STATIC_PATHS)
 const slugSet = new Set(RESOURCE_SLUGS)
@@ -28,15 +35,21 @@ const NOT_FOUND_HTML = `<!DOCTYPE html>
 </body>
 </html>`
 
-function normalizePathname(pathname) {
-  if (pathname.length > 1 && pathname.endsWith('/')) return pathname.slice(0, -1) || '/'
-  return pathname
+function notFoundResponse() {
+  return new Response(NOT_FOUND_HTML, {
+    status: 404,
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'X-Robots-Tag': 'noindex, follow',
+    },
+  })
 }
 
-/** Legacy WordPress/Elementor URLs → consolidated resources (301-equivalent for SEO). */
-const LEGACY_REDIRECTS = {
-  '/elementor-193': '/resources/best-client-portal-small-accounting-firms',
-  '/elementor-504': '/resources/accounting-firm-website-design-guide',
+function redirectTo(request, targetPath, status = 308) {
+  const dest = new URL(targetPath, request.url)
+  dest.search = ''
+  return Response.redirect(dest.href, status)
 }
 
 export const config = {
@@ -49,35 +62,27 @@ export default function middleware(request) {
 
   if (pathname.startsWith('/api/')) return next()
 
-  const lastSeg = pathname.split('/').pop() || ''
-  if (lastSeg.includes('.')) return next()
+  if (isLegacyGonePath(pathname)) return notFoundResponse()
 
-  const legacyTarget = LEGACY_REDIRECTS[pathname]
-  if (legacyTarget) {
-    return Response.redirect(new URL(legacyTarget, request.url).href, 308)
-  }
+  const queryLegacy = resolveQueryLegacy(url)
+  if (queryLegacy === '/') return redirectTo(request, '/')
+  if (queryLegacy === null) return notFoundResponse()
 
-  if (staticSet.has(pathname)) return next()
+  const pathRedirect = resolvePathRedirect(pathname)
+  if (pathRedirect) return redirectTo(request, pathRedirect)
 
   if (pathname.startsWith('/resources/')) {
     const slug = pathname.slice('/resources/'.length).split('/')[0]
+    const mapped = slug ? resolveResourceSlugRedirect(slug) : null
+    if (mapped) return redirectTo(request, `/resources/${mapped}`)
     if (slug && slugSet.has(slug)) return next()
-    return new Response(NOT_FOUND_HTML, {
-      status: 404,
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'no-store',
-        'X-Robots-Tag': 'noindex, follow',
-      },
-    })
+    return notFoundResponse()
   }
 
-  return new Response(NOT_FOUND_HTML, {
-    status: 404,
-    headers: {
-      'Content-Type': 'text/html; charset=utf-8',
-      'Cache-Control': 'no-store',
-      'X-Robots-Tag': 'noindex, follow',
-    },
-  })
+  const lastSeg = pathname.split('/').pop() || ''
+  if (lastSeg.includes('.')) return next()
+
+  if (staticSet.has(pathname)) return next()
+
+  return notFoundResponse()
 }

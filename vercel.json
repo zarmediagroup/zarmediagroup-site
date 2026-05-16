@@ -9,6 +9,82 @@
       "has": [{ "type": "host", "value": "www.zarmediagroup.com" }],
       "destination": "https://zarmediagroup.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "query", "key": "page_id" }],
+      "destination": "https://zarmediagroup.com/",
+      "permanent": true
+    },
+    {
+      "source": "/web-development",
+      "destination": "/services/website-as-a-service",
+      "permanent": true
+    },
+    {
+      "source": "/web-development/",
+      "destination": "/services/website-as-a-service",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-193",
+      "destination": "/resources/best-client-portal-small-accounting-firms",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-504",
+      "destination": "/resources/accounting-firm-website-design-guide",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-261",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-67-2-2",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-117-2-2",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-155",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/elementor-:id(\\d+)",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/resources/how-to-reduce-admin-in-accounting-firm",
+      "destination": "/resources/how-to-reduce-admin-accounting-firm",
+      "permanent": true
+    },
+    {
+      "source": "/resources/pinnacle-tax-near-story",
+      "destination": "/resources/pinnacle-tax-case-study",
+      "permanent": true
+    },
+    {
+      "source": "/resources/chen-associates-case-study",
+      "destination": "/resources/abc-inc-chartered-accountants-website-case-study",
+      "permanent": true
+    },
+    {
+      "source": "/resources/top-6-compliance-accounting-websites",
+      "destination": "/resources/popia-compliance-accounting-websites",
+      "permanent": true
+    },
+    {
+      "source": "/resources/four-rebuild-requirements",
+      "destination": "/resources/fsca-website-requirements",
+      "permanent": true
     }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
