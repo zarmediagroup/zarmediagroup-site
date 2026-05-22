@@ -168,6 +168,7 @@
     </section>
 
     <!-- ══ RELATED SERVICES ══ -->
+    <SeoRelatedGuides :slugs="pageSeo.relatedGuides" />
     <RelatedServices :exclude="['compliance']" />
 
   </div>
@@ -177,29 +178,32 @@
 import { onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
+import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
+
+const pageSeo = getPageSeo('compliance-trust')
 
 const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 useSeoMeta({
-  title: 'Compliant Website Design for Financial Services | Zar Media Group',
-  description:
-    'Purpose-built compliant digital presence for regulated financial industries. GDPR, POPIA, WCAG 2.1 AA, and financial sector regulation-ready websites for accountants, financial advisors, and tax professionals.',
-  keywords:
-    'compliance portal, client facing accounting portal, compliant website financial services, compliant digital presence regulated industries, GDPR financial website, financial services web compliance, POPIA compliance website, accounting website compliance, WCAG financial website',
-  canonical: '/services/compliance-trust',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
       { name: 'Services', url: '/services' },
       { name: 'Compliance & Trust', url: '/services/compliance-trust' },
     ]),
-    SCHEMAS.service({
+    ...SCHEMAS.servicePage({
       name: 'Compliant Website Design for Financial Services',
       description:
         'Purpose-built compliant digital presence for regulated industries. Every website reviewed against GDPR, POPIA, WCAG 2.1 AA, and South African financial sector regulations.',
+      url: '/services/compliance-trust',
     }),
     SCHEMAS.faqPage([
       {

@@ -251,6 +251,7 @@
     </section>
 
     <!-- ══ RELATED SERVICES ══ -->
+    <SeoRelatedGuides :slugs="pageSeo.relatedGuides" />
     <RelatedServices :exclude="['waas']" />
 
   </div>
@@ -260,8 +261,12 @@
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
+import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
+
+const pageSeo = getPageSeo('website-as-a-service')
 
 const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
@@ -290,22 +295,21 @@ const projectedRevenue = computed(() => Math.round(currentRevenue.value * 2.27))
 const roiUplift = computed(() => projectedRevenue.value - currentRevenue.value)
 
 useSeoMeta({
-  title: 'Website as a Service for Accountants | Zar Media Group',
-  description:
-    'Firm website managed alongside your client portal—continuously optimised for accountants and financial advisors. Website as a Service keeps your public site and portal-led workflows aligned.',
-  keywords:
-    'Website as a Service financial sector, client portal accountants, managed firm website, accounting firm website design, website for financial advisors, WaaS South Africa, managed accounting website',
-  canonical: '/services/website-as-a-service',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
       { name: 'Services', url: '/services' },
       { name: 'Website as a Service', url: '/services/website-as-a-service' },
     ]),
-    SCHEMAS.service({
+    ...SCHEMAS.servicePage({
       name: 'Website as a Service for Accountants',
       description:
         'Managed accounting firm website on a monthly subscription—design, hosting, compliance, SEO, and CRO—delivered as part of the same programme as your client portal and connected workflows.',
+      url: '/services/website-as-a-service',
     }),
     SCHEMAS.faqPage([
       {

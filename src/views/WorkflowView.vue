@@ -183,6 +183,7 @@
     </section>
 
     <!-- ══ RELATED SERVICES ══ -->
+    <SeoRelatedGuides :slugs="pageSeo.relatedGuides" />
     <RelatedServices :exclude="['workflow']" />
 
   </div>
@@ -192,29 +193,32 @@
 import { onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
+import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
+
+const pageSeo = getPageSeo('workflow-integration')
 
 const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 useSeoMeta({
-  title: 'CRM & Workflow Integration for Accounting Firms | Zar Media Group',
-  description:
-    'Connect your accounting website to QuickBooks, Xero, HubSpot, and Calendly. CRM integration for accountants that eliminates manual data entry and automates client onboarding. South Africa.',
-  keywords:
-    'CRM system accountants, client facing CRM, CRM integration for accountants, workflow automation bookkeepers, accounting software integration, client portals for accounting, accounting portal, client portal for accountants, Xero HubSpot integration, best client portal small accounting firms, how to reduce admin accounting firms',
-  canonical: '/services/workflow-integration',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
       { name: 'Services', url: '/services' },
       { name: 'Workflow Integration', url: '/services/workflow-integration' },
     ]),
-    SCHEMAS.service({
+    ...SCHEMAS.servicePage({
       name: 'CRM & Workflow Integration for Accounting Firms',
       description:
         'Zar Media Group connects accounting websites to CRM systems, accounting software (Xero, QuickBooks), and client portals — automating admin and reducing manual data entry for financial professionals.',
+      url: '/services/workflow-integration',
     }),
     SCHEMAS.faqPage([
       {

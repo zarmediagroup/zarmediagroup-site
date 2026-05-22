@@ -1,5 +1,9 @@
 <template>
-  <div class="fixed inset-0 z-[9999] bg-navy-950 flex flex-col items-center justify-center overflow-hidden" ref="loaderRef">
+  <div
+    class="fixed inset-0 z-[9999] bg-navy-950/95 flex flex-col items-center justify-center overflow-hidden pointer-events-none"
+    ref="loaderRef"
+    aria-hidden="true"
+  >
     <!-- Geometric Background -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <!-- Rotating outer ring -->
@@ -84,7 +88,7 @@ onMounted(() => {
   }, 900)
 
   // Progress animation
-  const duration = 2800
+  const duration = 900
   const startTime = performance.now()
 
   function updateProgress(currentTime) {

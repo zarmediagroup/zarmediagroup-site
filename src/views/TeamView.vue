@@ -231,6 +231,9 @@
 import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
+
+const pageSeo = getPageSeo('team')
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 
 const { initReveal } = useScrollReveal()
@@ -239,12 +242,10 @@ onMounted(() => setTimeout(initReveal, 50))
 const selectedMember = ref(null)
 
 useSeoMeta({
-  title: 'Meet the Team | Zar Media Group — SA Specialists for Accounting & FSP Websites',
-  description:
-    'Who builds Zar Media Group’s websites and portals? Meet Cape Town–based strategists, designers & engineers focused on accountants, advisors & FSPs — POPIA-aware workflows, CRM integrations & managed compliance.',
-  keywords:
-    'Zar Media Group team, accounting website agency South Africa, financial digital specialists Cape Town, FSP website team SA, Zar Media leadership',
-  canonical: '/about/team',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },

@@ -161,10 +161,12 @@ const companyLinks = [
 ]
 
 const serviceLinks = [
-  { to: '/services/accounting-portals-crm', label: 'Client Portals & CRM' },
-  { to: '/services/website-as-a-service', label: 'Website as a Service' },
-  { to: '/services/workflow-integration', label: 'Workflow Integration' },
-  { to: '/services/compliance-trust', label: 'Compliance & Trust' },
+  { to: '/services', label: 'All Services' },
+  { to: '/services/accounting-portals-crm', label: 'Client Portal for Accountants' },
+  { to: '/services/client-portal', label: 'Client Portal Product Tour' },
+  { to: '/services/website-as-a-service', label: 'Accounting Firm Website (WaaS)' },
+  { to: '/services/workflow-integration', label: 'CRM Integration for Accountants' },
+  { to: '/services/compliance-trust', label: 'POPIA Compliant Websites' },
 ]
 
 const socials = [

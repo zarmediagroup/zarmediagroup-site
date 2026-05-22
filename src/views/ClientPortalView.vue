@@ -209,6 +209,7 @@
       </div>
     </section>
 
+    <SeoRelatedGuides :slugs="pageSeo.relatedGuides" />
     <RelatedServices :exclude="['portals-crm']" />
   </div>
 </template>
@@ -216,9 +217,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
-import { useSeoMeta, SCHEMAS, BASE_URL } from '@/composables/useSeoMeta'
+import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
+import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
+
+const pageSeo = getPageSeo('client-portal')
 
 const { initReveal } = useScrollReveal()
 const openFaq = ref(null)
@@ -310,47 +315,25 @@ const faqs = [
   },
 ]
 
-const pageUrl = `${BASE_URL}/services/client-portal`
 const primaryOgImage = '/zmg-accounting-client-portal-client-directory-demo.png'
 
 useSeoMeta({
-  title: 'Accounting Client Portal & Document Vault | Zar Media Group',
-  description:
-    'Tour Zar Media Group’s accounting client portal for SA firms: client directory, all-documents queue, profiles & document vault (demo screenshots). Tax, payroll & POPIA-conscious workflows.',
-  keywords:
-    'accounting client portal South Africa, client document portal, document vault accounting firm, secure tax document upload, PAYE VAT portal accountants, POPIA client portal, bookkeeping document portal, Zar Media Group Cape Town',
-  canonical: '/services/client-portal',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   ogImage: primaryOgImage,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
       { name: 'Accounting client portal & document vault', url: '/services/client-portal' },
     ]),
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      '@id': `${pageUrl}#webpage`,
-      url: pageUrl,
+    ...SCHEMAS.servicePage({
       name: 'Accounting Client Portal & Document Vault — South Africa',
       description:
         'Product tour of an accounting client portal with admin directory, firm-wide documents, client workspace, and document vault; demo screenshots for Zar Media Group.',
-      inLanguage: 'en-ZA',
-      isPartOf: {
-        '@type': 'WebSite',
-        '@id': `${BASE_URL}/#website`,
-        name: 'Zar Media Group',
-        url: BASE_URL,
-      },
-      primaryImageOfPage: {
-        '@type': 'ImageObject',
-        url: `${BASE_URL}${primaryOgImage}`,
-        caption: 'Accounting client portal client directory interface (demonstration)',
-      },
-    },
-    SCHEMAS.service({
-      name: 'Accounting client portal & document vault',
-      description:
-        'Branded client portal and administrator console for accounting, tax, payroll, and bookkeeping firms in South Africa and beyond: client onboarding, categorised document vault, workflow statuses (e.g. received, under review, processed), and audit trail. Marketing screenshots use fictional demo data only.',
+      url: '/services/client-portal',
+      image: primaryOgImage,
     }),
     SCHEMAS.faqPage(faqs),
   ],

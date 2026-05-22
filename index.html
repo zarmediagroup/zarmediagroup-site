@@ -41,6 +41,13 @@
     <meta property="og:url" content="https://zarmediagroup.com/" />
     <meta property="og:locale" content="en_ZA" />
 
+    <!-- ══ Twitter / X Card — overridden per-page by useSeoMeta ══ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zar Media Group | Client Portals for Accountants — Managed Firm Website (SA)" />
+    <meta name="twitter:description" content="Client portals built and managed for SA accountants—secure documents, intake, CRM sync—with your firm website kept in the same programme." />
+    <meta name="twitter:image" content="https://zarmediagroup.com/og-image.jpg" />
+    <meta name="twitter:url" content="https://zarmediagroup.com/" />
+
     <!-- ══ Performance: Preconnect / DNS prefetch ══ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,22 +55,19 @@
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
-    <!-- ══ Fonts — Poppins, non-render-blocking async load ══ -->
+    <!-- ══ Fonts — subset weights for faster LCP text paint ══ -->
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
         rel="stylesheet"
       />
     </noscript>
-
-    <!-- ══ Preload hero assets ══ -->
-    <link rel="preload" as="image" href="/og-image.jpg" type="image/jpeg" fetchpriority="high" />
 
     <!-- ══ Structured Data: Organization (global) ══ -->
     <script type="application/ld+json">
@@ -127,8 +131,7 @@
     }
     </script>
 
-    <!-- ══ Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID ══ -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-09PEREH8MR"></script>
+    <!-- ══ Google Analytics 4 — deferred until after load (protects LCP) ══ -->
     <script>
       const storedCookieChoice = (() => {
         try {
@@ -140,16 +143,29 @@
       window.__zmgAnalyticsConsentGranted = storedCookieChoice === 'accepted';
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
       gtag('consent', 'default', {
         analytics_storage: window.__zmgAnalyticsConsentGranted ? 'granted' : 'denied',
       });
-      gtag('config', 'G-09PEREH8MR', {
-        // Redact IP for POPIA / GDPR compliance
-        anonymize_ip: true,
-        // Manual SPA route tracking after explicit consent
-        send_page_view: false
-      });
+      function loadGoogleAnalytics() {
+        if (window.__zmgGaLoaded) return;
+        window.__zmgGaLoaded = true;
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-09PEREH8MR';
+        s.onload = function () {
+          gtag('js', new Date());
+          gtag('config', 'G-09PEREH8MR', {
+            anonymize_ip: true,
+            send_page_view: false,
+          });
+        };
+        document.head.appendChild(s);
+      }
+      if (document.readyState === 'complete') {
+        loadGoogleAnalytics();
+      } else {
+        window.addEventListener('load', loadGoogleAnalytics, { once: true });
+      }
     </script>
   </head>
   <body>

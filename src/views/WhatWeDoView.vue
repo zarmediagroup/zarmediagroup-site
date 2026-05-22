@@ -210,6 +210,9 @@
 import { onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
+
+const pageSeo = getPageSeo('what-we-do')
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
 
@@ -217,12 +220,10 @@ const { initReveal } = useScrollReveal()
 onMounted(() => setTimeout(initReveal, 50))
 
 useSeoMeta({
-  title: 'How We Work | Client Portals, Firm Websites & Workflow Automation',
-  description:
-    'Our process: discovery → compliant portal & UX → integrations (CRM, Xero, DocuSign) → launch → ongoing improvements. Built for SA accounting firms that want less admin and one joined-up client experience.',
-  keywords:
-    'how Zar Media Group works, accounting firm client portal process, workflow optimisation accountants, CRM integration bookkeepers South Africa, managed client portal methodology accountants',
-  canonical: '/what-we-do',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },

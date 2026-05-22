@@ -115,6 +115,14 @@ export function useSeoMeta(options) {
     upsertMeta('property', 'og:type', ogType)
     upsertMeta('property', 'og:site_name', ORG_NAME)
     upsertMeta('property', 'og:locale', 'en_ZA')
+    if (title) upsertMeta('property', 'og:image:alt', title)
+
+    // ── Twitter / X Card (link previews when shared on X and compatible apps) ──
+    upsertMeta('name', 'twitter:card', 'summary_large_image')
+    upsertMeta('name', 'twitter:title', title)
+    upsertMeta('name', 'twitter:description', description)
+    upsertMeta('name', 'twitter:image', image)
+    upsertMeta('name', 'twitter:url', canonicalHref)
 
     // ── JSON-LD schemas — remove old, inject new ──
     schemaIds.forEach(removeSchema)
@@ -254,15 +262,24 @@ export const SCHEMAS = {
     }
   },
 
-  service({ name, description } = {}) {
+  service({ name, description, url, image } = {}) {
+    const pageUrl = url
+      ? (url.startsWith('http') ? url : `${BASE_URL}${url}`)
+      : BASE_URL
+    const imageUrl = image
+      ? (image.startsWith('http') ? image : `${BASE_URL}${image}`)
+      : `${BASE_URL}/og-image.jpg`
+
     return {
       '@context': 'https://schema.org',
       '@type': 'Service',
+      '@id': `${pageUrl}#service`,
       serviceType: name,
       name,
       description,
       provider: {
         '@type': 'Organization',
+        '@id': `${BASE_URL}/#organization`,
         name: ORG_NAME,
         url: BASE_URL,
       },
@@ -274,9 +291,50 @@ export const SCHEMAS = {
         '@type': 'Audience',
         audienceType: 'Accountants, Bookkeepers, Financial Advisors, CFOs, Compliance Officers',
       },
-      url: BASE_URL,
-      image: `${BASE_URL}/og-image.jpg`,
+      url: pageUrl,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+      },
+      image: imageUrl,
     }
+  },
+
+  /** WebPage + Service pair for /services/* routes (Google rich results) */
+  servicePage({ name, description, url = '/', image } = {}) {
+    const pageUrl = url.startsWith('http') ? url : `${BASE_URL}${url}`
+    const imageUrl = image
+      ? (image.startsWith('http') ? image : `${BASE_URL}${image}`)
+      : `${BASE_URL}/og-image.jpg`
+
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name,
+        description,
+        inLanguage: 'en-ZA',
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': `${BASE_URL}/#website`,
+          name: ORG_NAME,
+          url: BASE_URL,
+        },
+        about: {
+          '@type': 'Service',
+          '@id': `${pageUrl}#service`,
+          name,
+          description,
+        },
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: imageUrl,
+        },
+      },
+      SCHEMAS.service({ name, description, url, image }),
+    ]
   },
 
   /**

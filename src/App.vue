@@ -1,27 +1,23 @@
 <template>
-  <div id="zmg-app" :class="{ 'overflow-hidden': appStore.isLoading }">
-    <!-- Initial Loader -->
+  <div id="zmg-app" :class="{ 'overflow-hidden': appStore.isNavOpen }">
+    <!-- Optional splash — does not block main content (LCP measures hero, not loader) -->
     <Transition name="loader-fade">
       <AppLoader v-if="appStore.isLoading" @done="onLoadComplete" />
     </Transition>
 
-    <!-- Page Loader (between routes) -->
     <PageLoader :active="appStore.isPageLoading" />
 
-    <!-- Main App Shell -->
-    <template v-if="!appStore.isLoading">
-      <Navbar />
-      <main>
-        <RouterView v-slot="{ Component, route }">
-          <Transition name="page" mode="out-in">
-            <component :is="Component" :key="route.path" />
-          </Transition>
-        </RouterView>
-      </main>
-      <SiteFooter />
-      <CookieBanner v-if="!appStore.cookiesAccepted" />
-      <FloatingContactChat />
-    </template>
+    <Navbar />
+    <main>
+      <RouterView v-slot="{ Component, route }">
+        <Transition name="page" mode="out-in">
+          <component :is="Component" :key="route.path" />
+        </Transition>
+      </RouterView>
+    </main>
+    <SiteFooter />
+    <CookieBanner v-if="!appStore.cookiesAccepted" />
+    <FloatingContactChat />
   </div>
 </template>
 
@@ -58,10 +54,15 @@ router.beforeEach(() => {
 })
 
 router.afterEach(() => {
-  setTimeout(() => appStore.setPageLoading(false), 400)
+  setTimeout(() => appStore.setPageLoading(false), 150)
 })
 
 function onLoadComplete() {
+  try {
+    sessionStorage.setItem('zmg_splash_seen', '1')
+  } catch {
+    /* ignore */
+  }
   appStore.setLoading(false)
 }
 
@@ -69,6 +70,14 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   appStore.checkCookies()
   document.addEventListener('keydown', handleEscape)
+
+  try {
+    if (sessionStorage.getItem('zmg_splash_seen') !== '1') {
+      appStore.setLoading(true)
+    }
+  } catch {
+    /* sessionStorage unavailable — skip splash */
+  }
 })
 
 onUnmounted(() => {

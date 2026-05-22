@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 
 export const useAppStore = defineStore('app', () => {
   // State
-  const isLoading = ref(true)
+  const isLoading = ref(false)
   const isPageLoading = ref(false)
   const isNavOpen = ref(false)
   const activeModal = ref(null)

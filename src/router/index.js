@@ -1,122 +1,77 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { PAGE_SEO } from '@/data/seo-pages'
+
+function meta(pageId) {
+  const seo = PAGE_SEO[pageId]
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    canonical: seo.canonical,
+    seoPageId: pageId,
+  }
+}
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: () => import('@/views/HomeView.vue'),
-    meta: {
-      title: 'Zar Media Group | Client Portals for Accountants — Managed Firm Website',
-      description:
-        'Zar Media Group builds and manages client portals for accountants—secure documents, intake, CRM sync—while keeping your firm website in the same programme. Serving South African financial professionals.',
-      keywords:
-        'client portal accountants, build client portal accounting firm, manage client portal, client portals for accounting, accounting portal, website for accountants, accounting firm website design, Zar Media Group, South Africa',
-      canonical: '/',
-    },
+    meta: meta('home'),
   },
   {
     path: '/what-we-do',
     name: 'WhatWeDo',
     component: () => import('@/views/WhatWeDoView.vue'),
-    meta: {
-      title: 'How We Work | Digital Workflow Optimisation for Accounting Firms',
-      description:
-        'See how Zar Media Group helps accounting firms reduce admin with client portals, CRM-connected intake, and firm websites managed in one programme. Serving financial professionals across South Africa.',
-      keywords:
-        'digital workflow optimisation accountants, accounting firm website design, how to reduce admin accounting firms, financial sector digital transformation, South Africa',
-      canonical: '/what-we-do',
-    },
+    meta: meta('what-we-do'),
   },
   {
     path: '/about/team',
     name: 'Team',
     component: () => import('@/views/TeamView.vue'),
-    meta: {
-      title: 'Our Team | Zar Media Group — Financial Digital Experts',
-      description:
-        'Meet the strategists, designers, and compliance specialists behind Zar Media Group. A dedicated team serving accountants and financial service providers across South Africa.',
-      keywords:
-        'Zar Media Group team, financial digital agency South Africa, accounting website specialists',
-      canonical: '/about/team',
-    },
+    meta: meta('team'),
+  },
+  {
+    path: '/services',
+    name: 'ServicesIndex',
+    component: () => import('@/views/ServicesIndexView.vue'),
+    meta: meta('services-index'),
   },
   {
     path: '/services/website-as-a-service',
     name: 'WebsiteService',
     component: () => import('@/views/WebsiteServiceView.vue'),
-    meta: {
-      title: 'Website as a Service for Accountants | Zar Media Group',
-      description:
-        'Firm website managed alongside your client portal—continuously optimised for accountants and financial advisors. Website as a Service keeps your public site and portal stack aligned.',
-      keywords:
-        'Website as a Service financial sector, client portal accountants, managed firm website, accounting firm website design, website for financial advisors, WaaS South Africa',
-      canonical: '/services/website-as-a-service',
-    },
+    meta: meta('website-as-a-service'),
   },
   {
     path: '/services/workflow-integration',
     name: 'WorkflowIntegration',
     component: () => import('@/views/WorkflowView.vue'),
-    meta: {
-      title: 'CRM & Workflow Integration for Accounting Firms | Zar Media Group',
-      description:
-        'Connect your accounting website to QuickBooks, Xero, HubSpot, and Calendly. CRM integration for accountants that eliminates manual data entry and automates client onboarding.',
-      keywords:
-        'CRM system accountants, client facing CRM, CRM integration for accountants, workflow automation bookkeepers, accounting software integration, client portal for accountants, Xero HubSpot integration',
-      canonical: '/services/workflow-integration',
-    },
+    meta: meta('workflow-integration'),
   },
   {
     path: '/services/accounting-portals-crm',
     name: 'AccountingPortalsCrm',
     component: () => import('@/views/AccountingPortalsCrmView.vue'),
-    meta: {
-      title: 'Client Portals & CRM for Accountants | Zar Media Group',
-      description:
-        'Client-facing accounting portals and CRM-connected workflows for South African firms: client portals for accounting, compliance portal, accounting portal, client-facing CRM, and an optional client document portal with admin dashboard tour.',
-      keywords:
-        'CRM system accountants, client portals for accounting, compliance portal, client facing portal, accounting portal, client facing CRM, client facing accounting portal, accounting client portal, document vault',
-      canonical: '/services/accounting-portals-crm',
-    },
+    meta: meta('accounting-portals-crm'),
   },
   {
     path: '/services/client-portal',
     name: 'ClientPortal',
     component: () => import('@/views/ClientPortalView.vue'),
-    meta: {
-      title: 'Accounting Client Portal & Document Vault | Zar Media Group',
-      description:
-        'Tour Zar Media Group’s SA accounting client portal (demo screenshots — not real clients): client directory, all-documents queue, profiles & vault. Tax, payroll & POPIA-conscious workflows.',
-      keywords:
-        'accounting client portal South Africa, client document portal, document vault accounting firm, POPIA client portal, tax document portal accountants, Zar Media Group',
-      canonical: '/services/client-portal',
-    },
+    meta: meta('client-portal'),
   },
   {
     path: '/services/compliance-trust',
     name: 'ComplianceTrust',
     component: () => import('@/views/ComplianceView.vue'),
-    meta: {
-      title: 'Compliant Website Design for Financial Services | Zar Media Group',
-      description:
-        'Purpose-built compliant digital presence for regulated financial industries. GDPR, WCAG 2.1 AA, and financial sector regulation-ready websites for accountants, RIAs, and tax professionals.',
-      keywords:
-        'compliance portal, compliant website financial services, compliant digital presence regulated industries, GDPR financial website, financial services web compliance, accounting website compliance, client facing accounting portal',
-      canonical: '/services/compliance-trust',
-    },
+    meta: meta('compliance-trust'),
   },
   {
     path: '/resources',
     name: 'Resources',
     component: () => import('@/views/ResourcesView.vue'),
-    meta: {
-      title: 'Resources for Accountants & Financial Professionals | Zar Media Group',
-      description:
-        'Free whitepapers, case studies, and guides on digital strategy for accountants and financial firms. Learn how to reduce admin, improve client portals, and grow your practice online.',
-      keywords:
-        'resources for accountants, accounting firm digital strategy, best client portal small accounting firms, how to reduce admin accounting firms, financial services SEO',
-      canonical: '/resources',
-    },
+    meta: meta('resources'),
   },
   {
     path: '/resources/:slug',
@@ -132,14 +87,7 @@ const routes = [
     path: '/contact',
     name: 'Contact',
     component: () => import('@/views/ContactView.vue'),
-    meta: {
-      title: 'Contact Zar Media Group | Get a Free Website Audit',
-      description:
-        'Ready to reduce admin and grow your accounting firm? Contact Zar Media Group for a free website audit or strategy call. Serving accountants and financial professionals across South Africa.',
-      keywords:
-        'contact Zar Media Group, free website audit accountants, accounting firm website consultation, financial services digital agency South Africa',
-      canonical: '/contact',
-    },
+    meta: meta('contact'),
   },
   {
     path: '/privacy-policy',

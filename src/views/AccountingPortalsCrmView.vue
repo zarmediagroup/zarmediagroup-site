@@ -158,6 +158,7 @@
       </div>
     </section>
 
+    <SeoRelatedGuides :slugs="pageSeo.relatedGuides" />
     <RelatedServices :exclude="['portals-crm']" />
   </div>
 </template>
@@ -166,8 +167,12 @@
 import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
+import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
+
+const pageSeo = getPageSeo('accounting-portals-crm')
 
 const { initReveal } = useScrollReveal()
 const openFaq = ref(null)
@@ -221,21 +226,20 @@ const faqs = [
 ]
 
 useSeoMeta({
-  title: 'Client Portals & CRM for Accountants | Zar Media Group',
-  description:
-    'Client-facing portals and CRM integration for accounting firms in South Africa: accounting portal, compliance portal, client portals for accounting, client-facing CRM, plus an optional client document portal with admin dashboard — built for POPIA-conscious workflows.',
-  keywords:
-    'CRM system accountants, client portals for accounting, compliance portal, client facing portal, accounting portal, client facing CRM, client facing accounting portal, CRM integration accountants South Africa',
-  canonical: '/services/accounting-portals-crm',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
       { name: 'Client Portals & CRM for Accountants', url: '/services/accounting-portals-crm' },
     ]),
-    SCHEMAS.service({
+    ...SCHEMAS.servicePage({
       name: 'Client Portals & CRM for Accountants',
       description:
         'Zar Media Group implements client-facing accounting portals, compliance-focused client portals, and CRM-connected workflows for accounting, tax, and bookkeeping firms — integrated with leading CRM and accounting software.',
+      url: '/services/accounting-portals-crm',
     }),
     SCHEMAS.faqPage(faqs),
   ],

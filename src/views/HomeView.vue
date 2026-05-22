@@ -170,10 +170,11 @@
           <div class="gold-divider reveal-up" style="transition-delay: 150ms;"></div>
           <p class="font-sans text-charcoal-600 text-lg leading-relaxed reveal-up" style="transition-delay: 200ms;">
             Every service we offer is purpose-built for the unique regulatory, trust, and conversion requirements of <strong>accounting firms, tax services, financial advisors, and bookkeeping professionals</strong> — helping you reduce admin and win more clients.
+            <RouterLink to="/services" class="text-navy-900 font-semibold hover:underline ml-1">View all services</RouterLink>.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 stagger-children">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
           <div
             v-for="(service, i) in services"
             :key="service.title"
@@ -440,6 +441,7 @@
 import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
 import StatCounter from '@/components/ui/StatCounter.vue'
 
 const { initReveal } = useScrollReveal()
@@ -476,13 +478,13 @@ const faqs = [
   },
 ]
 
+const homeSeo = getPageSeo('home')
+
 useSeoMeta({
-  title: 'Zar Media Group | Managed Websites & Client Portals for Accountants (SA)',
-  description:
-    'Cut admin and grow enquiries — managed accounting firm websites, branded client portals & CRM-connected workflows. POPIA-aware builds for South Africa’s accountants, bookkeepers & FSPs. See services & contact.',
-  keywords:
-    'Zar Media Group, website for accountants South Africa, managed website financial advisors, client portal accountants, accounting firm website design, CRM integration accountants, compliant website financial services',
-  canonical: '/',
+  title: homeSeo.title,
+  description: homeSeo.description,
+  keywords: homeSeo.keywords,
+  canonical: homeSeo.canonical,
   schemas: [
     SCHEMAS.organization(),
     SCHEMAS.website(),
@@ -553,6 +555,14 @@ const services = [
     link: '/services/compliance-trust',
     tags: ['GDPR', 'WCAG 2.1 AA', 'SA Regulation'],
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
+  },
+  {
+    title: 'Client Portal & Document Vault',
+    description:
+      'See how an accounting client portal handles directory, firm-wide documents, profiles, and a secure vault—demo tour for SA tax and bookkeeping firms.',
+    link: '/services/client-portal',
+    tags: ['Document Vault', 'POPIA-aware', 'Admin tour'],
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h12a2 2 0 012 2v8a2 2 0 01-2 2H5z"/>',
   },
 ]
 

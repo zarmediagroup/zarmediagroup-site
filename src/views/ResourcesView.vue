@@ -218,6 +218,9 @@ import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { getPageSeo } from '@/data/seo-pages'
+
+const pageSeo = getPageSeo('resources')
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
 import { resources } from '@/data/resources.js'
 
@@ -268,12 +271,10 @@ const faqs = [
 ]
 
 useSeoMeta({
-  title: 'Resources for Accountants & Financial Professionals | Zar Media Group',
-  description:
-    'Free whitepapers, case studies, and guides on digital strategy for accountants and financial firms. Learn how to reduce admin, improve client portals, and grow your practice online in South Africa.',
-  keywords:
-    'resources for accountants, accounting firm digital strategy, best client portal small accounting firms, how to reduce admin accounting firms, financial services SEO, accounting website guide',
-  canonical: '/resources',
+  title: pageSeo.title,
+  description: pageSeo.description,
+  keywords: pageSeo.keywords,
+  canonical: pageSeo.canonical,
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
