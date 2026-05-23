@@ -1,18 +1,13 @@
 import { next } from '@vercel/functions/middleware'
-import { STATIC_PATHS, RESOURCE_SLUGS } from './generated/middleware-paths.js'
+import { RESOURCE_SLUGS } from './generated/middleware-paths.js'
 import {
   normalizePathname,
   isLegacyGonePath,
   resolvePathRedirect,
   resolveResourceSlugRedirect,
-  resolveQueryLegacy,
 } from './src/seo/legacy-seo.js'
 
-const staticSet = new Set(STATIC_PATHS)
 const slugSet = new Set(RESOURCE_SLUGS)
-
-/** Hub routes that must work even if generated path list lags a deploy */
-const ALWAYS_ALLOWED = new Set(['/services'])
 
 const NOT_FOUND_HTML = `<!DOCTYPE html>
 <html lang="en-ZA">
@@ -59,6 +54,11 @@ export const config = {
   matcher: ['/((?!api/).*)'],
 }
 
+/**
+ * Block legacy WordPress / junk URLs only.
+ * All other paths pass through to the SPA (Vite rewrite → index.html).
+ * Resource articles stay allowlisted so old slugs cannot be guessed.
+ */
 export default function middleware(request) {
   const url = new URL(request.url)
   const pathname = normalizePathname(url.pathname)
@@ -67,9 +67,8 @@ export default function middleware(request) {
 
   if (isLegacyGonePath(pathname)) return notFoundResponse()
 
-  const queryLegacy = resolveQueryLegacy(url)
-  if (queryLegacy === '/') return redirectTo(request, '/')
-  if (queryLegacy === null) return notFoundResponse()
+  if (url.searchParams.has('page_id')) return redirectTo(request, '/')
+  if (url.searchParams.has('elementor_library')) return notFoundResponse()
 
   const pathRedirect = resolvePathRedirect(pathname)
   if (pathRedirect) return redirectTo(request, pathRedirect)
@@ -85,7 +84,5 @@ export default function middleware(request) {
   const lastSeg = pathname.split('/').pop() || ''
   if (lastSeg.includes('.')) return next()
 
-  if (ALWAYS_ALLOWED.has(pathname) || staticSet.has(pathname)) return next()
-
-  return notFoundResponse()
+  return next()
 }
