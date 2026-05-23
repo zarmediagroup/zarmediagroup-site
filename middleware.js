@@ -11,6 +11,9 @@ import {
 const staticSet = new Set(STATIC_PATHS)
 const slugSet = new Set(RESOURCE_SLUGS)
 
+/** Hub routes that must work even if generated path list lags a deploy */
+const ALWAYS_ALLOWED = new Set(['/services'])
+
 const NOT_FOUND_HTML = `<!DOCTYPE html>
 <html lang="en-ZA">
 <head>
@@ -82,7 +85,7 @@ export default function middleware(request) {
   const lastSeg = pathname.split('/').pop() || ''
   if (lastSeg.includes('.')) return next()
 
-  if (staticSet.has(pathname)) return next()
+  if (ALWAYS_ALLOWED.has(pathname) || staticSet.has(pathname)) return next()
 
   return notFoundResponse()
 }

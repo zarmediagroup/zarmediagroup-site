@@ -10,8 +10,25 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sirv from 'sirv'
-import puppeteer from 'puppeteer'
 import { PRERENDER_PATHS } from '../generated/middleware-paths.js'
+
+async function launchBrowser() {
+  if (process.env.VERCEL) {
+    const chromium = (await import('@sparticuz/chromium')).default
+    const puppeteer = (await import('puppeteer-core')).default
+    return puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    })
+  }
+  const puppeteer = (await import('puppeteer')).default
+  return puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+  })
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
@@ -117,18 +134,23 @@ async function runPool(browser, routes) {
 // Longest paths first so /services does not run beside /services/*
 const routes = [...PRERENDER_PATHS].sort((a, b) => b.length - a.length)
 
-console.log(`Prerendering ${routes.length} routes (concurrency ${CONCURRENCY})…`)
-const server = await startServer()
-
-const browser = await puppeteer.launch({
-  headless: true,
-  args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-})
-
 try {
-  const done = await runPool(browser, routes)
-  console.log(`Prerender complete: ${done.length} HTML files written under dist/`)
-} finally {
-  await browser.close()
-  server.close()
+  console.log(`Prerendering ${routes.length} routes (concurrency ${CONCURRENCY})…`)
+  const server = await startServer()
+  const browser = await launchBrowser()
+
+  try {
+    const done = await runPool(browser, routes)
+    console.log(`Prerender complete: ${done.length} HTML files written under dist/`)
+  } finally {
+    await browser.close()
+    server.close()
+  }
+} catch (err) {
+  console.error('Prerender failed:', err)
+  if (process.env.VERCEL) {
+    console.warn('Vercel: continuing deploy without prerender (SPA routes still work).')
+    process.exit(0)
+  }
+  process.exit(1)
 }
