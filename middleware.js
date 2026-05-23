@@ -1,4 +1,4 @@
-import { next } from '@vercel/functions/middleware'
+import { next, rewrite } from '@vercel/functions/middleware'
 import { RESOURCE_SLUGS } from './generated/middleware-paths.js'
 import {
   normalizePathname,
@@ -79,6 +79,11 @@ export default function middleware(request) {
     if (mapped) return redirectTo(request, `/resources/${mapped}`)
     if (slug && slugSet.has(slug)) return next()
     return notFoundResponse()
+  }
+
+  // Services hub — explicit rewrite (child routes may exist as static folders under dist/services/)
+  if (pathname === '/services') {
+    return rewrite(new URL('/index.html', request.url))
   }
 
   const lastSeg = pathname.split('/').pop() || ''
