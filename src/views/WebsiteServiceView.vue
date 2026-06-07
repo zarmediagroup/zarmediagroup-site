@@ -3,11 +3,12 @@
 
     <!-- ══ HERO ══ -->
     <section class="relative min-h-screen flex items-center bg-navy-900 overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-24" aria-label="Service page hero">
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30 hidden lg:block"></div>
-        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30 hidden lg:block"></div>
-      </div>
+      <HeroBackground
+        src="/hero-website-as-a-service.png"
+        overlay-class="bg-gradient-to-r from-navy-900/94 via-navy-900/82 to-navy-900/50"
+        image-opacity="opacity-45"
+        image-position="object-right object-center"
+      />
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[
           { label: 'Services', path: '/services' },
@@ -263,6 +264,7 @@ import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
+import HeroBackground from '@/components/ui/HeroBackground.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
 import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
 
@@ -299,6 +301,8 @@ useSeoMeta({
   description: pageSeo.description,
   keywords: pageSeo.keywords,
   canonical: pageSeo.canonical,
+  ogImage: '/hero-website-as-a-service.png',
+  ogImageAlt: 'Managed website design and wireframes for accounting firms — Website as a Service by Zar Media Group, South Africa',
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },

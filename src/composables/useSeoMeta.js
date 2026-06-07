@@ -14,7 +14,8 @@
 import { onMounted, onUnmounted, isRef, watch } from 'vue'
 
 export const BASE_URL = 'https://zarmediagroup.com'
-export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.jpg`
+export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`
+export const ORG_LOGO = `${BASE_URL}/logo.png`
 export const ORG_NAME = 'Zar Media Group'
 
 // ─── helpers ────────────────────────────────────────────────────────────────
@@ -35,15 +36,19 @@ function upsertMeta(attr, attrValue, content) {
   el.setAttribute('content', content)
 }
 
-function upsertLink(rel, href) {
+function upsertLink(rel, href, extra = {}) {
   if (!href) return
-  let el = document.querySelector(`link[rel="${rel}"]`)
+  const selector = extra.hreflang
+    ? `link[rel="${rel}"][hreflang="${extra.hreflang}"]`
+    : `link[rel="${rel}"]`
+  let el = document.querySelector(selector)
   if (!el) {
     el = document.createElement('link')
     el.setAttribute('rel', rel)
     document.head.appendChild(el)
   }
   el.setAttribute('href', href)
+  if (extra.hreflang) el.setAttribute('hreflang', extra.hreflang)
 }
 
 function injectSchema(schema, uid) {
@@ -69,6 +74,7 @@ function removeSchema(uid) {
  * @param {string|Ref<string>} [options.keywords]     - Comma-separated keywords
  * @param {string|Ref<string>} [options.canonical]    - Relative path, e.g. '/services/waas'
  * @param {string|Ref<string>} [options.ogImage]      - Absolute or relative image URL
+ * @param {string|Ref<string>} [options.ogImageAlt]   - Accessible description for og:image
  * @param {string}             [options.ogType]       - 'website' | 'article' (default: 'website')
  * @param {string|Ref<string>} [options.robots]       - Robots directive (default: 'index, follow')
  * @param {Array|Ref<Array>}   [options.schemas]      - Array of JSON-LD schema objects
@@ -82,6 +88,7 @@ export function useSeoMeta(options) {
     const keywords    = val(options.keywords)
     const canonical   = val(options.canonical)
     const ogImage     = val(options.ogImage)
+    const ogImageAlt  = val(options.ogImageAlt)
     const ogType      = val(options.ogType) || 'website'
     const robots      = val(options.robots) || 'index, follow'
     const schemas     = val(options.schemas) || []
@@ -100,6 +107,8 @@ export function useSeoMeta(options) {
       ? `${BASE_URL}${canonical}`
       : `${BASE_URL}${window.location.pathname}`
     upsertLink('canonical', canonicalHref)
+    upsertLink('alternate', canonicalHref, { hreflang: 'en-za' })
+    upsertLink('alternate', `${BASE_URL}/`, { hreflang: 'x-default' })
 
     // ── Open Graph ──
     const image = ogImage
@@ -115,7 +124,7 @@ export function useSeoMeta(options) {
     upsertMeta('property', 'og:type', ogType)
     upsertMeta('property', 'og:site_name', ORG_NAME)
     upsertMeta('property', 'og:locale', 'en_ZA')
-    if (title) upsertMeta('property', 'og:image:alt', title)
+    if (ogImageAlt || title) upsertMeta('property', 'og:image:alt', ogImageAlt || title)
 
     // ── Twitter / X Card (link previews when shared on X and compatible apps) ──
     upsertMeta('name', 'twitter:card', 'summary_large_image')
@@ -158,14 +167,14 @@ export const SCHEMAS = {
       url: BASE_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/logo.png`,
+        url: ORG_LOGO,
         width: 200,
         height: 60,
       },
       legalName: 'ZARMEDIAGROUP (PTY) LTD',
       description:
         'Client portals built and managed for accountants and financial service providers across South Africa—with firm websites, intake, and workflows kept in the same managed programme.',
-      foundingDate: '2024',
+      foundingDate: '2026',
       identifier: {
         '@type': 'PropertyValue',
         name: 'CIPC Registration Number',
@@ -197,16 +206,10 @@ export const SCHEMAS = {
     return {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
+      '@id': `${BASE_URL}/#website`,
       name: ORG_NAME,
       url: BASE_URL,
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: `${BASE_URL}/resources?q={search_term_string}`,
-        },
-        'query-input': 'required name=search_term_string',
-      },
+      inLanguage: 'en-ZA',
     }
   },
 
@@ -215,7 +218,7 @@ export const SCHEMAS = {
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
       name: ORG_NAME,
-      image: `${BASE_URL}/og-image.jpg`,
+      image: `${BASE_URL}/og-image.png`,
       url: BASE_URL,
       legalName: 'ZARMEDIAGROUP (PTY) LTD',
       telephone: '+27685070088',
@@ -250,6 +253,7 @@ export const SCHEMAS = {
         name: 'Digital Services for Accountants',
         itemListElement: [
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Client Portals & CRM for Accountants' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Accounting Client Portal & Document Vault' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website as a Service (firm site managed with your portal)' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Workflow Integration' } },
           { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Compliance & Trust' } },
@@ -268,7 +272,7 @@ export const SCHEMAS = {
       : BASE_URL
     const imageUrl = image
       ? (image.startsWith('http') ? image : `${BASE_URL}${image}`)
-      : `${BASE_URL}/og-image.jpg`
+      : `${BASE_URL}/og-image.png`
 
     return {
       '@context': 'https://schema.org',
@@ -305,7 +309,7 @@ export const SCHEMAS = {
     const pageUrl = url.startsWith('http') ? url : `${BASE_URL}${url}`
     const imageUrl = image
       ? (image.startsWith('http') ? image : `${BASE_URL}${image}`)
-      : `${BASE_URL}/og-image.jpg`
+      : `${BASE_URL}/og-image.png`
 
     return [
       {
@@ -371,9 +375,7 @@ export const SCHEMAS = {
         url: BASE_URL,
         logo: {
           '@type': 'ImageObject',
-          url: `${BASE_URL}/logo.png`,
-          width: 200,
-          height: 60,
+          url: ORG_LOGO,
         },
       },
       mainEntityOfPage: {
@@ -395,8 +397,33 @@ export const SCHEMAS = {
     }
   },
 
+  /** Hero / brand video — helps AI engines and Google understand homepage media */
+  videoObject({ name, description, contentUrl, thumbnailUrl, uploadDate = '2026-06-07' } = {}) {
+    const videoUrl = contentUrl?.startsWith('http') ? contentUrl : `${BASE_URL}${contentUrl}`
+    const thumbUrl = thumbnailUrl?.startsWith('http') ? thumbnailUrl : `${BASE_URL}${thumbnailUrl}`
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name,
+      description,
+      contentUrl: videoUrl,
+      thumbnailUrl: thumbUrl,
+      uploadDate,
+      inLanguage: 'en-ZA',
+      publisher: {
+        '@type': 'Organization',
+        name: ORG_NAME,
+        url: BASE_URL,
+        logo: {
+          '@type': 'ImageObject',
+          url: ORG_LOGO,
+        },
+      },
+    }
+  },
+
   breadcrumb(items) {
-    // items: [{ name, url }]
     return {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

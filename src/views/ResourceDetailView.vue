@@ -115,8 +115,8 @@
             <div v-else-if="block.type === 'cta'"
                  class="mt-12 p-8 bg-navy-900 reveal-up">
               <p class="font-sans text-white/80 text-base mb-5 leading-relaxed">{{ block.text }}</p>
-              <RouterLink to="/contact" class="btn-primary inline-flex items-center gap-2">
-                Get in Touch
+              <RouterLink :to="block.link || '/contact'" class="btn-primary inline-flex items-center gap-2">
+                {{ block.linkLabel || 'Get in Touch' }}
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
@@ -274,7 +274,11 @@ const seoRobots = computed(() => (
 ))
 
 const seoOgImage = computed(() =>
-  resource.value?.image ?? '/og-image.jpg'
+  resource.value?.image ?? '/og-image.png'
+)
+
+const seoOgImageAlt = computed(() =>
+  resource.value?.imageAlt ?? resource.value?.title ?? 'Zar Media Group resource for accounting firms'
 )
 
 const seoSchemas = computed(() => {
@@ -308,6 +312,7 @@ useSeoMeta({
   canonical: seoCanonical,
   robots: seoRobots,
   ogImage: seoOgImage,
+  ogImageAlt: seoOgImageAlt,
   ogType: 'article',
   schemas: seoSchemas,
 })

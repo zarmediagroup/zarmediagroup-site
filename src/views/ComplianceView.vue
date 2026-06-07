@@ -3,11 +3,12 @@
 
     <!-- ══ HERO ══ -->
     <section class="relative min-h-screen flex items-center bg-navy-900 overflow-hidden pt-28 pb-20 lg:pt-40 lg:pb-24" aria-label="Compliance service hero">
-      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30 hidden lg:block"></div>
-        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30 hidden lg:block"></div>
-      </div>
+      <HeroBackground
+        src="/hero-compliance-trust.png"
+        overlay-class="bg-gradient-to-r from-navy-900/93 via-navy-900/80 to-navy-900/50"
+        image-opacity="opacity-40"
+        image-position="object-right object-center"
+      />
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[
           { label: 'Services', path: '/services' },
@@ -45,15 +46,30 @@
     <!-- ══ REGULATIONS OVERVIEW ══ -->
     <section class="section-padding bg-cream" aria-labelledby="regulations-heading">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="max-w-2xl mb-14 reveal-up">
-          <span class="section-label">Regulatory Framework</span>
-          <h2 id="regulations-heading" class="font-serif text-display-md text-navy-900 mb-6">
-            Compliant Digital Presence<br/><em>for Every Regulation That Matters</em>
-          </h2>
-          <div class="gold-divider mb-8"></div>
-          <p class="font-sans text-charcoal-600 text-lg leading-relaxed">
-            Regulated industries like accounting, financial advisory, and tax services cannot afford compliance gaps online. A poorly built accounting firm website can create data protection violations, accessibility lawsuits, and regulatory sanctions — before you've served a single client through it.
-          </p>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-14">
+          <div class="lg:col-span-5 reveal-up">
+            <span class="section-label">Regulatory Framework</span>
+            <h2 id="regulations-heading" class="font-serif text-display-md text-navy-900 mb-6">
+              Compliant Digital Presence<br/><em>for Every Regulation That Matters</em>
+            </h2>
+            <div class="gold-divider mb-8"></div>
+            <p class="font-sans text-charcoal-600 text-lg leading-relaxed">
+              Regulated industries like accounting, financial advisory, and tax services cannot afford compliance gaps online. A poorly built accounting firm website can create data protection violations, accessibility lawsuits, and regulatory sanctions — before you've served a single client through it.
+            </p>
+          </div>
+
+          <figure class="lg:col-span-7 reveal-right border border-navy-900/10 bg-white shadow-card-hover overflow-hidden aspect-[3/2]">
+            <img
+              src="/compliance-data-protection-financial-services.png"
+              alt="Legal compliance and data protection for financial services websites — gavel, encrypted laptop, and security shields representing POPIA, GDPR, and regulatory trust"
+              class="w-full h-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="800"
+            />
+            <figcaption class="sr-only">Compliance and data protection for regulated financial services websites</figcaption>
+          </figure>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -180,6 +196,7 @@ import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
+import HeroBackground from '@/components/ui/HeroBackground.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
 import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
 
@@ -193,6 +210,8 @@ useSeoMeta({
   description: pageSeo.description,
   keywords: pageSeo.keywords,
   canonical: pageSeo.canonical,
+  ogImage: '/compliance-data-protection-financial-services.png',
+  ogImageAlt: 'Legal compliance and data protection for financial services websites — POPIA, GDPR, and regulatory trust',
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },

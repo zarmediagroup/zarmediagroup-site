@@ -6,7 +6,7 @@
         <h2 class="font-serif text-display-sm text-white">Related Services</h2>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <RouterLink
           v-for="service in services"
           :key="service.to"
@@ -58,7 +58,7 @@ import { computed } from 'vue'
 const props = defineProps({
   /**
    * IDs of services to EXCLUDE (i.e. the current page's service)
-   * Values: 'waas' | 'workflow' | 'compliance' | 'portals-crm'
+   * Values: 'waas' | 'workflow' | 'compliance' | 'portals-crm' | 'client-portal'
    */
   exclude: {
     type: Array,
@@ -74,6 +74,14 @@ const ALL_SERVICES = [
     description:
       'Accounting portals, client-facing CRM journeys, and compliance-focused client portals — integrated with your website and practice stack.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>',
+  },
+  {
+    id: 'client-portal',
+    to: '/services/client-portal',
+    title: 'Client Portal Tour',
+    description:
+      'Admin demo: client directory, document vault, and POPIA-conscious workflows for South African accounting firms.',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h12a2 2 0 012 2v8a2 2 0 01-2 2H5z"/>',
   },
   {
     id: 'waas',
@@ -93,7 +101,7 @@ const ALL_SERVICES = [
     id: 'compliance',
     to: '/services/compliance-trust',
     title: 'Compliance & Trust',
-    description: 'Purpose-built for regulated industries. Every build reviewed against FINRA, SEC, and financial sector standards.',
+    description: 'POPIA, GDPR, WCAG 2.1 AA, and FSCA-aware builds for regulated accounting and financial services in South Africa.',
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
   },
 ]

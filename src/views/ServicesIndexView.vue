@@ -4,6 +4,13 @@
       class="relative min-h-[70vh] flex items-center bg-navy-900 overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-20"
       aria-label="Services for accounting firms"
     >
+      <HeroBackground
+        src="/hero-services-index.png"
+        overlay-class="bg-gradient-to-r from-navy-900/94 via-navy-900/82 to-navy-900/50"
+        image-opacity="opacity-42"
+        image-position="object-right object-center"
+        :corners="false"
+      />
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[{ label: 'Home', path: '/' }, { label: 'Services', path: '/services' }]" />
 
@@ -76,6 +83,7 @@ import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS, BASE_URL } from '@/composables/useSeoMeta'
 import { getPageSeo, SERVICE_OFFERINGS } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
+import HeroBackground from '@/components/ui/HeroBackground.vue'
 import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
 
 const seo = getPageSeo('services-index')
@@ -94,6 +102,8 @@ useSeoMeta({
   description: seo.description,
   keywords: seo.keywords,
   canonical: seo.canonical,
+  ogImage: '/hero-services-index.png',
+  ogImageAlt: 'Digital services for accounting firms in Cape Town and South Africa — client portals, managed websites, CRM integration',
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },

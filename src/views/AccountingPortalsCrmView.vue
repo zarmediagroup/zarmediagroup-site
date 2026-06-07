@@ -1,7 +1,13 @@
 <template>
   <div class="portals-crm-page">
     <section class="relative min-h-[85vh] flex items-center bg-navy-900 overflow-hidden pt-28 pb-20 lg:pt-36 lg:pb-24" aria-label="Client portals and CRM for accountants">
-      <div class="absolute inset-0 pointer-events-none opacity-[0.025]" aria-hidden="true" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      <HeroBackground
+        src="/hero-workflow-integration.png"
+        overlay-class="bg-gradient-to-r from-navy-900/94 via-navy-900/82 to-navy-900/50"
+        image-opacity="opacity-45"
+        image-position="object-left object-center"
+        :corners="false"
+      />
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav :crumbs="[{ label: 'Client Portals & CRM', path: '/services/accounting-portals-crm' }]" />
 
@@ -169,6 +175,7 @@ import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
+import HeroBackground from '@/components/ui/HeroBackground.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
 import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
 
@@ -230,9 +237,12 @@ useSeoMeta({
   description: pageSeo.description,
   keywords: pageSeo.keywords,
   canonical: pageSeo.canonical,
+  ogImage: '/hero-client-portal-document-vault.png',
+  ogImageAlt: 'Client-facing accounting portals and CRM integration for South African accounting firms — Zar Media Group',
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
+      { name: 'Services', url: '/services' },
       { name: 'Client Portals & CRM for Accountants', url: '/services/accounting-portals-crm' },
     ]),
     ...SCHEMAS.servicePage({

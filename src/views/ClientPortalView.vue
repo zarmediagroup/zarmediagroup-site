@@ -4,11 +4,13 @@
       class="relative min-h-[72vh] flex items-center bg-navy-900 overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-20"
       aria-label="Client document portal for accountants"
     >
-      <div
-        class="absolute inset-0 pointer-events-none opacity-[0.025]"
-        aria-hidden="true"
-        style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"
-      ></div>
+      <HeroBackground
+        src="/hero-client-portal-document-vault.png"
+        overlay-class="bg-gradient-to-r from-navy-900/95 via-navy-900/88 to-navy-900/70"
+        image-opacity="opacity-35"
+        image-position="object-right object-center"
+        :corners="false"
+      />
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <BreadcrumbNav
           :crumbs="[
@@ -210,7 +212,7 @@
     </section>
 
     <SeoRelatedGuides :slugs="pageSeo.relatedGuides" />
-    <RelatedServices :exclude="['portals-crm']" />
+    <RelatedServices :exclude="['client-portal']" />
   </div>
 </template>
 
@@ -220,6 +222,7 @@ import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import { getPageSeo } from '@/data/seo-pages'
 import BreadcrumbNav from '@/components/ui/BreadcrumbNav.vue'
+import HeroBackground from '@/components/ui/HeroBackground.vue'
 import RelatedServices from '@/components/ui/RelatedServices.vue'
 import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
 
@@ -315,7 +318,7 @@ const faqs = [
   },
 ]
 
-const primaryOgImage = '/zmg-accounting-client-portal-client-directory-demo.png'
+const primaryOgImage = '/hero-client-portal-document-vault.png'
 
 useSeoMeta({
   title: pageSeo.title,
@@ -323,9 +326,11 @@ useSeoMeta({
   keywords: pageSeo.keywords,
   canonical: pageSeo.canonical,
   ogImage: primaryOgImage,
+  ogImageAlt: 'Accounting client portal and document vault product tour for South African tax and bookkeeping firms — Zar Media Group',
   schemas: [
     SCHEMAS.breadcrumb([
       { name: 'Home', url: '/' },
+      { name: 'Services', url: '/services' },
       { name: 'Accounting client portal & document vault', url: '/services/client-portal' },
     ]),
     ...SCHEMAS.servicePage({

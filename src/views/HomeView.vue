@@ -2,41 +2,45 @@
   <div class="home-page">
 
     <!-- ==================== HERO ==================== -->
-    <section class="relative min-h-screen flex items-center overflow-hidden bg-navy-900" aria-label="Hero">
-      <!-- Background patterns -->
-      <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
-        <div class="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-navy-800/60 to-transparent"></div>
+    <section
+      class="home-hero relative min-h-screen lg:h-svh lg:max-h-svh lg:box-border flex flex-col justify-center overflow-hidden bg-navy-900 pt-20"
+      aria-label="Hero"
+    >
+      <HeroBackground
+        src="/hero-home-video-poster.png"
+        overlay-class="bg-gradient-to-r from-navy-900/93 via-navy-900/78 to-navy-900/30"
+        image-opacity="opacity-50"
+        image-position="object-center"
+        priority="high"
+        :corners="false"
+      >
         <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold-500/5 blur-3xl"></div>
-        <div class="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-gold-500/5 blur-3xl animate-float"></div>
-        <div class="absolute left-[20%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold-500/20 to-transparent"></div>
-        <div class="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-gold-500/30 hidden lg:block"></div>
-        <div class="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-gold-500/30 hidden lg:block"></div>
-      </div>
+        <div class="absolute top-1/3 left-[12%] w-48 h-48 rounded-full bg-gold-500/5 blur-3xl animate-float hidden lg:block"></div>
+      </HeroBackground>
 
-      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 pt-18 lg:pt-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <!-- Hero Text -->
-        <div class="hero-content">
+      <div class="relative w-full max-w-7xl mx-auto px-6 lg:px-8 py-10 lg:py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 lg:items-center gap-8 lg:gap-8">
+          <div class="hero-content lg:col-span-12 xl:col-span-7 max-w-xl relative z-10 lg:pr-4">
           <div class="reveal-up">
-            <span class="section-label">Financial sector digital agency · South Africa · Client portals &amp; admin automation</span>
-            <div class="gold-divider"></div>
+            <span class="section-label lg:text-[0.65rem] lg:tracking-[0.18em]">Financial sector digital agency · South Africa · Client portals &amp; admin automation</span>
+            <div class="gold-divider lg:mt-3 lg:mb-3"></div>
           </div>
 
           <!--
             SEO H1: Primary focus client portals for accountants; firm website managed in the same programme.
             One H1 per page — never duplicated.
           -->
-          <h1 class="font-serif text-display-lg text-white mb-2 leading-tight reveal-up" style="transition-delay: 100ms;">
+          <h1 class="font-serif text-display-lg text-white mb-2 lg:mb-3 leading-tight lg:text-[clamp(2rem,3.1vw,3.15rem)] reveal-up" style="transition-delay: 100ms;">
             Client Portals<br/>
             <span class="text-gradient">Built &amp; Managed</span><br/>
             for Accountants.
           </h1>
 
-          <p class="font-sans text-white/60 text-lg lg:text-xl leading-relaxed mb-6 max-w-lg reveal-up" style="transition-delay: 200ms;">
+          <p class="font-sans text-white/60 text-lg lg:text-base leading-relaxed mb-6 lg:mb-4 max-w-lg reveal-up" style="transition-delay: 200ms;">
             We design, launch, and run <strong class="text-white/80">branded client portals</strong> on your domain—secure documents, intake, and handoffs to CRM—while we <strong class="text-white/80">keep your firm website managed</strong> in the same stack so prospects and clients meet one coherent experience.
           </p>
 
-          <ul class="font-sans text-white/55 text-sm space-y-2.5 mb-10 max-w-lg reveal-up" style="transition-delay: 250ms;" aria-label="What you get">
+          <ul class="font-sans text-white/55 text-sm lg:text-xs space-y-2.5 lg:space-y-1.5 mb-10 lg:mb-5 max-w-lg reveal-up" style="transition-delay: 250ms;" aria-label="What you get">
             <li v-for="line in heroQuickWins" :key="line" class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -57,15 +61,15 @@
             </RouterLink>
           </div>
 
-          <p class="font-sans text-white/35 text-xs sm:text-sm mt-6 max-w-lg reveal-up" style="transition-delay: 350ms;">
+          <p class="font-sans text-white/35 text-xs sm:text-sm lg:text-xs mt-6 lg:mt-4 max-w-lg reveal-up max-lg:block lg:hidden" style="transition-delay: 350ms;">
             Prefer the phone?
             <a href="tel:+27685070088" class="text-gold-500/90 hover:text-gold-400 underline-offset-2 hover:underline">+27&nbsp;68&nbsp;507&nbsp;0088</a>
             ·
             <RouterLink to="/contact" class="text-gold-500/90 hover:text-gold-400 underline-offset-2 hover:underline">Message the team</RouterLink>
           </p>
 
-          <!-- Trust Badges -->
-          <div class="mt-12 pt-12 border-t border-white/10 reveal-up" style="transition-delay: 400ms;">
+          <!-- Trust Badges — below fold on desktop to keep hero in one viewport -->
+          <div class="mt-12 pt-12 lg:hidden border-t border-white/10 reveal-up" style="transition-delay: 400ms;">
             <p class="font-sans text-white/30 text-xs tracking-wider uppercase mb-4">Trusted by financial professionals across South Africa</p>
             <div class="flex items-center gap-6 flex-wrap">
               <div v-for="badge in trustBadges" :key="badge" class="flex items-center gap-2">
@@ -76,71 +80,70 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Hero Visual / Dashboard Mockup -->
-        <div class="hidden lg:block relative reveal-right" style="transition-delay: 200ms;" aria-hidden="true">
-          <div class="glass-card p-8 relative">
-            <div class="absolute -top-3 -right-3 w-6 h-6 bg-gold-500"></div>
-            <div class="absolute -bottom-3 -left-3 w-6 h-6 border-2 border-gold-500"></div>
-            <div class="mb-6">
-              <div class="flex items-center justify-between mb-4">
-                <span class="font-sans text-white/60 text-xs uppercase tracking-wider">Practice Growth Dashboard</span>
-                <span class="tag text-xs">Live</span>
-              </div>
-              <div class="grid grid-cols-3 gap-4 mb-6">
-                <div v-for="metric in dashboardMetrics" :key="metric.label" class="bg-navy-900/50 p-3 border border-white/5">
-                  <div class="font-serif text-gold-500 text-xl font-bold">{{ metric.value }}</div>
-                  <div class="font-sans text-white/40 text-xs mt-1">{{ metric.label }}</div>
-                </div>
-              </div>
-              <div class="flex items-end gap-2 h-20">
-                <div v-for="(bar, i) in chartBars" :key="i"
-                     class="flex-1 bg-gold-500/20 rounded-t-sm relative group cursor-pointer hover:bg-gold-500/40 transition-colors"
-                     :style="{ height: bar + '%' }">
-                  <div class="absolute inset-0 bg-gradient-to-t from-gold-500/30 to-transparent rounded-t-sm"></div>
-                </div>
-              </div>
-            </div>
-            <div class="space-y-3">
-              <div v-for="outcome in outcomeCards" :key="outcome.label" class="flex items-center justify-between p-3 bg-navy-900/30 border border-white/5">
-                <div class="flex items-center gap-3">
-                  <div class="w-2 h-2 rounded-full" :class="outcome.color"></div>
-                  <span class="font-sans text-white/70 text-sm">{{ outcome.label }}</span>
-                </div>
-                <span class="font-sans text-gold-500 text-sm font-semibold">{{ outcome.value }}</span>
-              </div>
-            </div>
-          </div>
-          <div class="absolute -bottom-6 -left-6 bg-gold-500 px-5 py-4 shadow-gold-lg">
-            <div class="font-serif text-navy-900 text-2xl font-bold">98%</div>
-            <div class="font-sans text-navy-900/70 text-xs font-semibold uppercase tracking-wide">Client Retention</div>
           </div>
         </div>
       </div>
 
       <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce" aria-hidden="true">
         <span class="font-sans text-white/30 text-xs tracking-widest uppercase">Scroll</span>
         <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
       </div>
     </section>
 
-    <!-- ==================== EARLY CTA (homepage skimmers → contact converts) ==================== -->
-    <section class="bg-navy-800/90 border-y border-white/10 py-10" aria-label="Book a consultation">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-        <p class="font-sans text-white/85 text-base lg:text-lg max-w-2xl leading-relaxed text-center lg:text-left">
-          If you landed from search or ads, skip the scroll: tell us what you're trying to fix—<strong class="text-white">portals, intake, CRM handoffs,</strong> or a site that doesn't reflect your firm.
-        </p>
-        <RouterLink
-          to="/contact"
-          class="btn-primary shrink-0 self-center lg:self-auto whitespace-normal text-center px-8"
-          aria-label="Contact Zar Media Group to discuss your accounting firm website"
-        >
-          Get in touch
-        </RouterLink>
+    <!-- ==================== PLATFORM VIDEO ==================== -->
+    <section class="section-padding bg-navy-950 border-y border-white/5" aria-labelledby="platform-video-heading">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="reveal-up">
+            <span class="section-label">Platform overview</span>
+            <h2 id="platform-video-heading" class="font-serif text-display-md text-white mt-4 mb-6">
+              Client portals &amp; document workflows<br/>
+              <span class="text-gradient">in one managed stack</span>
+            </h2>
+            <div class="gold-divider mb-6"></div>
+            <p class="font-sans text-white/60 text-base lg:text-lg leading-relaxed mb-6 max-w-lg">
+              See how we connect secure client intake, document vaults, and your firm website—built for South African accounting, tax, and bookkeeping practices.
+            </p>
+            <ul class="font-sans text-white/55 text-sm space-y-2 mb-8 max-w-lg" aria-label="Platform highlights">
+              <li v-for="line in platformVideoPoints" :key="line" class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>{{ line }}</span>
+              </li>
+            </ul>
+            <RouterLink to="/services/client-portal" class="btn-primary" aria-label="View the client portal and document vault tour">
+              Explore the portal
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </RouterLink>
+          </div>
+
+          <figure class="relative reveal-right border border-white/10 bg-navy-900 shadow-card-hover overflow-hidden aspect-video lg:aspect-[16/10]">
+            <video
+              ref="platformVideo"
+              class="absolute inset-0 w-full h-full object-cover object-center"
+              poster="/hero-home-video-poster.png"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              aria-label="Overview of Zar Media Group client portal platform for accounting firms"
+            >
+              <source src="/hero-home-cinematic.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-navy-950/40 via-transparent to-navy-950/15" aria-hidden="true"></div>
+            <div class="absolute top-0 right-0 w-5 h-5 bg-gold-500" aria-hidden="true"></div>
+            <div class="absolute bottom-0 left-0 w-5 h-5 border-2 border-gold-500" aria-hidden="true"></div>
+          </figure>
+        </div>
       </div>
     </section>
+
+    <SeoRelatedGuides :slugs="homeSeo.relatedGuides" />
 
     <!-- ==================== STATS ==================== -->
     <section class="bg-navy-950 py-16 lg:py-24 border-y border-white/5" aria-label="Key statistics">
@@ -438,16 +441,38 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
 import { getPageSeo } from '@/data/seo-pages'
 import StatCounter from '@/components/ui/StatCounter.vue'
+import HeroBackground from '@/components/ui/HeroBackground.vue'
+import SeoRelatedGuides from '@/components/seo/SeoRelatedGuides.vue'
 
 const { initReveal } = useScrollReveal()
 const openFaq = ref(null)
+const platformVideo = ref(null)
 
-onMounted(() => setTimeout(initReveal, 50))
+function onVideoMotionChange(event) {
+  if (event.matches) {
+    platformVideo.value?.pause()
+  } else {
+    platformVideo.value?.play().catch(() => {})
+  }
+}
+
+onMounted(() => {
+  setTimeout(initReveal, 50)
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  if (!motionQuery.matches) {
+    nextTick(() => platformVideo.value?.play().catch(() => {}))
+  }
+  motionQuery.addEventListener('change', onVideoMotionChange)
+})
+
+onUnmounted(() => {
+  window.matchMedia('(prefers-reduced-motion: reduce)').removeEventListener('change', onVideoMotionChange)
+})
 
 // ── SEO ──────────────────────────────────────────────────────────────────────
 const faqs = [
@@ -485,11 +510,17 @@ useSeoMeta({
   description: homeSeo.description,
   keywords: homeSeo.keywords,
   canonical: homeSeo.canonical,
+  ogImage: '/hero-home-video-poster.png',
+  ogImageAlt: 'Cinematic hero showing secure client portal workflows for South African accounting firms — Zar Media Group',
   schemas: [
-    SCHEMAS.organization(),
-    SCHEMAS.website(),
     SCHEMAS.localBusiness(),
     SCHEMAS.faqPage(faqs),
+    SCHEMAS.videoObject({
+      name: 'Client Portals Built & Managed for Accountants | Zar Media Group',
+      description: 'Cinematic overview of Zar Media Group\'s client portal and document vault platform for South African accounting, tax, and bookkeeping firms.',
+      contentUrl: '/hero-home-cinematic.mp4',
+      thumbnailUrl: '/hero-home-video-poster.png',
+    }),
   ],
 })
 
@@ -502,18 +533,10 @@ const heroQuickWins = [
   'Ongoing management: portal uptime, compliance, speed, and CRO without an in-house dev team',
 ]
 
-const dashboardMetrics = [
-  { value: '+340%', label: 'Lead Growth' },
-  { value: '98%', label: 'Uptime' },
-  { value: '4.9★', label: 'Reviews' },
-]
-
-const chartBars = [35, 52, 68, 45, 80, 62, 90, 75, 88, 95, 72, 85]
-
-const outcomeCards = [
-  { label: 'Client Acquisition', value: '+127%', color: 'bg-green-500' },
-  { label: 'Form Conversions', value: '+89%', color: 'bg-gold-500' },
-  { label: 'Admin Hours Saved', value: '12/wk', color: 'bg-blue-400' },
+const platformVideoPoints = [
+  'Branded portals on your domain — not a generic SaaS login',
+  'Document vault with clear statuses for your team and clients',
+  'POPIA-conscious intake built for SA accounting firms',
 ]
 
 const stats = [
