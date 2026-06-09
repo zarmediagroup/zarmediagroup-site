@@ -9,7 +9,7 @@
         <h1 class="font-serif text-display-md text-white mt-4 mb-4">Cookie Policy</h1>
         <p class="font-sans text-white/50 text-sm">
           Effective Date: <strong class="text-white/70">1 March 2026</strong> &nbsp;·&nbsp;
-          Last Updated: <strong class="text-white/70">1 May 2026</strong>
+          Last Updated: <strong class="text-white/70">7 June 2026</strong>
         </p>
         <div class="gold-divider mt-6"></div>
       </div>
@@ -167,9 +167,10 @@
 
           <div class="bg-white border border-navy-900/8 p-5 mt-2 mb-6">
             <p class="font-sans text-charcoal-600 text-sm leading-relaxed">
-              <strong>Note:</strong> Analytics cookies are only enabled after you click <strong>Accept</strong> on our
-              cookie banner. If you click <strong>Decline</strong>, non-essential analytics tracking remains disabled.
-              You can also use the Google opt-out add-on linked above for additional control.
+              <strong>Note:</strong> Analytics cookies and the Google Analytics script are only enabled after you click
+              <strong>Accept</strong> on our cookie banner. If you click <strong>Decline</strong>, non-essential analytics
+              tracking remains disabled and the GA script is not loaded. Use <strong>Cookie preferences</strong> in the
+              website footer to change your choice at any time.
             </p>
           </div>
 

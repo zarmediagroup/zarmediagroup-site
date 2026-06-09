@@ -7,7 +7,8 @@
     >
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p class="font-sans text-white/70 text-sm leading-relaxed">
-          We use cookies to enhance your experience and analyse site performance.
+          We use cookies for essential site preferences and, only if you accept, Google Analytics to measure traffic.
+          See our
           <RouterLink to="/privacy-policy" class="text-white/80 hover:text-white underline">Privacy Policy</RouterLink> ·
           <RouterLink to="/cookie-policy" class="text-white/80 hover:text-white underline">Cookie Policy</RouterLink>
         </p>

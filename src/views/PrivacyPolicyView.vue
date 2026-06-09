@@ -9,7 +9,7 @@
         <h1 class="font-serif text-display-md text-white mt-4 mb-4">Privacy Policy</h1>
         <p class="font-sans text-white/50 text-sm">
           Effective Date: <strong class="text-white/70">1 March 2026</strong> &nbsp;·&nbsp;
-          Last Updated: <strong class="text-white/70">1 May 2026</strong>
+          Last Updated: <strong class="text-white/70">7 June 2026</strong>
         </p>
         <div class="gold-divider mt-6"></div>
       </div>
@@ -45,6 +45,22 @@
             <li><strong>Website:</strong> <a href="https://zarmediagroup.com">https://zarmediagroup.com</a></li>
           </ul>
 
+          <h3 class="font-sans font-semibold text-navy-900 text-base mb-3 mt-6">1.1 Information Officer (POPIA)</h3>
+          <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
+            Under POPIA, ZARMEDIAGROUP (PTY) LTD is the <strong>responsible party</strong> for personal information
+            processed through this website and our client services. Our designated Information Officer is:
+          </p>
+          <ul class="legal-list">
+            <li><strong>Name:</strong> Zubayr Abdullatief</li>
+            <li><strong>Role:</strong> Chief Executive Officer (Information Officer)</li>
+            <li><strong>Email:</strong> <a href="mailto:info@zarmediagroup.com">info@zarmediagroup.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+27685070088">+27 68 507 0088</a></li>
+          </ul>
+          <p class="font-sans text-charcoal-500 text-sm leading-relaxed mt-2">
+            Contact the Information Officer for access, correction, deletion, objection, or any POPIA-related request.
+            We register with the <a href="https://inforegulator.org.za" target="_blank" rel="noopener noreferrer" class="hover:underline">Information Regulator of South Africa</a> as required for organisations that process personal information.
+          </p>
+
           <!-- 2 -->
           <h2 class="font-serif text-navy-900 text-2xl mb-4 mt-10">2. Information We Collect</h2>
           <div class="gold-divider mb-6"></div>
@@ -68,9 +84,10 @@
           <h3 class="font-sans font-semibold text-navy-900 text-base mb-3 mt-6">2.2 Information Collected Automatically</h3>
           <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
             When you use our website, limited technical information may be processed by our hosting and analytics
-            providers. <strong>Google Analytics 4</strong> is only used for audience measurement after you click
-            <strong>Accept</strong> on our cookie banner (we use Google Consent Mode so analytics storage stays off
-            until then). If you click <strong>Decline</strong>, we do not use GA4 to measure your browsing on this site.
+            providers. <strong>Google Analytics 4</strong> is only loaded and used for audience measurement after you
+            click <strong>Accept</strong> on our cookie banner (we use Google Consent Mode so analytics storage stays
+            off until then, and the GA script is not fetched until you accept). If you click <strong>Decline</strong>,
+            we do not load GA4 or measure your browsing on this site.
             See our <RouterLink to="/cookie-policy">Cookie Policy</RouterLink> for details.
           </p>
           <ul class="legal-list">
@@ -118,6 +135,15 @@
             <li><strong>Professional advisors</strong> — auditors or legal counsel, under strict confidentiality</li>
           </ul>
 
+          <h3 class="font-sans font-semibold text-navy-900 text-base mb-3 mt-6">5.1 Cross-Border Transfers (POPIA Section 72)</h3>
+          <p class="font-sans text-charcoal-600 leading-relaxed mb-4">
+            Some service providers we use (including Google Analytics, Vercel, and Resend) may process personal
+            information in countries outside South Africa, such as the United States or the European Union. Where
+            personal information is transferred cross-border, we rely on appropriate safeguards permitted under POPIA,
+            including contractual protections with operators and, where applicable, adequacy decisions or standard
+            contractual clauses. You may request further details about these safeguards by contacting our Information Officer.
+          </p>
+
           <!-- 6 -->
           <h2 class="font-serif text-navy-900 text-2xl mb-4 mt-10">6. Data Retention</h2>
           <div class="gold-divider mb-6"></div>
@@ -139,7 +165,7 @@
             <li><strong>Correct</strong> inaccurate or incomplete information</li>
             <li><strong>Delete</strong> your personal information (right to erasure)</li>
             <li><strong>Object</strong> to or restrict certain types of processing</li>
-            <li><strong>Withdraw consent</strong> at any time (without affecting prior processing)</li>
+            <li><strong>Withdraw consent</strong> at any time (without affecting prior processing), including analytics cookies via <strong>Cookie preferences</strong> in our website footer</li>
             <li><strong>Lodge a complaint</strong> with the Information Regulator of South Africa</li>
           </ul>
           <p class="font-sans text-charcoal-600 leading-relaxed mt-4">
@@ -169,6 +195,8 @@
           <p class="font-sans text-charcoal-600 leading-relaxed">
             We use cookies and similar technologies on this website. For full details, please read our
             <RouterLink to="/cookie-policy" class="text-navy-900 font-semibold hover:underline">Cookie Policy</RouterLink>.
+            You can change or withdraw analytics consent at any time using <strong>Cookie preferences</strong> in the website footer,
+            which reopens the cookie banner and lets you choose Decline.
           </p>
 
           <!-- 10 -->

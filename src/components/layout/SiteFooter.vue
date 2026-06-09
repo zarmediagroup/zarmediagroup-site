@@ -36,6 +36,18 @@
                 →
               </button>
             </form>
+            <label class="flex items-start gap-2 mt-3 cursor-pointer">
+              <input
+                v-model="newsletterConsent"
+                type="checkbox"
+                class="mt-0.5 w-3.5 h-3.5 accent-white flex-shrink-0"
+              />
+              <span class="font-sans text-white/50 text-[11px] leading-snug">
+                I agree to receive marketing emails from Zar Media Group and have read the
+                <RouterLink to="/privacy-policy" class="text-white/70 hover:text-white underline">Privacy Policy</RouterLink>.
+                I can unsubscribe at any time.
+              </span>
+            </label>
             <p v-if="newsletterMessage" class="font-sans text-gold-400/90 text-xs mt-2" role="status">{{ newsletterMessage }}</p>
             <p v-if="newsletterError" class="font-sans text-red-400/90 text-xs mt-2" role="alert">{{ newsletterError }}</p>
           </div>
@@ -138,6 +150,13 @@
           <RouterLink to="/privacy-policy" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Privacy Policy</RouterLink>
           <RouterLink to="/terms-of-service" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Terms of Service</RouterLink>
           <RouterLink to="/cookie-policy" class="font-sans text-white/60 text-xs hover:text-white transition-colors">Cookie Policy</RouterLink>
+          <button
+            type="button"
+            class="font-sans text-white/60 text-xs hover:text-white transition-colors"
+            @click="appStore.resetCookieChoice()"
+          >
+            Cookie preferences
+          </button>
         </div>
       </div>
     </div>
@@ -146,9 +165,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useAppStore } from '@/stores/app'
 
+const appStore = useAppStore()
 const currentYear = new Date().getFullYear()
 const email = ref('')
+const newsletterConsent = ref(false)
 const newsletterMessage = ref('')
 const newsletterError = ref('')
 
@@ -189,10 +211,15 @@ function subscribeNewsletter() {
     newsletterError.value = 'Please enter your email address.'
     return
   }
+  if (!newsletterConsent.value) {
+    newsletterError.value = 'Please confirm you agree to receive marketing emails.'
+    return
+  }
   // Integration point: Mailchimp / ConvertKit / list API
   newsletterMessage.value =
     'Thanks for your interest. Please use the contact page or email info@zarmediagroup.com to join our list until one-click signup is connected here.'
   email.value = ''
+  newsletterConsent.value = false
 }
 </script>
 

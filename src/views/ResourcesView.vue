@@ -189,25 +189,40 @@
         <p class="font-sans text-navy-900/70 mb-8">
           Join 300+ accountants and financial advisors who receive our fortnightly newsletter on digital strategy, compliance updates, and client growth tactics — tailored for the South African financial sector.
         </p>
-        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" @submit.prevent="handleNewsletterSubmit" aria-label="Newsletter signup for accountants">
-          <label for="newsletter-email" class="sr-only">Email address</label>
-          <input
-            id="newsletter-email"
-            v-model="email"
-            type="email"
-            required
-            placeholder="your@accountingfirm.co.za"
-            class="flex-1 px-4 py-3 font-sans text-navy-900 placeholder-navy-900/40 bg-white/80 border border-navy-900/20 focus:outline-none focus:border-navy-900/60 transition-colors"
-            :aria-describedby="submitSuccess ? 'newsletter-success' : undefined"
-          />
-          <button type="submit" class="px-6 py-3 bg-navy-900 text-white font-sans font-semibold text-sm hover:bg-navy-800 transition-colors">
-            Subscribe Free
-          </button>
+        <form class="max-w-md mx-auto space-y-3" @submit.prevent="handleNewsletterSubmit" aria-label="Newsletter signup for accountants">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              id="newsletter-email"
+              v-model="email"
+              type="email"
+              required
+              placeholder="your@accountingfirm.co.za"
+              class="flex-1 px-4 py-3 font-sans text-navy-900 placeholder-navy-900/40 bg-white/80 border border-navy-900/20 focus:outline-none focus:border-navy-900/60 transition-colors"
+              :aria-describedby="submitSuccess ? 'newsletter-success' : undefined"
+            />
+            <button type="submit" class="px-6 py-3 bg-navy-900 text-white font-sans font-semibold text-sm hover:bg-navy-800 transition-colors">
+              Subscribe Free
+            </button>
+          </div>
+          <label class="flex items-start gap-2 text-left cursor-pointer">
+            <input
+              v-model="newsletterConsent"
+              type="checkbox"
+              required
+              class="mt-0.5 w-4 h-4 accent-navy-900 flex-shrink-0"
+            />
+            <span class="font-sans text-navy-900/70 text-xs leading-snug">
+              I agree to receive marketing emails and have read the
+              <RouterLink to="/privacy-policy" class="text-navy-900 font-semibold hover:underline">Privacy Policy</RouterLink>.
+              Unsubscribe anytime.
+            </span>
+          </label>
         </form>
         <p v-if="submitSuccess" id="newsletter-success" role="status" class="font-sans text-navy-900/80 text-sm mt-3">
-          ✓ You're subscribed! First issue arriving this week.
+          Thanks for your interest. Email info@zarmediagroup.com or use our contact page to join until signup is connected here.
         </p>
-        <p class="font-sans text-navy-900/50 text-xs mt-3">No spam. Unsubscribe anytime. 300+ subscribers.</p>
+        <p class="font-sans text-navy-900/50 text-xs mt-3">No spam. Unsubscribe anytime.</p>
       </div>
     </section>
 
@@ -237,11 +252,14 @@ watch(activeCategory, () => {
 })
 const openFaq = ref(null)
 const email = ref('')
+const newsletterConsent = ref(false)
 const submitSuccess = ref(false)
 
 function handleNewsletterSubmit() {
+  if (!newsletterConsent.value) return
   submitSuccess.value = true
   email.value = ''
+  newsletterConsent.value = false
 }
 
 const faqs = [

@@ -145,8 +145,8 @@
       gtag('consent', 'default', {
         analytics_storage: window.__zmgAnalyticsConsentGranted ? 'granted' : 'denied',
       });
-      function loadGoogleAnalytics() {
-        if (window.__zmgGaLoaded) return;
+      window.loadGoogleAnalytics = function loadGoogleAnalytics() {
+        if (window.__zmgGaLoaded || !window.__zmgAnalyticsConsentGranted) return;
         window.__zmgGaLoaded = true;
         const s = document.createElement('script');
         s.async = true;
@@ -159,11 +159,13 @@
           });
         };
         document.head.appendChild(s);
-      }
-      if (document.readyState === 'complete') {
-        loadGoogleAnalytics();
-      } else {
-        window.addEventListener('load', loadGoogleAnalytics, { once: true });
+      };
+      if (window.__zmgAnalyticsConsentGranted) {
+        if (document.readyState === 'complete') {
+          window.loadGoogleAnalytics();
+        } else {
+          window.addEventListener('load', window.loadGoogleAnalytics, { once: true });
+        }
       }
     </script>
   </head>

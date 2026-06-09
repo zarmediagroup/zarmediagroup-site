@@ -67,6 +67,9 @@ export const useAppStore = defineStore('app', () => {
         analytics_storage: 'granted',
       })
     }
+    if (typeof window.loadGoogleAnalytics === 'function') {
+      window.loadGoogleAnalytics()
+    }
   }
 
   function declineCookies() {
@@ -87,10 +90,25 @@ export const useAppStore = defineStore('app', () => {
       cookiesAccepted.value = true
       analyticsConsentGranted.value = true
       window.__zmgAnalyticsConsentGranted = true
+      if (typeof window.loadGoogleAnalytics === 'function') {
+        window.loadGoogleAnalytics()
+      }
     } else if (stored === 'declined') {
       cookiesAccepted.value = true
       analyticsConsentGranted.value = false
       window.__zmgAnalyticsConsentGranted = false
+    }
+  }
+
+  function resetCookieChoice() {
+    localStorage.removeItem('zmg_cookies')
+    cookiesAccepted.value = false
+    analyticsConsentGranted.value = false
+    window.__zmgAnalyticsConsentGranted = false
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'denied',
+      })
     }
   }
 
@@ -119,6 +137,7 @@ export const useAppStore = defineStore('app', () => {
     acceptCookies,
     declineCookies,
     checkCookies,
+    resetCookieChoice,
   }
 })
 
