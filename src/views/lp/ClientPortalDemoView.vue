@@ -12,8 +12,8 @@
             id="lp-headline"
             class="font-serif text-[1.85rem] sm:text-[2.5rem] lg:text-[3rem] text-white leading-[1.1] mt-3 mb-5"
           >
-            Stop Chasing Clients for Documents.<br />
-            <span class="text-gradient">Give Them a Portal.</span>
+            Stop Managing Client Documents<br />
+            <span class="text-gradient">Over WhatsApp.</span>
           </h1>
           <p class="font-sans text-white/65 text-base sm:text-lg leading-relaxed sm:hidden">
             Cut admin by 60% in month one. Clients upload directly. POPIA-conscious. Live in 30 days.
@@ -59,7 +59,7 @@
               class="lp-card-body"
               @submit.prevent="handleSubmit"
               novalidate
-              aria-label="Book a free portal demo"
+              aria-label="Book a free 20-minute demo"
             >
               <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
                 <label for="lpTrap" class="sr-only">Leave blank</label>
@@ -98,7 +98,7 @@
               <p v-if="submitError" class="font-sans text-red-600 text-sm" role="alert">{{ submitError }}</p>
 
               <button type="submit" class="lp-cta-btn" :disabled="!form.consent || isSubmitting">
-                {{ isSubmitting ? 'Booking your demo…' : 'Book My Free 20-Min Demo →' }}
+                {{ isSubmitting ? 'Booking your demo…' : 'Book a Free 20-Minute Demo →' }}
               </button>
 
               <p class="font-sans text-charcoal-400 text-[11px] text-center">
