@@ -7,24 +7,24 @@
 
     <PageLoader :active="appStore.isPageLoading" />
 
-    <Navbar />
+    <Navbar v-if="!isMinimalLayout" />
     <main>
       <RouterView v-slot="{ Component, route }">
-        <Transition name="page" mode="out-in">
+        <Transition :name="isMinimalLayout ? '' : 'page'" mode="out-in">
           <component :is="Component" :key="route.path" />
         </Transition>
       </RouterView>
     </main>
-    <SiteFooter />
+    <SiteFooter v-if="!isMinimalLayout" />
     <CookieBanner v-if="!appStore.cookiesAccepted" />
-    <FloatingContactChat />
+    <FloatingContactChat v-if="!isMinimalLayout" />
   </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 import { useAppStore } from '@/stores/app'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import AppLoader from '@/components/ui/AppLoader.vue'
 import PageLoader from '@/components/ui/PageLoader.vue'
 import Navbar from '@/components/layout/Navbar.vue'
@@ -34,6 +34,9 @@ import FloatingContactChat from '@/components/contact/FloatingContactChat.vue'
 
 const appStore = useAppStore()
 const router = useRouter()
+const route = useRoute()
+
+const isMinimalLayout = computed(() => route.meta.minimalLayout === true)
 
 // Scroll tracking
 function handleScroll() {
@@ -72,7 +75,7 @@ onMounted(() => {
   document.addEventListener('keydown', handleEscape)
 
   try {
-    if (sessionStorage.getItem('zmg_splash_seen') !== '1') {
+    if (!isMinimalLayout.value && sessionStorage.getItem('zmg_splash_seen') !== '1') {
       appStore.setLoading(true)
     }
   } catch {

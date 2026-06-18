@@ -86,14 +86,17 @@ async function prerenderRoute(browser, route) {
   const page = await browser.newPage()
   try {
     await page.setViewport({ width: 1280, height: 800 })
-    await page.evaluateOnNewDocument(() => {
+    await page.evaluateOnNewDocument((routePath) => {
       try {
         sessionStorage.setItem('zmg_splash_seen', '1')
         localStorage.setItem('zmg_cookies', 'declined')
+        if (routePath === '/lp/client-portal-demo/thank-you') {
+          sessionStorage.setItem('zmg_lp_demo_submitted', '1')
+        }
       } catch {
         /* ignore */
       }
-    })
+    }, route)
 
     const url = `${BASE_ORIGIN}${route}`
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 })

@@ -76,11 +76,13 @@ export default async function handler(req, res) {
   const message = clean(body?.message)
   const sourceRaw = clean(body?.source).toLowerCase()
   const sourceLabel =
-    sourceRaw === 'chat_float'
-      ? 'floating chat assistant'
-      : sourceRaw === 'chat'
-        ? 'contact assistant'
-        : 'contact form'
+    sourceRaw === 'lp_client_portal_demo'
+      ? 'Google Ads landing — client portal demo'
+      : sourceRaw === 'chat_float'
+        ? 'floating chat assistant'
+        : sourceRaw === 'chat'
+          ? 'contact assistant'
+          : 'contact form'
   const services = Array.isArray(body?.services)
     ? body.services.map((s) => clean(s)).filter(Boolean).join(', ')
     : ''
@@ -129,11 +131,13 @@ MESSAGE:
 `.trim()
 
   const subject =
-    sourceRaw === 'chat_float'
-      ? `New Floating Chat Enquiry — ${firstName} ${lastName}`.trim()
-      : sourceRaw === 'chat'
-        ? `New Contact Chat Enquiry — ${firstName} ${lastName}`.trim()
-        : `New Contact Form Submission — ${firstName} ${lastName}`
+    sourceRaw === 'lp_client_portal_demo'
+      ? `New Demo Request (Google Ads) — ${firstName} ${lastName}`.trim()
+      : sourceRaw === 'chat_float'
+        ? `New Floating Chat Enquiry — ${firstName} ${lastName}`.trim()
+        : sourceRaw === 'chat'
+          ? `New Contact Chat Enquiry — ${firstName} ${lastName}`.trim()
+          : `New Contact Form Submission — ${firstName} ${lastName}`
 
   try {
     const r = await fetch('https://api.resend.com/emails', {

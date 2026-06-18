@@ -90,6 +90,28 @@ const routes = [
     meta: meta('contact'),
   },
   {
+    path: '/lp/client-portal-demo',
+    name: 'LpClientPortalDemo',
+    component: () => import('@/views/lp/ClientPortalDemoView.vue'),
+    meta: {
+      title: 'Book a Client Portal Demo | Zar Media Group',
+      description: 'Stop managing client documents over WhatsApp. Book a free 20-minute demo.',
+      canonical: '/lp/client-portal-demo',
+      minimalLayout: true,
+    },
+  },
+  {
+    path: '/lp/client-portal-demo/thank-you',
+    name: 'LpClientPortalDemoThankYou',
+    component: () => import('@/views/lp/ClientPortalDemoThankYouView.vue'),
+    meta: {
+      title: 'Thank You | Zar Media Group',
+      description: 'Your demo request has been received.',
+      canonical: '/lp/client-portal-demo/thank-you',
+      minimalLayout: true,
+    },
+  },
+  {
     path: '/privacy-policy',
     name: 'PrivacyPolicy',
     component: () => import('@/views/PrivacyPolicyView.vue'),

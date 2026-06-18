@@ -33,7 +33,12 @@ const sitemapStaticPathList = [
 ]
 
 /** Includes paths the SPA handles but which must not appear in sitemap.xml */
-const middlewareStaticPathList = [...sitemapStaticPathList, '/404']
+const middlewareStaticPathList = [
+  ...sitemapStaticPathList,
+  '/404',
+  '/lp/client-portal-demo',
+  '/lp/client-portal-demo/thank-you',
+]
 
 const staticPaths = sitemapStaticPathList.map((path) => ({
   path,
