@@ -388,6 +388,7 @@
 import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 import { useSeoMeta, SCHEMAS } from '@/composables/useSeoMeta'
+import { trackFormSubmission, trackLeadConversion } from '@/composables/useAnalytics'
 import { getPageSeo } from '@/data/seo-pages'
 
 const pageSeo = getPageSeo('contact')
@@ -451,16 +452,8 @@ async function handleSubmit() {
     const result = await res.json()
 
     if (result.success) {
-      if (typeof window.gtag === 'function' && window.__zmgAnalyticsConsentGranted === true) {
-        window.gtag('event', 'generate_lead', {
-          method: 'contact_form',
-          page_path: window.location.pathname,
-        })
-        window.gtag('event', 'ads_conversion_Submit_lead_form_1', {
-          method: 'contact_form',
-          page_path: window.location.pathname,
-        })
-      }
+      trackFormSubmission('contact_form')
+      trackLeadConversion('contact_form')
       currentStep.value = 3
     } else {
       submitError.value = result.message || 'Something went wrong. Please try again or email us directly.'

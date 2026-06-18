@@ -45,7 +45,7 @@
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSeoMeta } from '@/composables/useSeoMeta'
-import { trackFormSubmission, trackLeadConversion } from '@/composables/useAnalytics'
+import { trackLpDemoConversion } from '@/composables/useAnalytics'
 import LpNavbar from '@/components/layout/LpNavbar.vue'
 
 const router = useRouter()
@@ -66,8 +66,7 @@ onMounted(() => {
     return
   }
 
-  trackFormSubmission('lp_client_portal_demo')
-  trackLeadConversion('lp_client_portal_demo')
+  trackLpDemoConversion()
 })
 
 useSeoMeta({

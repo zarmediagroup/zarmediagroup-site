@@ -242,6 +242,7 @@
 
 <script setup>
 import { ref, computed, watch, nextTick, onMounted } from 'vue'
+import { trackFormSubmission, trackLeadConversion } from '@/composables/useAnalytics'
 import { KNOWLEDGE_TOPICS, matchKnowledge } from '@/composables/useContactChatKnowledge.js'
 
 const props = defineProps({
@@ -579,17 +580,9 @@ async function submitEnquiry() {
     })
     const result = await res.json()
     if (result.success) {
-      if (typeof window.gtag === 'function' && window.__zmgAnalyticsConsentGranted === true) {
-        const method = props.submitSource === 'chat_float' ? 'contact_chat_float' : 'contact_chat'
-        window.gtag('event', 'generate_lead', {
-          method,
-          page_path: window.location.pathname,
-        })
-        window.gtag('event', 'ads_conversion_Submit_lead_form_1', {
-          method,
-          page_path: window.location.pathname,
-        })
-      }
+      const method = props.submitSource === 'chat_float' ? 'contact_chat_float' : 'contact_chat'
+      trackFormSubmission(method)
+      trackLeadConversion(method)
       phase.value = 'done'
     } else {
       submitError.value = result.message || 'Something went wrong. Please try again or email us directly.'
