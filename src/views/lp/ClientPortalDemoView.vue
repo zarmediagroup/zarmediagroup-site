@@ -1,29 +1,9 @@
 <template>
   <div class="lp-page">
 
-    <!-- ── 1. Header ── -->
-    <header class="lp-header">
-      <img
-        src="/logo.png"
-        alt="Zar Media Group"
-        class="h-7 sm:h-8 w-auto brightness-0 invert"
-        width="160"
-        height="32"
-        fetchpriority="low"
-      />
-      <a
-        href="tel:+27685070088"
-        class="font-sans text-white/60 text-sm hover:text-white transition-colors flex items-center gap-2"
-        aria-label="Call Zar Media Group"
-      >
-        <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-        </svg>
-        <span class="hidden sm:inline">+27 68 507 0088</span>
-      </a>
-    </header>
+    <LpNavbar />
 
-    <!-- ── 2. Hero: message + visual ── -->
+    <!-- ── Hero: message + visual ── -->
     <section class="lp-hero" aria-labelledby="lp-headline">
       <div class="lp-container">
         <div class="max-w-3xl mx-auto text-center">
@@ -60,7 +40,7 @@
         </figure>
 
         <!-- Contact form — directly below hero -->
-        <div class="lp-form-wrap">
+        <div id="lp-demo-form" class="lp-form-wrap">
           <div class="lp-card">
             <div class="lp-card-head">
               <p class="font-sans text-gold-400 text-[11px] font-bold tracking-[0.2em] uppercase mb-2">
@@ -253,6 +233,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSeoMeta } from '@/composables/useSeoMeta'
+import LpNavbar from '@/components/layout/LpNavbar.vue'
 
 const router = useRouter()
 const currentYear = new Date().getFullYear()
@@ -386,13 +367,6 @@ useSeoMeta({
   @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 w-full;
 }
 
-/* Header */
-.lp-header {
-  @apply flex items-center justify-between py-4 sm:py-5;
-  padding-left: clamp(1.25rem, 4vw, 2.5rem);
-  padding-right: clamp(1.25rem, 4vw, 2.5rem);
-}
-
 /* Hero */
 .lp-hero {
   @apply relative pb-10 sm:pb-14;
@@ -408,6 +382,7 @@ useSeoMeta({
 
 .lp-form-wrap {
   @apply mt-8 sm:mt-10 max-w-xl mx-auto w-full;
+  scroll-margin-top: 5rem;
 }
 
 .lp-trust-badges {

@@ -8,15 +8,7 @@
       ></div>
     </div>
 
-    <header class="relative z-10 px-6 py-5 lg:px-10">
-      <img
-        src="/logo.png"
-        alt="Zar Media Group"
-        class="h-7 sm:h-8 w-auto brightness-0 invert"
-        width="160"
-        height="32"
-      />
-    </header>
+    <LpNavbar demo-href="/lp/client-portal-demo#lp-demo-form" />
 
     <main class="relative z-10 flex-1 flex items-center justify-center px-6 pb-12">
       <div class="w-full max-w-md text-center">
@@ -54,6 +46,7 @@ import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSeoMeta } from '@/composables/useSeoMeta'
 import { trackFormSubmission, trackLeadConversion } from '@/composables/useAnalytics'
+import LpNavbar from '@/components/layout/LpNavbar.vue'
 
 const router = useRouter()
 const currentYear = new Date().getFullYear()
