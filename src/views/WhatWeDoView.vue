@@ -269,7 +269,7 @@ const process = [
   {
     phase: 'Compliance & Architecture',
     description:
-      'We define your regulatory requirements (GDPR, POPIA, FSCA) and build a technical architecture that handles them from day one.',
+      'We define your regulatory requirements (SAICA, POPIA, FSCA) and build a technical architecture that handles them from day one.',
     deliverables: ['Compliance checklist', 'Data flow diagram', 'Tech stack selection', 'Security protocols'],
   },
   {

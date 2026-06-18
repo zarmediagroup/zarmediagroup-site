@@ -369,7 +369,7 @@ useSeoMeta({
 
 /* Hero */
 .lp-hero {
-  @apply relative pb-10 sm:pb-14;
+  @apply relative pb-10 sm:pb-14 pt-10 sm:pt-14 lg:pt-16;
 }
 
 .lp-hero-visual {

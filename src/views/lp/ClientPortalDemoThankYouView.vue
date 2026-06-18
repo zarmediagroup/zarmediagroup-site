@@ -8,7 +8,7 @@
       ></div>
     </div>
 
-    <LpNavbar demo-href="/lp/client-portal-demo#lp-demo-form" />
+    <LpNavbar />
 
     <main class="relative z-10 flex-1 flex items-center justify-center px-6 pb-12">
       <div class="w-full max-w-md text-center">
