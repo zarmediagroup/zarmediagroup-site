@@ -84,7 +84,7 @@ export const PAGE_SEO = {
   'client-portal': {
     title: 'Accounting Client Portal & Document Vault | South Africa',
     description:
-      'Branded accounting client portal for SA firms: client directory, document vault, tax & payroll uploads, POPIA-conscious workflows—see a product tour (demo data).',
+      'See how SA accounting firms collect tax documents, track SARS deadlines, and run firm-wide review—on their own domain. Product tour with demo screenshots.',
     keywords:
       'accounting client portal South Africa, client document portal, document vault accounting firm, POPIA client portal, tax document portal accountants',
     canonical: '/services/client-portal',
@@ -137,7 +137,7 @@ export const SERVICE_OFFERINGS = [
     name: 'Accounting Client Portal & Document Vault',
     path: '/services/client-portal',
     summary:
-      'Product tour of an admin client portal: directory, firm-wide documents queue, client workspace, and POPIA-conscious document vault for SA firms.',
+      'Stop losing tax packs in WhatsApp. Product tour: client dashboard, document vault, compliance calendar, and firm admin console—on your domain.',
   },
   {
     id: 'website-as-a-service',

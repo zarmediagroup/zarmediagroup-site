@@ -77,7 +77,7 @@ export default async function handler(req, res) {
   const sourceRaw = clean(body?.source).toLowerCase()
   const sourceLabel =
     sourceRaw === 'lp_client_portal_demo'
-      ? 'Google Ads landing — client portal demo'
+      ? 'Google Ads landing — client portal walkthrough'
       : sourceRaw === 'chat_float'
         ? 'floating chat assistant'
         : sourceRaw === 'chat'
@@ -132,7 +132,7 @@ MESSAGE:
 
   const subject =
     sourceRaw === 'lp_client_portal_demo'
-      ? `New Demo Request (Google Ads) — ${firstName} ${lastName}`.trim()
+      ? `New Walkthrough Request (Google Ads) — ${firstName} ${lastName}`.trim()
       : sourceRaw === 'chat_float'
         ? `New Floating Chat Enquiry — ${firstName} ${lastName}`.trim()
         : sourceRaw === 'chat'

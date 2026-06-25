@@ -12,16 +12,18 @@
             id="lp-headline"
             class="font-serif text-[1.85rem] sm:text-[2.5rem] lg:text-[3rem] text-white leading-[1.1] mt-3 mb-5"
           >
-            Stop Managing Client Documents<br />
-            <span class="text-gradient">Over WhatsApp.</span>
+            Stop losing tax packs in<br />
+            <span class="text-gradient">WhatsApp and email threads</span>
           </h1>
           <p class="font-sans text-white/65 text-base sm:text-lg leading-relaxed sm:hidden">
-            Cut admin by 60% in month one. Clients upload directly. POPIA-conscious. Live in 30 days.
+            Attachments in three inboxes. Clients asking “did you get it?” One branded portal on
+            <strong class="text-white/85">your domain</strong>—POPIA-conscious, live in 30 days.
           </p>
           <p class="font-sans text-white/65 text-base sm:text-lg leading-relaxed hidden sm:block">
-            SA accounting firms using our client portal cut admin by over 60% in month one —
-            clients upload directly, checklists run automatically, and every document has a full audit trail.
-            POPIA-conscious. Branded to your firm. Live in 30 days.
+            Every season, the same drain: attachments scattered across email and WhatsApp, clients asking “did you get it?”,
+            and your team chasing files instead of doing the work. This portal puts uploads, compliance deadlines, and document status on
+            <strong class="text-white/85">your domain, under your brand</strong>. Clients know where to send PAYE, VAT, and bank statements.
+            Your staff work one queue—with a clear audit trail.
           </p>
         </div>
 
@@ -47,11 +49,11 @@
                 Free · 20 minutes · No obligation
               </p>
               <h2 class="font-serif text-xl sm:text-2xl text-white leading-tight">
-                See the portal live, built for your firm
+                Picture this on your domain
               </h2>
               <p class="font-sans text-white/45 text-sm mt-2 leading-relaxed">
-                Book a walkthrough — we show you the portal running with your branding.
-                Reply within one business day.
+                Book a walkthrough—we show you the portal with your branding on screen.
+                Reply within one business day. No obligation. Twenty minutes.
               </p>
             </div>
 
@@ -59,7 +61,7 @@
               class="lp-card-body"
               @submit.prevent="handleSubmit"
               novalidate
-              aria-label="Book a free 20-minute demo"
+              aria-label="Book a free 20-minute walkthrough"
             >
               <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
                 <label for="lpTrap" class="sr-only">Leave blank</label>
@@ -98,11 +100,11 @@
               <p v-if="submitError" class="font-sans text-red-600 text-sm" role="alert">{{ submitError }}</p>
 
               <button type="submit" class="lp-cta-btn" :disabled="!form.consent || isSubmitting">
-                {{ isSubmitting ? 'Booking your demo…' : 'Book a Free 20-Minute Demo →' }}
+                {{ isSubmitting ? 'Booking your walkthrough…' : 'Book my walkthrough →' }}
               </button>
 
               <p class="font-sans text-charcoal-400 text-[11px] text-center">
-                No hard sell · Cape Town, South Africa
+                Free · 20 minutes · No hard sell · Cape Town, South Africa
               </p>
             </form>
           </div>
@@ -123,7 +125,7 @@
     <section class="lp-section bg-cream" aria-labelledby="obj-heading">
       <div class="lp-container">
         <div class="text-center max-w-lg mx-auto mb-10">
-          <p class="lp-eyebrow-dark">The concerns we hear every week</p>
+          <p class="lp-eyebrow-dark">Questions firm principals ask us</p>
           <h2 id="obj-heading" class="font-serif text-2xl sm:text-3xl text-navy-900 mt-3 leading-tight">
             Every firm thinks this before they switch
           </h2>
@@ -144,7 +146,7 @@
         <div class="text-center mb-10">
           <p class="lp-eyebrow">Built for real SA practices</p>
           <h2 id="proof-heading" class="font-serif text-2xl sm:text-3xl text-white mt-3">
-            Proof it works in the field
+            One live deployment in Cape Town
           </h2>
         </div>
 
@@ -242,38 +244,41 @@ const submitError = ref('')
 const websiteTrap = ref('')
 
 const trustBadges = [
+  'On your domain—not a generic SaaS login',
   'POPIA-conscious workflows',
-  'FICA-ready document audit trail',
-  'Branded to your firm',
+  'PAYE, VAT, AFS categories built in',
   'SA-based team',
 ]
 
 const objections = [
   {
-    concern: "My clients won't bother using a new system — they're used to WhatsApp.",
-    answer: "The upload flow takes under 60 seconds and requires no account creation. We've seen 90%+ client adoption in week one — because it's simpler than sending a WhatsApp.",
+    concern: "My clients won't bother—they're used to WhatsApp.",
+    answer:
+      'Some will—until you train them once. Structured upload, visible status, audit history. Simpler than a blurry photo and three follow-up messages. Most clients adopt because it is faster than what they do now.',
   },
   {
-    concern: "Setting this up will eat time I don't have during tax season.",
-    answer: "We handle everything — portal build, branding, client invite templates, and onboarding. You brief us once. Most firms are fully live within 30 days.",
+    concern: 'Setting this up will eat time I do not have during tax season.',
+    answer:
+      'We handle the build, branding, invite templates, and onboarding. You brief us once. Most firms are live within 30 days—with status labels mapped to your workflow, not a generic template.',
   },
   {
-    concern: "I'm not sure the cost is justified for a practice our size.",
-    answer: "One fewer admin hour per week covers the subscription. Most practices also close one extra client per quarter because the portal signals professionalism competitors can't match.",
+    concern: 'Will clients trust another login—or is this a US product localised?',
+    answer:
+      'The portal runs on your domain beside your firm website—not a URL clients do not recognise. POPIA-conscious architecture. Categories built around SA practice: PAYE, VAT, EMP501, bank statements, AFS.',
   },
 ]
 
 const pocDeliverables = [
   'SAICA-forward public website on alevelbusinessconsultants.co.za',
-  'Client portal path for logged-in document work',
+  'Client portal for logged-in document work and uploads',
   'Consultation booking and structured lead capture',
   'POPIA-conscious forms and compliance messaging',
 ]
 
 const stats = [
-  { value: '60%', label: 'reduction in admin hours in month one' },
   { value: '30', label: 'days from brief to live portal' },
-  { value: '90%+', label: 'client adoption rate in week one' },
+  { value: '1', label: 'queue for your whole team' },
+  { value: '20', label: 'minute walkthrough, no obligation' },
 ]
 
 const form = ref({
@@ -325,7 +330,7 @@ async function handleSubmit() {
         email: form.value.email,
         phone: form.value.phone,
         firmName: form.value.firmName,
-        message: 'Demo request from Google Ads landing page (/lp/client-portal-demo).',
+        message: 'Walkthrough request from Google Ads landing page (/lp/client-portal-demo).',
         source: 'lp_client_portal_demo',
         websiteTrap: websiteTrap.value,
       }),
@@ -347,9 +352,9 @@ async function handleSubmit() {
 }
 
 useSeoMeta({
-  title: 'Stop Chasing Clients for Documents | Book a Free Portal Demo — Zar Media Group',
+  title: 'Stop Losing Tax Packs in WhatsApp | Book a Walkthrough — Zar Media Group',
   description:
-    'Client portal for South African accountants — secure uploads, SAICA and POPIA-conscious workflows, branded to your firm. Book a free 20-minute demo with Zar Media Group.',
+    'SA accounting firms: collect PAYE, VAT, and bank statements on your domain—not in email threads. POPIA-conscious client portal. Book a free 20-minute walkthrough.',
   canonical: '/lp/client-portal-demo',
   robots: 'noindex, nofollow',
   ogImage: heroImage.src,

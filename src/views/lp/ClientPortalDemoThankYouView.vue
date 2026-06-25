@@ -17,13 +17,13 @@
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
           </svg>
         </div>
-        <span class="section-label">You're on the list</span>
-        <h1 class="font-serif text-display-sm text-white mt-4 mb-4">Demo request received</h1>
+        <span class="section-label">Walkthrough booked</span>
+        <h1 class="font-serif text-display-sm text-white mt-4 mb-4">We will be in touch shortly</h1>
         <p class="font-sans text-white/60 text-base leading-relaxed mb-3">
-          Thanks — we'll be in touch within <strong class="text-white/90">one business day</strong> to confirm your 20-minute demo slot.
+          Thanks—you are on the list. We reply within <strong class="text-white/90">one business day</strong> to confirm your 20-minute walkthrough slot.
         </p>
         <p class="font-sans text-white/40 text-sm">
-          Check your inbox (and spam folder) for a confirmation from our team.
+          Check your inbox (and spam folder). You leave knowing whether this portal fits your firm—no obligation.
         </p>
         <div class="gold-divider-center mt-8 mb-6 max-w-[80px] mx-auto"></div>
         <p class="font-sans text-white/35 text-xs">
@@ -70,8 +70,8 @@ onMounted(() => {
 })
 
 useSeoMeta({
-  title: 'Thank You | Zar Media Group',
-  description: 'Your demo request has been received.',
+  title: 'Walkthrough Booked | Zar Media Group',
+  description: 'Your client portal walkthrough request has been received. We reply within one business day.',
   canonical: '/lp/client-portal-demo/thank-you',
   robots: 'noindex, nofollow',
   schemas: [],
