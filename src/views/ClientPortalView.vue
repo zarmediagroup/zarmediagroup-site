@@ -5,7 +5,7 @@
       aria-label="Client document portal for accountants"
     >
       <HeroBackground
-        src="/hero-client-portal-document-vault.png"
+        src="/client-dashboard.png"
         overlay-class="bg-gradient-to-r from-navy-900/95 via-navy-900/88 to-navy-900/70"
         image-opacity="opacity-35"
         image-position="object-right object-center"
@@ -380,7 +380,7 @@ const faqs = [
   },
 ]
 
-const primaryOgImage = '/hero-client-portal-document-vault.png'
+const primaryOgImage = '/client-dashboard.png'
 
 useSeoMeta({
   title: pageSeo.title,

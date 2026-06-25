@@ -237,7 +237,7 @@ useSeoMeta({
   description: pageSeo.description,
   keywords: pageSeo.keywords,
   canonical: pageSeo.canonical,
-  ogImage: '/hero-client-portal-document-vault.png',
+  ogImage: '/client-dashboard.png',
   ogImageAlt: 'Client-facing accounting portals and CRM integration for South African accounting firms — Zar Media Group',
   schemas: [
     SCHEMAS.breadcrumb([

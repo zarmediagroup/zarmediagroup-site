@@ -582,7 +582,7 @@ const services = [
   {
     title: 'Client Portal & Document Vault',
     description:
-      'See how an accounting client portal handles directory, firm-wide documents, profiles, and a secure vault—demo tour for SA tax and bookkeeping firms.',
+      'Product tour: client dashboard, document vault, compliance calendar, notifications, and firm admin console—on your domain.',
     link: '/services/client-portal',
     tags: ['Document Vault', 'POPIA-aware', 'Admin tour'],
     icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h12a2 2 0 012 2v8a2 2 0 01-2 2H5z"/>',

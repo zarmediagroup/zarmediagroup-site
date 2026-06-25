@@ -90,7 +90,7 @@ export const resources = [
     authorInitials: 'ZA',
     authorRole: 'Founder & Chief Executive Officer',
     authorPhoto: '/zubayr-abdullatief-zar-media-group.png',
-    image: '/hero-client-portal-document-vault.png',
+    image: '/client-dashboard.png',
     imageAlt: 'Client portal dashboard for a small accounting firm in South Africa showing secure document upload',
     readTime: '12 min',
     date: 'Jan 2026',

@@ -295,9 +295,9 @@ const contactSubmitUrl =
 const LP_SESSION_KEY = 'zmg_lp_demo_submitted'
 
 const heroImage = {
-  src: '/hero-lp-accounting-client-portal-south-africa-saica-popia.png',
+  src: '/client-dashboard.png',
   alt:
-    'Client portal for South African accountants — secure document uploads on desktop and mobile, SAICA-aligned and POPIA-conscious workflows, built by Zar Media Group',
+    'Client portal dashboard with document KPIs, alerts, and compliance preview — South African accounting firms, built by Zar Media Group',
 }
 
 const pocWebsiteImage = {
